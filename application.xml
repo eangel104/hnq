@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<application>
+	<projectName>hnq</projectName>
+	<applicationName>시공관리</applicationName>
+	<android>
+		<projectName>hnq</projectName>
+		<applicationName>시공관리</applicationName>
+		<packageName>lnc.idccon</packageName>
+		<compileSdk>android-27</compileSdk>
+	</android>
+	<ios>
+		<projectName>hnq</projectName>
+		<applicationName>시공관리</applicationName>
+		<bundleIdentifier>lnc.idccon</bundleIdentifier>
+		<deploymentTarget>iphoneos10.3</deploymentTarget>
+	</ios>
+	<components/>
+	<libraries>
+        <library api="2.1" id="m.client.library.core" revision="7.39" type="core"/>
+        <library api="2.1" id="m.client.library.addon.db" revision="4.6" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.file" revision="4.9" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.media" revision="5.17" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.net" revision="4.12" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.netExt" revision="4.20" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.popup" revision="4.18" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.zip" revision="4.2" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.locale" revision="4.3" type="addon"/>
+        <library api="2.1" id="m.client.library.plugin.drawing" revision="1.8" type="plugin"/>
+        <library api="2.1" id="m.client.library.plugin.location" revision="0.5" type="plugin"/>
+        <library api="2.1" id="m.client.library.plugin.viewer" revision="1.4" type="plugin"/>
+    	<library api="2.1" id="m.client.library.plugin.push" revision="5.8" type="plugin"></library>
+	</libraries>
+</application>
