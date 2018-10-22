@@ -6,9 +6,6 @@
 <title>한화 Home &amp; Q</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -16,33 +13,7 @@
 <div class="wrap">
 
 	<!-- header -->
-	<div class="header">
-		<h1 class="page_title">영업활동</h1>
-		<a href="#n" class="btn_gnb">전체메뉴</a>
-
-		<!-- gnb -->
-		<div class="gnb"><!-- 활성화 class = "on" -->
-			<ul>
-				<li><a href="#n">일정/업무</a></li>
-				<li><a href="#n">거래처정보</a></li>
-				<li><a href="#n">주문현황</a></li>
-				<li><a href="#n">기상담관리</a></li>
-				<li><a href="#n">B2C진도관리</a></li>
-				<li><a href="#n">단가표조회</a></li>
-				<li><a href="#n">재고조회</a></li>
-				<li><a href="#n">주문요청</a></li>
-				<li><a href="#n">간단견적</a></li>
-				<li><a href="#n">이슈관리</a></li>
-				<li><a href="#n">실측승인관리</a></li>
-				<li><a href="#n">시공승인관리</a></li>
-				<li><a href="#n">실측관리</a></li>
-				<li><a href="#n">시공관리</a></li>
-			</ul>
-		</div>
-		<!-- //gnb -->
-
-		<a href="#n" class="page_prev">이전페이지</a>
-	</div>
+	<div class="header"></div>
 
 	<!-- //header -->
 
@@ -172,6 +143,32 @@
 
 </div>
 <!-- //wrap -->
-
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
+    $(document).ready(function(){
+        $(".header").header("sales","영업활동");
+    });
+    M.onReady(function(e) {
+        //ready event handle code here
+    }).onHide(function(e){
+        //hide event handle code here
+    }).onRestore(function(e) {
+        //restore event handle code here
+    }).onResume(function(e) {
+        //resume event handle code here
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+    }).onBack(function() {
+        //back event handle code here
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
