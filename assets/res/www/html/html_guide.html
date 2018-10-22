@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+<title>한화 Home &amp; Q</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/content.css">
+<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<style type="text/css">
+.guide_tit{position:relative;margin:0 -10px;padding-left:10px;font-size:16px;font-family:'noto-bold';color:#fc761a;}
+.guide_tit:after{content:"";display:block;position:absolute;top:10px;left:0;width:4px;height:1px;background:#fc761a;}
+.guide_tit_s{position:relative;margin:20px 0 10px;padding-left:10px;font-size:14px;color:#333;}
+.guide_tit_s:after{content:"";display:block;position:absolute;top:8px;left:0;width:3px;height:3px;border-radius:2px;background:#333;}
+.guide_box{margin:10px -10px 20px;border:1px solid #ccc;border-radius:0 10px 10px 10px;padding:10px;}
+.guide_box .guide_tit_s:first-child{margin-top:0;}
+</style>
+</head>
+<body>
+
+<!-- wrap -->
+<div class="wrap">
+
+	<!-- header -->
+	<div class="header">
+		<h1 class="page_title">HTML GUIDE</h1>
+		<a href="#n" class="btn_gnb">menu</a>
+
+		<!-- gnb -->
+		<div class="gnb"><!-- 활성화 class = "on" -->
+			<ul>
+				<li><a href="#titTitle">Title</a></li>
+				<li><a href="#titText">Text</a></li>
+				<li><a href="#titBtn">Button</a></li>
+				<li><a href="#titSpace">Margin/Padding</a></li>
+				<li><a href="#titTable">Table</a></li>
+				<li><a href="#titTabMenu">Tabmenu</a></li>
+				<li><a href="#titForm">Form</a></li>
+				<li><a href="#titWebkit">Webkit box</a></li>
+				<li><a href="#titList">List</a></li>
+				<li><a href="#titEtc">Etc</a></li>
+			</ul>
+		</div>
+		<!-- //gnb -->
+	</div>
+
+	<!-- //header -->
+
+	<!-- content -->
+	<div class="content">
+		
+		<div class="content_area">
+
+			<!-- 본문내용 -->
+			<div class="section">		
+
+				<h2 class="guide_tit" id="titTitle">타이틀</h2>
+				<div class="guide_box">
+					<h3 class="tit_type01 mt0">tit_type01</h3>
+					<div class="tit_btn">
+						<h3 class="tit_type01">매출현황(원)</h3>
+						<a href="#n" class="btn small border basic btn_r">조회</a>
+					</div>
+					<div class="tit_btn big_btn">
+						<h3 class="tit_type01">현장</h3>
+						<a href="#n" class="btn middle orange btn_r fs13 mw90">현장이슈</a>
+					</div>
+				</div>
+
+				<h2 class="guide_tit" id="titText">텍스트</h2>
+				<div class="guide_box">
+					<h3 class="guide_tit_s">Color</h3>
+					<p class="point01">point01</p>
+
+					<h3 class="guide_tit_s">Align</h3>
+					<p class="tal">tal : 왼쪽정렬</p>
+					<p class="tac">tac : 가운데정렬</p>
+					<p class="tar">tar : 오른쪽정렬</p>
+				</div>
+
+				<h2 class="guide_tit" id="titBtn">버튼</h2>
+				<div class="guide_box">
+					<h3 class="guide_tit_s">small</h3>
+					<a href="#n" class="btn small basic">btn small basic</a>
+					<h3 class="guide_tit_s">middle</h3>
+					<a href="#n" class="btn middle basic">btn middle basic</a>
+					<a href="#n" class="btn middle orange">btn middle orange</a>
+					<a href="#n" class="btn middle gray">btn middle gray</a>
+					<h3 class="guide_tit_s">large</h3>
+					<a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+				</div>
+
+				<h2 class="guide_tit" id="titSpace">Margin/Padding</h2>
+				<div class="guide_box">
+					<h3 class="guide_tit_s">Margin</h3>
+					<ul>
+						<li>.mt0 - margin-top:0;</li>
+						<li>.mt10 - margin-top:10px;</li>
+						<li>.mt20 - margin-top:20px;</li>
+					</ul>
+					<h3 class="guide_tit_s">Padding</h3>
+					
+				</div>
+
+				<h2 class="guide_tit" id="titTable">테이블</h2>
+				<div class="guide_box">
+					<h3 class="guide_tit_s">tbl</h3>
+					<div class="tbl">
+						<table>
+							<caption></caption>
+							<colgroup>
+								<col style="width:25%" />
+								<col style="width:25%" />
+								<col style="width:25%" />
+								<col style="width:25%" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>시공</th>
+									<td class="tar">1건</td>
+									<th>실측</th>
+									<td class="tar">1건</td>
+								</tr>
+								<tr>
+									<th>시공</th>
+									<td colspan="3">
+										<a href="#n" class="btn_cell">2018.05.05</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<h2 class="guide_tit" id="titTabMenu">탭메뉴</h2>
+				<div class="guide_box">
+					<ul class="tabmenu" id="tab1">
+						<li class="on"><a href="#tab1-1"><span>탭메뉴1</span></a></li><!-- 활성화 class = "on" -->
+						<li><a href="#tab1-2"><span>탭메뉴2</span></a></li>
+						<li><a href="#tab1-3"><span>탭메뉴3</span></a></li>
+					</ul>
+
+					<div class="tab_panel" id="tab_cont1">
+						<div id="tab1-1" class="panel">
+							tab content1
+						</div>
+						<div id="tab1-2" class="panel">
+							tab content2
+						</div>
+						<div id="tab1-3" class="panel">
+							tab content3
+						</div>
+					</div>
+
+					<script type="text/javascript">
+						$('#tab1').fnTab();
+					</script>
+				</div>
+
+				<h2 class="guide_tit" id="titForm">폼요소</h2>
+				<div class="guide_box">
+					<ul>
+						<li><input type="text" value="input type='text'"></li>
+						<li class="mt10">
+							<select>
+								<option>select</option>
+							</select>
+						</li>
+						<li class="mt10">
+							<textarea rows="3" cols="30"></textarea>
+						</li>
+						<li class="mt10">
+							<label class="chk_style">
+								<input type="radio" name="rdo_chk01">
+								<span class="chk_txt">chk_style (radio/chekcbox)</span>
+							</label>
+						</li>
+						<li class="mt10">
+							<label class="chk_style2">
+								<input type="radio" name="do_chk02">
+								<span class="chk_txt">chk_style2 (radio/chekcbox)</span>
+							</label>
+						</li>
+						<li class="mt10">
+							<input type="date">
+						</li>
+						<li class="mt10">
+							<input type="month">
+						</li>
+						<li class="mt10">
+							<textarea rows="3" cols="30">textarea</textarea>
+						</li>
+					</ul>
+					
+					<h3 class="guide_tit_s">chk_list half right</h3>
+					<ul class="chk_list half right">
+						<li>
+							<label class="chk_style">
+								<input type="checkbox" name="chk_chk04">
+								<span class="chk_txt">
+									시공완료
+								</span>
+							</label>
+						</li>
+						<li>
+							<label class="chk_style">
+								<input type="checkbox" name="chk_chk04">
+								<span class="chk_txt">
+									바닥재손상
+								</span>
+							</label>
+						</li>
+						<li>
+							<label class="chk_style">
+								<input type="checkbox" name="chk_chk04">
+								<span class="chk_txt">
+									제품손상
+								</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+
+				<h2 class="guide_tit" id="titWebkit">Webkit box</h2>
+				<div class="guide_box">
+					<div class="webkit_box mt10">
+						<span class="box_flex1">
+							<input type="text">
+						</span>
+						<span class="box_flex0 dash">
+							~
+						</span>
+						<span class="box_flex1">
+							<input type="text">
+						</span>
+					</div>
+					<div class="webkit_box mt10">
+						<span class="box_flex1">
+							<label class="chk_style">
+								<input type="radio" name="rdo_chk03">
+								<span class="chk_txt">전체</span>
+							</label>
+						</span>
+						<span class="box_flex1">
+							<label class="chk_style">
+								<input type="radio" name="rdo_chk03">
+								<span class="chk_txt">거주</span>
+							</label>
+						</span>
+						<span class="box_flex1">
+							<label class="chk_style">
+								<input type="radio" name="rdo_chk03">
+								<span class="chk_txt">비거주</span>
+							</label>
+						</span>
+					</div>
+				</div>
+
+				<h2 class="guide_tit" id="titList">리스트</h2>
+				<div class="guide_box">
+					<div class="list_num">
+						<span><em>12</em>건 / 총 <em>12</em>건</span>
+					</div>
+					
+					<div class="tac mt20">
+						<a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+					</div>
+					
+					<h3 class="guide_tit_s">survey_list</h3>
+					<ul class="survey_list">
+						<li>
+							<a href="#n">
+								<span class="division">실측접수</span>
+								<div class="division type02">
+									<span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
+									<span class="rignt_txt">주문접수</span>
+								</div>
+								<div class="mid">
+									<span class="date">2018-08-31 (09:00~10:00)</span>
+									<span class="num">[TI20160523000000] 비거주(개보수)</span>
+									<span class="addr">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+								</div>
+								<div class="bot">
+									<span class="company">서울 창호 시스템</span>
+									<span class="charge">김프로(01012344321)</span>
+								</div>
+								<!-- 진행단계 -->
+								<div class="bot">
+									<div class="progress">
+										<span class="start_txt on">도착</span> <!-- 활성화시 on클래스 추가 -->
+										<div class="progress_wrap">
+											<div class="inner" style="width:50%;"><!-- 진행상황 위치값 변경 -->
+												<span class="stu_txt">진행상황</span><!-- TODO: 진행상황 텍스트 없을시 삭제해주세요 -->
+											</div>
+										</div>
+										<span class="end_txt">현장완료</span>
+									</div>
+								</div>
+								<!-- //진행단계 -->
+							</a>
+						</li>
+						<!-- a링크 없는타입 -->
+						<li>
+							<span class="division">실측접수</span>
+							<div class="division type02">
+									<span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
+									<span class="rignt_txt">주문접수</span>
+								</div>
+							<div class="mid full">
+								<span class="date">2018-08-31</span>
+								<span class="num">[TI20160523000000] 비거주(개보수)</span>
+								<span class="addr">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+							</div>
+							<div class="bot">
+								<span class="company">서울 창호 시스템</span>
+								<span class="charge"><span class="split_g">김프로(01012344321)</span><span>4명</span></span>
+							</div>
+						</li>
+						<!--// a링크 없는타입 -->
+					</ul>
+
+					<h3 class="guide_tit_s">image_list</h3>
+					<ul class="image_list">
+						<li>
+							<a href="#n">
+								<img src="../img/content/test_img.gif" alt="테스트이미지" />
+							</a>
+							<a href="#n" class="btn_delete">삭제</a>
+						</li>
+						<li>
+							<a href="#n">
+								<img src="../img/content/test_img.gif" alt="테스트이미지" />
+							</a>
+							<a href="#n" class="btn_delete">삭제</a>
+						</li>
+						<li>
+							<a href="#n">
+								<img src="../img/content/test_img.gif" alt="테스트이미지" />
+							</a>
+							<a href="#n" class="btn_delete">삭제</a>
+						</li>
+						<li>
+							<a href="#n">
+								<img src="../img/content/test_img.gif" alt="테스트이미지" />
+							</a>
+							<a href="#n" class="btn_delete">삭제</a>
+						</li>
+					</ul>
+					
+					<h3 class="guide_tit_s">issue_list</h3>
+					<ul class="issue_list">
+						<li>
+							<div class="issue_tit">
+								<span class="orange_txt">시공이슈</span>
+								<span class="issue_name">벽지손상</span>
+								<a href="#n" class="btn small gray mw50">삭제</a>
+							</div>
+							<div class="issue_con">
+								<a href="#n">
+									<span>철거 중 벽지 손상철거 중 벽지 손상철거 중 벽지 손상철거 중 벽지 손상철거 중 벽지 손상</span>
+								</a>	
+							</div>
+						</li>
+						<li>
+							<div class="issue_tit">
+								<span class="orange_txt">시공이슈</span>
+								<span class="issue_name">벽지손상</span>
+								<a href="#n" class="btn small gray mw50">삭제</a>
+							</div>
+							<div class="issue_con">
+								<a href="#n">
+									<span>철거 중 벽지 손상</span>
+								</a>	
+							</div>
+						</li>
+					</ul>
+					
+					<h3 class="guide_tit_s">issue_list</h3>
+					<ul class="price_list">
+						<li>
+							<div class="txt_area">
+								항목 텍스트로 최대 2줄로 출력<br/>
+								항목 텍스트로 최대 2줄로 출력
+							</div>
+							<div class="price_area">
+								<span class="left_txt">판매단가 : 3000</span>
+								<div class="p_m">
+									<a class="minus" href="#">빼기</a>
+									<input type="text" value="0">
+									<a class="plus" href="#">더하기</a>
+								</div>
+							</div>
+							<div class="gray_box">
+								<span class="left_txt">금액</span>
+								<span class="right_txt">515,000 원</span>
+							</div>
+						</li>
+						<li>
+							<div class="txt_area">
+								항목 텍스트로 최대 2줄로 출력<br/>
+								항목 텍스트로 최대 2줄로 출력
+							</div>
+							<div class="price_area">
+								<span class="left_txt">판매단가 : 3000</span>
+								<div class="p_m">
+									<a class="minus" href="#">빼기</a>
+									<input type="text" value="0">
+									<a class="plus" href="#">더하기</a>
+								</div>
+							</div>
+							<div class="gray_box">
+								<span class="left_txt">금액</span>
+								<span class="right_txt">515,000 원</span>
+							</div>
+						</li>
+					</ul>
+
+					<h3 class="guide_tit_s">기본 list</h3>
+					<ul class="basic_list">
+						<li>추가시공비 오입력</li>
+						<li>추가 시공비 재 입력 요청</li>
+					</ul>
+					
+					
+				</div>
+				
+				
+				<h2 class="guide_tit" id="titEtc">기타</h2>
+				<div class="guide_box">
+					<div class="gray_box">
+						<span class="left_txt">담당 : 김프로</span>
+						<span class="right_txt">4명</span>
+					</div>
+					<div class="gray_box dark mt10">
+						<span class="left_txt">총금액</span>
+						<span class="right_txt">758,000</span>
+					</div>
+				</div>
+				
+				<h3 class="guide_tit_s">사인박스</h3>
+				<div class="sign_box">
+					
+				</div>
+
+			</div>
+			<!-- 본문내용 -->
+
+		</div>
+
+	</div>
+	<!-- //content -->
+
+</div>
+<!-- //wrap -->
+
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+});
+</script>
