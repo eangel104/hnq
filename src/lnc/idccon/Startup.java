@@ -9,6 +9,7 @@ import m.client.android.library.core.utils.Logger;
 import android.app.Activity;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.webkit.WebView;
 
 
 /**
@@ -59,6 +60,6 @@ public class Startup extends Activity {
         
         commLibHandle.processAppInit(this);
         ////////////////////////////////////////////////////////////////////////////////    
-
+        WebView.setWebContentsDebuggingEnabled(true);
     }
 }
