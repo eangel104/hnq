@@ -49,9 +49,10 @@
 		var STORAGE_USER_ID = 'STORAGE_USER_ID';
 		var login_id = M.data.storage(STORAGE_USER_ID);
 
-		// 저장한 아이디 읽기
+		// 저장한 아이디 읽고 체크박스 켜기
 		if (login_id) {
 			$('#login_id').val(login_id);
+			$('#checkbox').prop('checked', true);
 		}
 
 		// 로그인
@@ -63,7 +64,7 @@
 			if (isValidate) {
 				// 아이디 저장
 				if ($('#checkbox').prop('checked')) {
-					M.data.storage(STORAGE_USER_ID, $('login_id').val());
+					M.data.storage(STORAGE_USER_ID, $('#login_id').val());
 				}
 				else {
 					M.data.removeStorage(STORAGE_USER_ID);
@@ -78,13 +79,13 @@
 			console.log('login_id: ' + login_id);
 			console.log('login_pw: ' + login_pw);
 			console.log('isValidate: ' + isValidate);
-			console.log('GLOBAL_USER_ID: ' + M.data.storage('GLOBAL_USER_ID'));
+			console.log('GLOBAL_USER_ID: ' + M.data.storage(STORAGE_USER_ID));
 		});
 
 		// 고객센터 전화걸기
 		$('#phone_no').off('click').on('click', function(e){
 			var phoneNo = $('#phone_no').text().replace('-', '');
-			console.debug('phone No.: ' + phoneNo);
+			console.log('phone No.: ' + phoneNo);
 			M.sys.call(phoneNo);
 		});
     }).onHide(function(e){
