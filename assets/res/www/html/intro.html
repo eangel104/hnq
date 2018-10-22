@@ -6,9 +6,6 @@
 <title>한화 Home &amp; Q</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -22,6 +19,26 @@
 
 </div>
 <!-- //intro -->
-
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript">
+    "use strict";
+    M.onReady(function(e){
+        (function timeout(time){
+            console.log("time",time);
+            setTimeout(function(){
+                if(time == 3){
+                    M.page.html('login.html',{
+                        action : 'CLEAR_TOP',//
+                    });
+                }else{
+                    $("#loadCount").text(time+"%");
+                    timeout(++time);
+                }
+            },1000);
+        })(1);
+    });
+</script>
 </body>
 </html>
