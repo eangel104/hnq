@@ -16,16 +16,16 @@
 		<p class="desc">아이디와 비밀번호를 입력해주세요</p>
 		<ul class="login_input">
 			<li class="login_id">
-				<input type="text" />
+				<input type="text" id="login_id"/>
 			</li>
 			<li class="login_pw">
-				<input type="password" />
+				<input type="password" id="login_pw" />
 			</li>
 		</ul>
-		<label class="id_save"><input type="checkbox"><span class="label_txt">Save ID</span></label>
-		<a href="#n" class="btn_login">LOGIN</a>
+		<label class="id_save"><input type="checkbox" id="checkbox"><span class="label_txt">Save ID</span></label>
+		<a href="#n" class="btn_login" id='btn_login'>LOGIN</a>
 	</div>
-	<p class="app_msg">앱 설치 및 사용문의(고객센터 전화번호 1111-1111)</p>
+	<p class="app_msg">앱 설치 및 사용문의(고객센터 전화번호 <span id="phone_no">1111-1111</span>)</p>
 
 </div>
 <script type="text/javascript" src="../js/mcore.min.js"></script>
@@ -33,9 +33,59 @@
 <script type="text/javascript" src="../js/common.js"></script>
 <!-- //login -->
 <script type="text/javascript">
-    "use strict";
+	"use strict";
+	
+	/**
+	 * 비밀먼호 유효 검증 함수
+	 * 소문자, 숫자 조합이며 최소 8자리
+	 */
+    function checkPassword(pw) {
+		var re = /(?=.*\d)(?=.*[a-z]).{8,}/;
+		return re.test(pw);
+    }
+
     M.onReady(function(e) {
-        //ready event handle code here
+		var STORAGE_USER_ID = 'STORAGE_USER_ID';
+		var login_id = M.data.storage(STORAGE_USER_ID);
+
+		// 저장한 아이디 읽기
+		if (login_id) {
+			$('#login_id').val(login_id);
+		}
+
+		// 로그인
+		$('#btn_login').off('click').on('click', function(e) {
+			var login_id = $('#login_id').val();
+			var login_pw = $('#login_pw').val();
+			var isValidate = checkPassword(login_pw);
+
+			if (isValidate) {
+				// 아이디 저장
+				if ($('#checkbox').prop('checked')) {
+					M.data.storage(STORAGE_USER_ID, $('login_id').val());
+				}
+				else {
+					M.data.removeStorage(STORAGE_USER_ID);
+				}
+			} else {
+				M.pop.alert('잘못된 비밀번호 입니다.', {
+					title: '알림',
+					buttons: ['확인']
+				});
+			}
+
+			console.log('login_id: ' + login_id);
+			console.log('login_pw: ' + login_pw);
+			console.log('isValidate: ' + isValidate);
+			console.log('GLOBAL_USER_ID: ' + M.data.storage('GLOBAL_USER_ID'));
+		});
+
+		// 고객센터 전화걸기
+		$('#phone_no').off('click').on('click', function(e){
+			var phoneNo = $('#phone_no').text().replace('-', '');
+			console.debug('phone No.: ' + phoneNo);
+			M.sys.call(phoneNo);
+		});
     }).onHide(function(e){
         //hide event handle code here
     }).onRestore(function(e) {
@@ -48,7 +98,7 @@
         //back event handle code here
     }).onKey(function(e) {
         //key event handle code here(android only)
-    });
+	});
 </script>
 </body>
 </html>
