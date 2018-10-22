@@ -5,9 +5,9 @@ var
 thisFileName = "mcore.extends.js",
 
 importFiles = [
-	"wnInterface.extends.js",
+	// "wnInterface.extends.js",
 	"jquery.min.js",
-	"ui/common.js"
+	// "ui/common.js"
 ];
 
 M.ScriptLoader.writeScript( importFiles, M.ScriptLoader.scriptPath(thisFileName) );
