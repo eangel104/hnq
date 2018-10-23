@@ -25,7 +25,7 @@
 		<label class="id_save"><input type="checkbox" id="checkbox"><span class="label_txt">Save ID</span></label>
 		<a href="#n" class="btn_login" id='btn_login'>LOGIN</a>
 	</div>
-	<p class="app_msg">앱 설치 및 사용문의(고객센터 전화번호 <span id="phone_no">1111-1111</span>)</p>
+	<p class="app_msg" id="app_msg">앱 설치 및 사용문의(고객센터 전화번호 <span id="tel">1111-1111</span>)</p>
 
 </div>
 <script type="text/javascript" src="../js/mcore.min.js"></script>
@@ -75,18 +75,12 @@
 					buttons: ['확인']
 				});
 			}
-
-			console.log('login_id: ' + login_id);
-			console.log('login_pw: ' + login_pw);
-			console.log('isValidate: ' + isValidate);
 			console.log('GLOBAL_USER_ID: ' + M.data.storage(STORAGE_USER_ID));
 		});
 
 		// 고객센터 전화걸기
-		$('#phone_no').off('click').on('click', function(e){
-			var phoneNo = $('#phone_no').text().replace('-', '');
-			console.log('phone No.: ' + phoneNo);
-			M.sys.call(phoneNo);
+		$('#app_msg').off('click').on('click', function(e){
+			M.sys.call($('#tel').text().replace('-', ''));
 		});
     }).onHide(function(e){
         //hide event handle code here
