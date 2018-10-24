@@ -1,4 +1,6 @@
 /**
+ * result of properties: https://www.juso.go.kr/addrlink/devAddrLinkRequestGuide.do?menu=roadApi
+ * 
  * 사용법 예시
  * juso(1, 10, '디지털로27라길')
         .then(function(result){
@@ -27,8 +29,8 @@ function juso(currentPage, countPerPage, keyword){
         url:"http://www.juso.go.kr/addrlink/addrLinkApiJsonp.do",
         type: "post",
         data: {
-            currentPage: (currentPage) ? currentPage:1,
-            countPerPage: (countPerPage) ? countPerPage:10,
+            currentPage: (currentPage) ? currentPage : 1,
+            countPerPage: (countPerPage) ? countPerPage : 10,
             keyword: keyword,
             confmKey: "U01TX0FVVEgyMDE4MTAyMzE2MzQyNjEwODI1NTg=",   // FIXME: key 한화한테 발급 받을것!
             resultType: "json"
