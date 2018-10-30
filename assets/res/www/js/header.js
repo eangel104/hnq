@@ -21,20 +21,20 @@ $(document).ready(function(){
                 title:(title)? title : "영업활동",
                 home:'L_01_08.html',//메인 페이지 정보
                 nav:[
-                    '<li class="yellow"><a href="#" data-event-page="empty.html">일정/업무</a></li>',
-                    '<li class="blue"><a href="#" data-event-page="empty.html">상재단가조회</a></li>',
-                    '<li class="blue"><a href="#" data-event-page="empty.html">가구PS 간단견적</a></li>',
-                    '<li class="yellow"><a href="#" data-event-page="empty.html">거래처 정보</a></li>',
-                    '<li class="blue"><a href="#" data-event-page="empty.html">재고조회</a></li>',
-                    '<li class="pink"><a href="#" data-event-page="empty.html">이슈관리</a></li>',
-                    '<li class="yellow"><a href="#" data-event-page="empty.html">주문현황</a></li>',
-                    '<li class="blue"><a href="#" data-event-page="empty.html">주문요청</a></li>',
-                    '<li class="green"><a href="#" data-event-page="empty.html">실측관리</a></li>',
-                    '<li class="yellow"><a href="#" data-event-page="empty.html">기 상담관리</a></li>',
-                    '<li class="blue"><a href="#" data-event-page="empty.html">실측승인 관리</a></li>',
-                    '<li class="green"><a href="#" data-event-page="empty.html">시공관리</a></li>',
-                    '<li class="yellow"><a href="#" data-event-page="empty.html">B2C 진도관리</a></li>',
-                    '<li class="blue"><a href="#" data-event-page="empty.html">시공승인관리</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_11.html">일정/업무</a></li>',
+                    '<li class="blue"><a href="#" data-event-page="E_03_21.html">상재단가조회</a></li>',
+                    '<li class="blue"><a href="#" data-event-page="E_03_43.html">가구PS 간단견적</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_21.html">거래처 정보</a></li>',
+                    '<li class="blue"><a href="#" data-event-page="E_03_21.html">재고조회</a></li>',
+                    '<li class="pink"><a href="#" data-event-page="I_04_01.html">이슈관리</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_31.html">주문현황</a></li>',
+                    '<li class="blue"><a href="#" data-event-page="E_03_31.html">주문요청</a></li>',
+                    '<li class="green"><a href="#" data-event-page="S_06_11.html">실측관리</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_41.html">기 상담관리</a></li>',
+                    '<li class="blue"><a href="#" data-event-page="A_05_01.html">실측승인 관리</a></li>',
+                    '<li class="green"><a href="#" data-event-page="C_07_11.html">시공관리</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_51.html">B2C 진도관리</a></li>',
+                    '<li class="blue"><a href="#" data-event-page="A_05_02.html">시공승인관리</a></li>',
                     '<li class="setting"><a href="#" data-event-page="L_01_07.html"><span>설정</span></a></li>',
                 ].join(""),
             },
@@ -42,12 +42,12 @@ $(document).ready(function(){
                 title:(title)? title : "시공",
                 home:'L_01_09.html',//메인 페이지 정보
                 nav:[
-                    '<li class="green"><a href="#" data-event-page="empty.html">실측관리</a></li>',
-                    '<li class="green"><a href="#" data-event-page="empty.html">시공관리</a></li>',
+                    '<li class="green"><a href="#" data-event-page="S_06_11.html">실측관리</a></li>',
+                    '<li class="green"><a href="#" data-event-page="C_07_11.html">시공관리</a></li>',
                     '<li class="setting"><a href="#" data-event-page="L_01_07.html"><span>설정</span></a></li>',
                 ].join(""),
             }
-        }
+        };
         //헤더 태그 랜더링
         if(page == "main"){
             $(this).append($([
