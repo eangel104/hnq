@@ -12,7 +12,7 @@
         </update>
     </resource>
     <startpage>
-        <name>www/html/intro.html</name>
+        <name>www/html/L_01_01.html</name>
         <orient>port</orient>
         <orient-tablet>port</orient-tablet>
     </startpage>
