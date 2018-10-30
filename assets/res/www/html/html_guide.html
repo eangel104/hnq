@@ -7,7 +7,6 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
 <script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
 <style type="text/css">
 .guide_tit{position:relative;margin:0 -10px;padding-left:10px;font-size:16px;font-family:'noto-bold';color:#fc761a;}
@@ -26,6 +25,7 @@
 	<!-- header -->
 	<div class="header">
 		<h1 class="page_title">HTML GUIDE</h1>
+		<a href="#n" class="btn_home">home</a>
 		<a href="#n" class="btn_gnb">menu</a>
 
 		<!-- gnb -->
@@ -59,6 +59,7 @@
 				<h2 class="guide_tit" id="titTitle">타이틀</h2>
 				<div class="guide_box">
 					<h3 class="tit_type01 mt0">tit_type01</h3>
+					<h3 class="tit_type02 mt0">tit_type02</h3>
 					<div class="tit_btn">
 						<h3 class="tit_type01">매출현황(원)</h3>
 						<a href="#n" class="btn small border basic btn_r">조회</a>
@@ -90,6 +91,10 @@
 					<a href="#n" class="btn middle gray">btn middle gray</a>
 					<h3 class="guide_tit_s">large</h3>
 					<a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+					<h3 class="guide_tit_s">min-width 50 / min-width 80 / min-width 80</h3>
+					<a href="#n" class="btn middle basic mw50">50</a>
+					<a href="#n" class="btn middle basic mw80">80</a>
+					<a href="#n" class="btn middle basic mw90">90</a>
 				</div>
 
 				<h2 class="guide_tit" id="titSpace">Margin/Padding</h2>
@@ -97,8 +102,13 @@
 					<h3 class="guide_tit_s">Margin</h3>
 					<ul>
 						<li>.mt0 - margin-top:0;</li>
+						<li>.mt5 - margin-top:5;</li>
 						<li>.mt10 - margin-top:10px;</li>
 						<li>.mt20 - margin-top:20px;</li>
+						<li>.mt30 - margin-top:30px;</li>
+						<li>.mb0 - margin-bottom:0px;</li>
+						<li>.ml10 - margin-left:10px;</li>
+						<li>.mt_m10 - margin-top:-10px;</li>
 					</ul>
 					<h3 class="guide_tit_s">Padding</h3>
 					
@@ -106,7 +116,7 @@
 
 				<h2 class="guide_tit" id="titTable">테이블</h2>
 				<div class="guide_box">
-					<h3 class="guide_tit_s">tbl</h3>
+					<h3 class="guide_tit_s">tbl 기본</h3>
 					<div class="tbl">
 						<table>
 							<caption></caption>
@@ -132,16 +142,119 @@
 							</tbody>
 						</table>
 					</div>
+                   <h3 class="guide_tit_s">tbl02</h3>
+                    <div class="tbl02">
+                        <table>
+                            <caption></caption>
+                            <colgroup>
+                                <col style="width:35%">
+                                <col style="width:65%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>아이템</th>
+                                    <th>매출액</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>상재</th>
+                                    <td>000,000,000</td>
+                                </tr>
+                                <tr>
+                                    <th>벽지</th>
+                                    <td>000,000,000</td>
+                                </tr>
+                                <tr>
+                                    <th>창호</th>
+                                    <td>000,000,000</td>
+                                </tr>
+                                <tr>
+                                    <th>가구</th>
+                                    <td>000,000,000</td>
+                                </tr>
+                                <tr>
+                                    <th>도어</th>
+                                    <td>000,000,000</td>
+                                </tr>
+                                <tr>
+                                    <th>기타</th>
+                                    <td>000,000,000</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>합계</th>
+                                    <td>000,000,000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <h3 class="guide_tit_s">tbl03</h3>
+                    <div class="tbl03">
+                        <table>
+                            <caption></caption>
+                            <colgroup>
+                                <col style="width:35%">
+                                <col style="width:65%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>수금액(원)</th>
+                                    <td><span>1,000</span>원</td>
+                                </tr>
+                                <tr>
+                                    <th>채권잔액</th>
+                                    <td><span>1,000</span>원</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <span class="dis_bl tar">* VAT 별도</span>
+                    </div>
+                    <h3 class="guide_tit_s">tbl04</h3>
+                    <div class="tbl04">
+                        <table>
+                            <caption></caption>
+                            <colgroup>
+                                <col style="width:35%">
+                                <col style="width:65%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>시공일자</th>
+                                    <td >2018.00.00-2018.00.00</td>
+                                </tr>
+                                <tr>
+                                    <th>시공주문번호</th>
+                                    <td>TI201806160000</td>
+                                </tr>
+                                <tr>
+                                    <th>주문경로</th>
+                                    <td>거래처</td>
+                                </tr>
+                                <tr>
+                                    <th>거주여부</th>
+                                    <td>거주</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 				</div>
 				
 				<h2 class="guide_tit" id="titTabMenu">탭메뉴</h2>
 				<div class="guide_box">
-					<ul class="tabmenu" id="tab1">
+				    <h3 class="guide_tit_s">메인 상단 메뉴</h3>
+					<ul class="tabmenu">
+						<li><a href="#n"><span>탭메뉴1</span></a></li>
+						<li><a href="#n"><span>탭메뉴2</span></a></li>
+						<li><a href="#n"><span>탭메뉴3</span></a></li>
+					</ul>
+                    <h3 class="guide_tit_s mt10">sub 상단 tab메뉴</h3>
+                    <ul class="tabmenu02" id="tab1">
 						<li class="on"><a href="#tab1-1"><span>탭메뉴1</span></a></li><!-- 활성화 class = "on" -->
 						<li><a href="#tab1-2"><span>탭메뉴2</span></a></li>
 						<li><a href="#tab1-3"><span>탭메뉴3</span></a></li>
 					</ul>
-
 					<div class="tab_panel" id="tab_cont1">
 						<div id="tab1-1" class="panel">
 							tab content1
@@ -153,10 +266,78 @@
 							tab content3
 						</div>
 					</div>
+					<h3 class="guide_tit_s mt10">sub 하단 tab메뉴</h3>
+					<ul class="tabmenu03" id="tab2">
+						<li class="on"><a href="#tab2-1"><span>탭메뉴1</span></a></li><!-- 활성화 class = "on" -->
+						<li><a href="#tab2-2"><span>탭메뉴2</span></a></li>
+						<li><a href="#tab2-3"><span>탭메뉴3</span></a></li>
+					</ul>
+					<div class="tab_panel" id="tab_cont2">
+						<div id="tab2-1" class="panel">
+							tab content1
+						</div>
+						<div id="tab2-2" class="panel">
+							tab content2
+						</div>
+						<div id="tab2-3" class="panel">
+							tab content3
+						</div>
+                    </div>
 
 					<script type="text/javascript">
 						$('#tab1').fnTab();
+                        $('#tab2').fnTab();
 					</script>
+				</div>
+				
+				<h2 class="guide_tit" id="titEtc">달력</h2>
+				<div class="guide_box">
+				    <div class="calendar">
+				        <div class="inner">
+				            <span class="month">2018년 10월</span>
+				            <div class="btn_wrap">
+				                <a class="prev" href="">이전</a>
+				                <a class="next" href="">다음</a>
+				            </div>
+				        </div>
+				        <ul class="daliy">
+				            <li>
+				                <span class="week">일</span>
+				                <span class="date">07</span>
+				                <span class="work">2</span>
+				            </li>
+				            <li class="on">
+				                <span class="week">월</span>
+				                <span class="date">08</span>
+				                <span class="work">3</span>
+				            </li>
+				            <li>
+				                <span class="week">화</span>
+				                <span class="date">09</span>
+				                <span class="work">3</span>
+				            </li>
+				            <li>
+				                <span class="week">수</span>
+				                <span class="date">10</span>
+				                <span class="work">1</span>
+				            </li>
+				            <li>
+				                <span class="week">목</span>
+				                <span class="date">11</span>
+				                <span class="work">2</span>
+				            </li>
+				            <li>
+				                <span class="week">금</span>
+				                <span class="date">12</span>
+				                <span class="work">0</span>
+				            </li>
+				            <li>
+				                <span class="week">토</span>
+				                <span class="date">13</span>
+				                <span class="work">4</span>
+				            </li>
+				        </ul>
+				    </div>
 				</div>
 
 				<h2 class="guide_tit" id="titForm">폼요소</h2>
@@ -169,7 +350,10 @@
 							</select>
 						</li>
 						<li class="mt10">
-							<textarea rows="3" cols="30"></textarea>
+							<textarea rows="3" cols="30">textarea</textarea>
+						</li>
+						<li class="mt10">
+							<textarea class="h160" rows="3" cols="30">textarea</textarea>
 						</li>
 						<li class="mt10">
 							<label class="chk_style">
@@ -188,9 +372,6 @@
 						</li>
 						<li class="mt10">
 							<input type="month">
-						</li>
-						<li class="mt10">
-							<textarea rows="3" cols="30">textarea</textarea>
 						</li>
 					</ul>
 					
@@ -270,37 +451,43 @@
 					
 					<h3 class="guide_tit_s">survey_list</h3>
 					<ul class="survey_list">
+					    <!-- TODO : 20181025 li a영역 수정 -->
 						<li>
-							<a href="#n">
-								<span class="division">실측접수</span>
-								<div class="division type02">
-									<span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
-									<span class="rignt_txt">주문접수</span>
-								</div>
+                            <span class="division">실측접수</span>
+                            <div class="division type02">
+                                <span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
+                                <span class="rignt_txt">주문접수</span>
+                            </div>
+                            <a href="#n">
 								<div class="mid">
 									<span class="date">2018-08-31 (09:00~10:00)</span>
 									<span class="num">[TI20160523000000] 비거주(개보수)</span>
 									<span class="addr">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+								    <span class="schedule_name">현대 인테리어 방문 예정</span>
+                                    <span class="mit_name">담당자 미팅 : 홍길동</span>
+                                    <span class="mit_time">시간 : 13 : 00 ~</span>
 								</div>
-								<div class="bot">
-									<span class="company">서울 창호 시스템</span>
-									<span class="charge">김프로(01012344321)</span>
-								</div>
-								<!-- 진행단계 -->
-								<div class="bot">
-									<div class="progress">
-										<span class="start_txt on">도착</span> <!-- 활성화시 on클래스 추가 -->
-										<div class="progress_wrap">
-											<div class="inner" style="width:50%;"><!-- 진행상황 위치값 변경 -->
-												<span class="stu_txt">진행상황</span><!-- TODO: 진행상황 텍스트 없을시 삭제해주세요 -->
-											</div>
-										</div>
-										<span class="end_txt">현장완료</span>
-									</div>
-								</div>
-								<!-- //진행단계 -->
 							</a>
+                            <div class="bot">
+                                <span class="company">서울 창호 시스템</span>
+                                <span class="charge">김프로(01012344321)</span>
+                            </div>
+                            <!-- 진행단계 -->
+                            <div class="bot">
+                                <div class="progress">
+                                    <span class="start_txt on">도착</span> <!-- 활성화시 on클래스 추가 -->
+                                    <div class="progress_wrap">
+                                        <div class="inner" style="width:50%;"><!-- 진행상황 위치값 변경 -->
+                                            <span class="stu_txt">진행상황</span><!-- TODO: 진행상황 텍스트 없을시 삭제해주세요 -->
+                                        </div>
+                                    </div>
+                                    <span class="end_txt">현장완료</span>
+                                </div>
+                            </div>
+                            <!-- //진행단계 -->
 						</li>
+						<!--// TODO : 20181025 a영역 수정 -->
+						
 						<!-- a링크 없는타입 -->
 						<li>
 							<span class="division">실측접수</span>
@@ -312,6 +499,9 @@
 								<span class="date">2018-08-31</span>
 								<span class="num">[TI20160523000000] 비거주(개보수)</span>
 								<span class="addr">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+								<span class="schedule_name">현대 인테리어 방문 예정</span>
+								<span class="mit_name">담당자 미팅 : 홍길동</span>
+								<span class="mit_time">시간 : 13 : 00 ~</span>
 							</div>
 							<div class="bot">
 								<span class="company">서울 창호 시스템</span>
@@ -397,24 +587,21 @@
 								<span class="right_txt">515,000 원</span>
 							</div>
 						</li>
-						<li>
-							<div class="txt_area">
-								항목 텍스트로 최대 2줄로 출력<br/>
-								항목 텍스트로 최대 2줄로 출력
-							</div>
-							<div class="price_area">
-								<span class="left_txt">판매단가 : 3000</span>
-								<div class="p_m">
-									<a class="minus" href="#">빼기</a>
-									<input type="text" value="0">
-									<a class="plus" href="#">더하기</a>
-								</div>
-							</div>
-							<div class="gray_box">
-								<span class="left_txt">금액</span>
-								<span class="right_txt">515,000 원</span>
-							</div>
-						</li>
+				        <!-- 삭제 가능한 list -->
+						<li class="del">
+                            <div class="txt_area">
+                                <span>추가시공비 항목</span>
+                                <a class="btn_del" href="#n">삭제</a>
+                            </div>
+                            <div class="price_area">
+                                <div class="p_m">
+                                    <a class="minus" href="#">빼기</a>
+                                    <input type="text" value="0">
+                                    <a class="plus" href="#">더하기</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!--// 삭제 가능한 list -->
 					</ul>
 
 					<h3 class="guide_tit_s">기본 list</h3>
@@ -422,10 +609,7 @@
 						<li>추가시공비 오입력</li>
 						<li>추가 시공비 재 입력 요청</li>
 					</ul>
-					
-					
 				</div>
-				
 				
 				<h2 class="guide_tit" id="titEtc">기타</h2>
 				<div class="guide_box">
@@ -439,10 +623,23 @@
 					</div>
 				</div>
 				
-				<h3 class="guide_tit_s">사인박스</h3>
-				<div class="sign_box">
-					
+				<h2 class="guide_tit" id="titEtc">box style</h2>
+				<div class="guide_box">
+				    <h3 class="guide_tit_s">basic box</h3>
+				    <div class="basic_box">
+				        <p>일반 텍스트</p>
+				        <ul class="mt5">
+				            <li>리스트1</li>
+				            <li>리스트2</li>
+				            <li>리스트3</li>
+				        </ul>
+				    </div>
+				    
+				    <h3 class="guide_tit_s">sign box</h3>
+				    <div class="sign_box"></div>
 				</div>
+				
+				
 
 			</div>
 			<!-- 본문내용 -->

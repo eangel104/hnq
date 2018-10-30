@@ -33,7 +33,14 @@ $(document).ready(function(){
 			$(this).closest('dt').toggleClass('on');
 		});
 	});
-
+	
+	// 견적보기 테이블 목록 열기
+	$('.business_dl  .table_list').on('click',function(){
+		$(this).parents('.business_dl').toggleClass('on');
+	});
+	$('.business_dl .btn_cls').on('click',function(){
+		$(this).parents('.business_dl').removeClass('on');
+	});
 });
 
 //탭메뉴

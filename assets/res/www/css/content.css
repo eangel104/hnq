@@ -17,7 +17,8 @@
 .schedule .list a span em{margin-right:3px;font-size:30px;font-family:'noto-bold';color:#fc761a;}
 .schedule .list li + li{margin-top:7px;}
 .notice_list{border-top:1px solid #d7d7d7;line-height:1;}
-.notice_list li{position:relative;padding:10px 80px 9px 0;border-bottom:1px solid #d7d7d7;font-size:14px;color:#717171;}
+.notice_list li{position:relative;padding:10px 80px 9px 40px;border-bottom:1px solid #d7d7d7;font-size:14px;color:#717171;}
+.notice_list li .type{position:absolute;left:0;top:10px;color:#f86408;}
 .notice_list li a{display:inline-block;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#717171;}
 .notice_list li .date{position:absolute;top:10px;right:0;}
 .btn_add{width:10px;height:10px;overflow:hidden;border-right:2px solid #d7d7d7;border-bottom:2px solid #d7d7d7;text-indent:-9999px;transform:rotate(-45deg);}
@@ -27,6 +28,7 @@
 .intro .inner{position:absolute;top:50%;left:50%;width:300px;margin:-80px 0 0 -150px;text-align:center;}
 .intro .logo{width:154px;height:35px;overflow:hidden;margin:0 auto 30px;background:url(../img/main/intro_logo.jpg) no-repeat;background-size:154px auto;text-indent:-9999px;}
 .intro .desc{font-size:13px;font-family:'noto-medium';color:#333;}
+.intro_loading{width: 20%;padding-bottom: 30px;}
 
 /* login */
 .login{min-height:100%;padding:75px 0 30px;background:url(../img/main/bg_intro.jpg) no-repeat;background-size:cover;box-sizing:border-box;}
@@ -81,14 +83,19 @@
 /* 작업 진행 사항 */
 .survey_list li{margin-top:10px;background:#fff;border:1px solid #d7d7d7;letter-spacing:-0.05em;}
 .survey_list li:first-child{margin-top:0;}
+.survey_list li > a{display: block;}
 .survey_list li .division{display:block;height:35px;margin:-1px -1px 0;padding:0 15px;background:#14653e;text-align:right;font-size:13px;font-family:'noto-medium';color:#fff;line-height:35px;}
 .survey_list li .division.type02:after{content:"";display:block;clear:both;}
 .survey_list li .division.type02 .left_txt{float:left;}
 .survey_list li .division.type02 .right_txt{float:right;}
 .survey_list li .mid{position:relative;padding:10px 50px 10px 15px;}
+.survey_list li .mid.mh112{min-height: 112px;box-sizing: border-box;}
 .survey_list li .mid .date{display:block;margin-bottom:5px;font-family:'noto-medium';color:#f86408;}
 .survey_list li .mid .num{display:block;margin-bottom:3px;color:#717171;}
 .survey_list li .mid .addr{display:block;font-family:'noto-medium';color:#333;}
+.survey_list li .mid .schedule_name{display:block;font-family:'noto-medium';color:#333;}
+.survey_list li .mid .mit_name{display:block;font-family:'noto-medium';color:#717171;}
+.survey_list li .mid .mit_time{display:block;font-family:'noto-medium';color:#717171;}
 .survey_list li .mid:before{content:'';position:absolute;top:50%;right:15px;width:30px;height:30px;margin-top:-15px;border:1px solid #d7d7d7;border-radius:3px;box-sizing:border-box;}
 .survey_list li .mid:after{content:'';position:absolute;top:50%;right:26px;width:10px;height:10px;margin-top:-6px;border-right:2px solid #666;border-bottom:2px solid #666;transform:rotate(-45deg);}
 .survey_list li .mid.full{padding:15px 10px;}
@@ -161,20 +168,26 @@
 .price_list{border:1px solid #d7d7d7;}
 .price_list li{border-top:1px solid #d7d7d7;}
 .price_list li:first-child{border-top:0px;}
-.price_list .txt_area{padding:15px;color:#717171;}
-.price_list .price_area{padding:15px;border-top:1px dashed #d7d7d7;}
+.price_list .txt_area{position: relative;padding:10px;color:#717171;background-color: #fff;border-bottom: 1px dashed #d4d5d5;}
+.price_list .price_area{padding:10px;}
 .price_list .price_area:after{content:"";display:block;clear:both;}
 .price_list .price_area .left_txt{float:left;line-height:28px;color:#717171;}
 .price_list .gray_box{border:0px;color:#222;}
+.price_list .del .txt_area{padding:10px 40px 10px 10px;}
+.price_list .del .price_area{padding:5px 10px;background: #f4f4f4;}
+.price_list .del .btn_del{position: absolute;right: 20px;top:10px;width: 16px;height: 16px;border:1px solid #d7d7d7;border-radius: 50%;text-indent: -9999%;}
+.price_list .del .btn_del:after{content:"";position: absolute;left: 50%;top: 50%; display:block;width: 10px;height: 1px;margin:0 0 0 -5px;background: #d7d7d7;transform: rotate(45deg)}
+.price_list .del .btn_del:before{content:"";position: absolute;left: 50%;top: 50%; display:block;width: 10px;height: 1px;margin:0 0 0 -5px;background: #d7d7d7;transform: rotate(-45deg)}
+.price_list .del .p_m{float: none;margin-top: 3px;}
 
 /* 가격 입력 영역 */
-.p_m{float:right;border:1px solid #d7d7d7;line-height:28px;}
+.p_m{float:right;display:inline-block;border:1px solid #d7d7d7;line-height:28px;}
 .p_m:after{content:"";display:block;clear:both;}
 .p_m > *{float:left;}
-.p_m .minus,.p_m .plus{display:inline-block;position:relative;width:28px;height:28px;text-align:center;text-indent:-9999px;}
-.p_m .minus:after{content:"";display:inline-block;position:absolute;top:50%;left:50%;width:6px;height:2px;margin:-1px 0 0 -3px;background:#717171;}
-.p_m .plus:after{content:"";display:inline-block;position:absolute;top:50%;left:50%;width:6px;height:2px;margin:-1px 0 0 -3px;background:#717171;}
-.p_m .plus:before{content:"";display:inline-block;position:absolute;top:50%;left:50%;width:2px;height:6px;margin:-3px 0 0 -1px;background:#717171;}
+.p_m .minus,.p_m .plus{display:inline-block;position:relative;width:28px;height:28px;background: #fff; text-align:center;text-indent:-9999px;}
+.p_m .minus:after{content:"";display:inline-block;position:absolute;top:50%;left:50%;width:14px;height:2px;margin:-1px 0 0 -7px;background:#717171;}
+.p_m .plus:after{content:"";display:inline-block;position:absolute;top:50%;left:50%;width:14px;height:2px;margin:-1px 0 0 -7px;background:#717171;}
+.p_m .plus:before{content:"";display:inline-block;position:absolute;top:50%;left:50%;width:2px;height:14px;margin:-7px 0 0 -1px;background:#717171;}
 .p_m input[type="text"]{display:inline-block;width:84px;height:28px;border:0;border-left:1px solid #d7d7d7;border-right:1px solid #d7d7d7;color:#717171;text-align:center;line-height:26px;}
 
 /* 실측 */
@@ -193,7 +206,6 @@
 .content.newreser .date{display:block;margin-bottom:5px;font-family:'noto-medium';color:#f86408;}
 .content.newreser .num{display:block;margin-bottom:3px;color:#717171;}
 .content.newreser .addr{display:block;font-family:'noto-medium';color:#333;}
-.content.newreser .mid{ border-bottom:1px dotted #d4d5d5;padding-bottom:10px;}
 .content.newreser .list_num{margin:20px 0 10px;font-size:15px;color:#555;}
 .content.newreser .chk_style2 .chk_txt{border-bottom:0}
 .content.newreser .chk_list li:last-of-type .chk_txt{border-bottom:1px solid #d3d2d4}
@@ -214,7 +226,6 @@
 /* 실측결과확인 */
 .survey_comfirm .section{text-align:center;}
 .survey_comfirm .section .btn.orange{padding:0 30px}
-
 
 /* 시공완료 승인요청 */
 .price_info{border:1px solid #d7d7d7;}
@@ -242,35 +253,51 @@
 .detail_cont img{width:100%;}
 .detail_cont p{margin:10px 0;}
 
+/*영업활동*/
+.cs_list {}
+.cs_list li{margin-top: 10px;border:1px solid #d7d7d7;}
+.cs_list li dt{padding:10px 15px;background: #fff;}
+.cs_list li dt.cut {padding:5px 15px 10px;background: #fff;border-bottom: 1px dashed #d7d7d7}
+.cs_list li dt.cut:after{content:"";display: block;clear: both;}
+.cs_list li dt.cut span{float: left;display:inline-block;width:50%;margin-top: 5px;}
+.cs_list li dt span{background: #fff;color:#222;}
+.cs_list li dd{padding:10px 15px;background: #f5f5f5;}
+.cs_list li dd:after{content:"";display: block;clear: both;}
+.cs_list li dd .phone_num{float: left;display:inline-block;width:50%;background: #f5f5f5;color:#727272;}
+.order_txt{display: inline-block;width: 35%;}
+.business_srch{padding-bottom: 20px !important;}
+.business_tab .survey_list li .mid .date{color:#222;}
+.business_tab .section{background-color:#f5f5f5}
+.business_tab .btn_r {padding: 0 50px;}
+.business_table label{display: block;}
+.business_table .chk_style .chk_txt{padding:0 30px 0 0;border:0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;box-sizing: border-box;}
+.business_table .chk_txt:after{left: unset;right: 0px;}
+.business_table.tbl tbody th{text-align: center}
+.business_section{background-color:#f5f5f5}
+.business_section .price_list{border:0}
+.business_section .price_list .gray_box{color:#717171}
+.business_section .price_list li{margin-bottom:10px}
+.business_section .price_list li {border: 1px solid #d7d7d7;margin-top: 10px;}
+.business_list{padding: 20px;}
+.business_list .webkit_box{width: 88%;display: inline-block !important;margin-left: 2%;}
+.accept_wrap .page_btn{float:right}
+.page_btn li{width: 30px; height: 30px;border: 1px solid #d7d7d7;border-radius: 3px; box-sizing: border-box;display: block;position:relative;float:left;margin-left:10px;box-shadow: 0 1px 1px #f0f0f0;}
+.before_btn:after{right: 8px;transform: rotate(90deg);content: "";position: absolute;top: 12px;border-top: 6px solid #000;border-left: 6px solid #fff;border-right: 6px solid #fff;border-bottom: 0;}
+.after_btn:after{right: 8px;transform: rotate(-90deg);content: ""; position: absolute; top: 12px; border-top: 6px solid #000;border-left: 6px solid #fff; border-right: 6px solid #fff;border-bottom: 0;}
+.business_area{height:120px}
+.business_btn{float:right;padding:0 18px !important;background-color:#909090 !important}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* 영업활동 - B2C  */
+.b2c_wrap{background: #f4f4f4;}
+.b2c_wrap .total_wrap{padding:0 20px;height: 44px;line-height: 44px;}
+.b2c_wrap .total_wrap:after{content: "";display: block;clear: both;}
+.b2c_wrap .total{float: left;}
+.b2c_wrap .call{float: right;}
+.b2c_wrap .call input[type="text"]{width:50px;height: 30px;margin:0 5px 0 10px; font-family:'noto-medium';font-size: 15px; text-align: center;color: #fc761a;line-height: 25px;}
+.b2c_wrap > ul{padding:5px 20px 15px;border-top:1px solid #d7d7d7;}
+.b2c_wrap > ul:after{content:"";display: block;clear: both;}
+.b2c_wrap > ul li{float: left;width:32%;margin-right: 2%;margin-top: 10px;}
+.b2c_wrap > ul li:nth-child(3){margin-right: 0;}
+.b2c_wrap > ul li dl dt{background: #909090;color:#fff;text-align: center;line-height: 35px;}
+.b2c_wrap > ul li dl dd{background: #fff;text-align: center;line-height: 64px;font-size: 13px;border:1px solid #d7d7d7;border-top:0;}
+.b2c_wrap > ul li dl dd span{font-family:'noto-bold';font-size: 30px;margin-right: 3px;}
