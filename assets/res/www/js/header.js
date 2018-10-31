@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $.fn.header = function(type,title,page,callback){
+    $.fn.header = function(argParam){
         /**
         * @author dh.lee@ttb.co.kr
         * @version 0.1
@@ -16,14 +16,20 @@ $(document).ready(function(){
         */
         //랜더러 설정
         //TODO: 전체 페이지 연결 미비
+        var param = $.extends({},{
+            type:null,
+            title:null,
+            headerType:null,
+            callback:null
+        },argParam)
         var config = {
             sales:{
-                title:(title)? title : "영업활동",
+                title:(param.title)? param.title : "영업활동",
                 home:'L_01_08.html',//메인 페이지 정보
                 nav:[
                     '<li class="yellow"><a href="#" data-event-page="B_02_11.html">일정/업무</a></li>',
                     '<li class="blue"><a href="#" data-event-page="E_03_21.html">상재단가조회</a></li>',
-                    '<li class="blue"><a href="#" data-event-page="E_03_43.html">가구PS 간단견적</a></li>',
+                    '<li class="blue"><a href="#" data-event-page="E_03_44.html">가구PS 간단견적</a></li>',
                     '<li class="yellow"><a href="#" data-event-page="B_02_21.html">거래처 정보</a></li>',
                     '<li class="blue"><a href="#" data-event-page="E_03_21.html">재고조회</a></li>',
                     '<li class="pink"><a href="#" data-event-page="I_04_01.html">이슈관리</a></li>',
@@ -39,7 +45,7 @@ $(document).ready(function(){
                 ].join(""),
             },
             construction:{
-                title:(title)? title : "시공",
+                title:(param.title)? param.title : "시공",
                 home:'L_01_09.html',//메인 페이지 정보
                 nav:[
                     '<li class="green"><a href="#" data-event-page="S_06_11.html">실측관리</a></li>',
@@ -49,24 +55,24 @@ $(document).ready(function(){
             }
         };
         //헤더 태그 랜더링
-        if(page == "main"){
+        if(param.headerType == "main"){
             $(this).append($([
                 '<h1 class="logo">Home &amp; Q</h1>',
                 '<a href="#" class="btn_gnb">전체메뉴</a>',
-                '<div class="gnb"><ul>'+config[type].nav+'</ul></div>',
+                '<div class="gnb"><ul>'+config[param.type].nav+'</ul></div>',
                 '<a href="#" class="page_prev" data-event-back>이전페이지</a>',
             ].join("")));
-        }else if(page == "menu"){
+        }else if(param.headerType == "menu"){
             $(this).append($([
-                '<h1 class="page_title">'+config[type].title+'</h1>',
-                '<a href="#" data-event-page="'+config[type].home+'" class="btn_home">home</a>',
+                '<h1 class="page_title">'+config[param.type].title+'</h1>',
+                '<a href="#" data-event-page="'+config[param.type].home+'" class="btn_home">home</a>',
                 '<a href="#" class="btn_gnb">전체메뉴</a>',
-                '<div class="gnb"><ul>'+config[type].nav+'</ul></div>',
+                '<div class="gnb"><ul>'+config[param.type].nav+'</ul></div>',
                 '<a href="#" class="page_prev" data-event-back>이전페이지</a>',
             ].join("")));
         }else{
             $(this).append($([
-                '<h1 class="page_title">'+config[type].title+'</h1>',
+                '<h1 class="page_title">'+config[param.type].title+'</h1>',
                 '<a href="#" class="page_prev" data-event-back>이전페이지</a>'
             ].join("")));
         }

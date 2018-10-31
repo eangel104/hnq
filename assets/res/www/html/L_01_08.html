@@ -154,8 +154,12 @@
     "use strict";
     //TODO: 개발 미비
     $(document).ready(function(){
-        $(".header").header("sales","","main",function(){
-            pageNav().init();
+        $(".header").header({
+            type:"sales",
+            headerType:"main",
+            callback:function(){
+                pageNav();
+            }
         });
     });
     M.onReady(function(e) {

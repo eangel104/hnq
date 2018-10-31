@@ -74,9 +74,10 @@ function pageNav() {
         "E_03_36.html":	"상재 주문 주소 조회 팝업",
         "E_03_37.html":	"상재 주문 제품 조회 팝업(공통)",
         "E_03_41.html":	"간단 견적 가구",
-        "E_03_42.html":	"간단 견적 운영 상품 기기(팝업)",
-        "E_03_43.html":	"간단 견적 PS",
-        "E_03_44.html":	"간단 견적 PS 상세",
+        "E_03_42":"간단 견적 운영 상품 기기(팝업)",
+        "E_03_43":"간단 견적 추가 비용 안내(팝업)",
+        "E_03_44":"간단 견적 PS",
+        "E_03_45":"간단 견적 PS 상세",
         "4.4":	"이슈관리",
         "I_04_01.html":	"이슈관리 - 조회",
         "I_04_03.html":	"이슈관리 - 리스트",
@@ -122,29 +123,30 @@ function pageNav() {
         "C_07_35.html":	"시공 상세 시공완료 승인 요청",
     };
 
-    return{
-        init:function(){
-            //event
-            $("[data-event-page]").each(function(){
-                $(this).off().on("click",function(e){
-                    console.log("Nav eventPage::",$(this).data("eventPage"),pageInfo[$(this).data("eventPage")]);
-                    console.log("Nav eventAnimat::",animation[$(this).data("eventAnimat")]);
-                    var option = { 
-                        param:{ 'NAME' : $(this).data("eventPage")},
-                        animation : (animation[$(this).data("eventAnimat")])?animation[$(this).data("eventAnimat")]:animation["def"], 
-                        action : 'NEW_SCR',
-                        // orient : 'PORT'
-                    }
-                    console.log(option);
-                    M.page.html($(this).data("eventPage"),option);
-                })
+    function init(){
+        //event
+        $("[data-event-page]").each(function(){
+            $(this).off().on("click",function(e){
+                console.log("Nav eventPage::",$(this).data("eventPage"),pageInfo[$(this).data("eventPage")]);
+                console.log("Nav eventAnimat::",animation[$(this).data("eventAnimat")]);
+                var option = { 
+                    param:{ 'NAME' : $(this).data("eventPage")},
+                    animation : (animation[$(this).data("eventAnimat")])?animation[$(this).data("eventAnimat")]:animation["def"], 
+                    action : 'NEW_SCR',
+                    // orient : 'PORT'
+                }
+                console.log(option);
+                M.page.html($(this).data("eventPage"),option);
+            })
+        });
+        $("[data-event-back]").each(function(){
+            $(this).off().on("click",function(e){
+                console.log("back::");
+                M.page.back();
             });
-            $("[data-event-back]").each(function(){
-                $(this).off().on("click",function(e){
-                    console.log("back::");
-                    M.page.back();
-                });
-            });
-        }
+        });
     }
+
+    //초기화 실행
+    init();
 }

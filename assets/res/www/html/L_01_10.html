@@ -114,8 +114,13 @@
     "use strict";
     //TODO: 개발 미비
     $(document).ready(function(){
-        $(".header").header("construction","공지사항","menu",function(){
-            pageNav().init();
+        $(".header").header({
+            type:"construction",
+            title:"공지사항",
+            headerType:"menu",
+            callback:function(){
+                pageNav();
+            }
         });
     });
     M.onReady(function(e) {
