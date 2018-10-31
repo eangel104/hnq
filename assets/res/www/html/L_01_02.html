@@ -24,27 +24,29 @@
 				<input type="password" id="login_pw"/>
 			</li>
 		</ul>
-		<label class="id_save"><input type="checkbox" id="checkbox"><span class="label_txt">Save ID</span></label>
+		<label class="id_save"><input type="checkbox" id="chk_id_save"><span class="label_txt">Save ID</span></label>
 		<a href="#n" class="btn_login" id='btn_login'>LOGIN</a>
 	</div>
     <p class="app_msg" id="app_msg">앱 설치 및 사용문의(고객센터 전화번호 <span id="tel">1111-1111</span>)</p>
 	<!-- 약관동의 팝업 -->
-	<div class="login_popup" style="display:none">
-		<div class="popup_form">
-			<div class="header">
-				<h1 class="page_title">약관동의</h1>
-				<a href="#n" class="page_close">이전페이지</a>
-			</div>
-			<div class="popup_list">
-				<h3 class="tit_type02 mt0">
-					아래의 약관에 대한 내용을 반드시 읽고 약관에 동의 하셔야 모바일 시공관리 앱을 이용 가능 합니다.
-				</h3>
-				<div class="all_check mt10">
-					<label class="chk_style">
-						<input type="checkbox" name="rdo_chk01">
-						<span class="chk_txt">이용약관</span>
-					</label>
-					<div class="agree_form">제 1 조 (목적) 
+	<div class="layer_wrap large" id="terms" style="display:block">
+		<div class="layer_popup" id="agreepopup">
+			<div class="popup_form">
+				<div class="header">
+					<h3 class="page_title">약관동의</h3>
+					<a href="#n" class="page_close" onclick="popupClose(this);">이전페이지</a>
+				</div>
+				<div class="popup_list">
+					<p class="tit_type02 mt0">
+						아래의 약관에 대한 내용을 반드시 읽고 약관에 동의 하셔야 모바일 시공관리 앱을 이용 가능 합니다.
+					</p>
+					<div class="all_check mt10">
+						<label class="chk_style">
+							<input type="checkbox" name="rdo_chk01">
+							<span class="chk_txt">이용약관</span>
+						</label>
+						<div class="agree_form">제 1 조 (목적) 
+							제 1 조 (목적) 
 							본 서비스 이용 약관은 한화엘앤씨㈜(이하 ”회사”)가 운영하는 모바일 영업지원 프로그램(이하 “앱”)을 이용 함에 있어 회사와 이용자(이하 “사용자”)의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 
 							.v
 							제 2 조 (정의) 
@@ -79,14 +81,14 @@
 							①  "사용자"은 개인정보관리화면을 통하여 언제든지 본인의 개인정보를 열람하고 수정할 수 있습니다. 다만, 서비스 관리를 위해 필요한 항목 (예 : 실명, 소속정보) 등은 수정이 불가능합니다. 
 							②  "사용자"은 사용자 가입신청 시 기재한 사항이 변경되었을 경우 온라인으로 수정을 하거나 전자우편 기타 방법으로 "회사"에 대하여 그 변경사항을 알려야 합니다. 
 							③  제2항의 변경사항을 "회사"에 알리지 않아 발생한 불이익에 대하여 "회사"는 책임지지 않습니다. 
+						</div>
 					</div>
-				</div>
-				<div class="all_check mt10">
-					<label class="chk_style">
-						<input type="checkbox" name="rdo_chk01">
-						<span class="chk_txt">개인정보취급방침</span>
-					</label>
-					<div class="agree_form">제 1 조 (목적) 
+					<div class="all_check mt10">
+						<label class="chk_style">
+							<input type="checkbox" name="rdo_chk01">
+							<span class="chk_txt">개인정보취급방침</span>
+						</label>
+						<div class="agree_form">제 1 조 (목적) 
 							본 서비스 이용 약관은 한화엘앤씨㈜(이하 ”회사”)가 운영하는 모바일 영업지원 프로그램(이하 “앱”)을 이용 함에 있어 회사와 이용자(이하 “사용자”)의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 
 							.v
 							제 2 조 (정의) 
@@ -116,14 +118,14 @@
 							④  "회사"는 서비스관련설비의 여유가 없거나, 기술상 또는 업무상 문제가 있는 경우 “서비스” 사용신청 승낙을 유보할 수 있습니다. 
 							⑤  제2항과 제4항에 따라 사용자가입신청의 승낙을 하지 아니하거나 유보한 경우, "회사"는 원칙적으로 이를 가입신청자에게 알리도록 합니다. 
 							⑥  이용계약의 성립 시기는 "회사"가 가입완료를 신청절차 상에서 표시한 시점으로 합니다. 
+						</div>
 					</div>
-				</div>
-				<div class="all_check mt10">
-					<label class="chk_style">
-						<input type="checkbox" name="rdo_chk01">
-						<span class="chk_txt">위치정보 이용</span>
-					</label>
-					<div class="agree_form">제 1 조 (목적) 
+					<div class="all_check mt10">
+						<label class="chk_style">
+							<input type="checkbox" name="rdo_chk01">
+							<span class="chk_txt">위치정보 이용</span>
+						</label>
+						<div class="agree_form">제 1 조 (목적) 
 							본 서비스 이용 약관은 한화엘앤씨㈜(이하 ”회사”)가 운영하는 모바일 영업지원 프로그램(이하 “앱”)을 이용 함에 있어 회사와 이용자(이하 “사용자”)의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 
 							.v
 							제 2 조 (정의) 
@@ -153,14 +155,14 @@
 							④  "회사"는 서비스관련설비의 여유가 없거나, 기술상 또는 업무상 문제가 있는 경우 “서비스” 사용신청 승낙을 유보할 수 있습니다. 
 							⑤  제2항과 제4항에 따라 사용자가입신청의 승낙을 하지 아니하거나 유보한 경우, "회사"는 원칙적으로 이를 가입신청자에게 알리도록 합니다. 
 							⑥  이용계약의 성립 시기는 "회사"가 가입완료를 신청절차 상에서 표시한 시점으로 합니다. 
+						</div>
 					</div>
-				</div>
-				<div class="tac mt10">
-					<a href="#n" class="btn middle orange">동의</a>
+					<div class="tac mt10">
+						<a href="#n" class="btn middle" id="btn_confirm">동의</a>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="popup_bg"></div>
 	</div>
 	<!-- //약관동의 팝업 -->
 </div>
@@ -180,19 +182,42 @@
     function checkPassword(pw) {
 		var re = /(?=.*\d)(?=.*[a-z]).{8,}/;
 		return re.test(pw);
-    }
+	}
 
-    M.onReady(function(e) {
+	$(document).ready(function(){
 		var STORAGE_USER_ID = 'STORAGE_USER_ID';
 		var login_id = M.data.storage(STORAGE_USER_ID);
 
-		// 저장한 아이디 읽고 체크박스 켜기
+		// 약관 선택
+		// TODO: 약관은 앱 설치 후 최초 1회만 뜨게 구현
+		var terms = $("input[name='rdo_chk01']");
+		terms.change(function(){
+			var termsChecked = $("input[name='rdo_chk01']:checked");
+
+			if (terms.length === termsChecked.length){
+				$("#btn_confirm").addClass("orange");
+			} else {
+				$("#btn_confirm").removeClass("orange");
+			}
+		});
+
+		// 약관 동의 시 약관동의 팝업 제거
+		$("#btn_confirm").off("click").on("click", function() {
+			if ($(this).hasClass("orange")) {
+				$("#terms").css("display", "none");
+			} else {
+				// Do nothing..
+			}
+		});
+
+		// 저장한 아이디가 있으면 체크박스 켜기
 		if (login_id) {
 			$('#login_id').val(login_id);
-			$('#checkbox').prop('checked', true);
+			$('#chk_id_save').prop('checked', true);
 		}
 
 		// 로그인
+		// TODO: API 통신
 		$('#btn_login').off('click').on('click', function(e) {
 			var login_id = $('#login_id').val();
 			var login_pw = $('#login_pw').val();
@@ -200,7 +225,7 @@
 
 			if (isValidate) {
 				// 아이디 저장
-				if ($('#checkbox').prop('checked')) {
+				if ($('#chk_id_save').prop('checked')) {
 					M.data.storage(STORAGE_USER_ID, $('#login_id').val());
 				}
 				else {
@@ -219,6 +244,10 @@
 		$('#app_msg').off('click').on('click', function(e){
 			M.sys.call($('#tel').text().replace('-', ''));
 		});
+    });
+
+    M.onReady(function(e) {
+		
     }).onHide(function(e){
         //hide event handle code here
     }).onRestore(function(e) {
