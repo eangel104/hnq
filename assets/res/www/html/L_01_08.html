@@ -154,7 +154,9 @@
     "use strict";
     //TODO: 개발 미비
     $(document).ready(function(){
-        $(".header").header("sales","","main");
+        $(".header").header("sales","","main",function(){
+            pageNav().init();
+        });
     });
     M.onReady(function(e) {
         //ready event handle code here

@@ -127,8 +127,7 @@ function pageNav() {
             //event
             $("[data-event-page]").each(function(){
                 $(this).off().on("click",function(e){
-                    console.log("Nav eventPage::",$(this).data("eventPage"),$(this).data("eventAnimat"));
-                    console.log("Nav eventPage::",pageInfo[$(this).data("eventPage")]);
+                    console.log("Nav eventPage::",$(this).data("eventPage"),pageInfo[$(this).data("eventPage")]);
                     console.log("Nav eventAnimat::",animation[$(this).data("eventAnimat")]);
                     var option = { 
                         param:{ 'NAME' : $(this).data("eventPage")},
