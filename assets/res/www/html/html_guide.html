@@ -8,6 +8,9 @@
 <link rel="stylesheet" type="text/css" href="../css/content.css">
 <script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/moment.min.js"></script>
+<script type="text/javascript" src="../js/locales.min.js"></script>
+<script type="text/javascript" src="../js/jquery.weekCalendar.js"></script>
 <style type="text/css">
 .guide_tit{position:relative;margin:0 -10px;padding-left:10px;font-size:16px;font-family:'noto-bold';color:#fc761a;}
 .guide_tit:after{content:"";display:block;position:absolute;top:10px;left:0;width:4px;height:1px;background:#fc761a;}
@@ -294,10 +297,10 @@
 				<div class="guide_box">
 				    <div class="calendar">
 				        <div class="inner">
-				            <span class="month">2018년 10월</span>
+				            <span class="month" id="weeksRange">2018년 10월</span>
 				            <div class="btn_wrap">
-				                <a class="prev" href="">이전</a>
-				                <a class="next" href="">다음</a>
+				                <a id="prevWeek" class="prev" href="#">이전</a>
+				                <a id="nextWeek" class="next" href="#">다음</a>
 				            </div>
 				        </div>
 				        <ul class="daliy">
@@ -339,7 +342,20 @@
 				        </ul>
 				    </div>
 				</div>
-
+                <script type="text/javascript">
+                $(".calendar").weekCalendar({
+                    workCallback:function(index,el,timeString){
+                        console.log("workCallback :: ",arguments);
+                        setTimeout(function(){
+                            $(el).text(Math.round(Math.random()*10));
+                        },1000);
+                    },
+                    clickCallback:function(e,el,timeString){
+                        console.log("clickCallback::",arguments);
+                        alert("선택하신 날짜는 "+timeString+" 입니다.");
+                    }
+                });
+                </script>
 				<h2 class="guide_tit" id="titForm">폼요소</h2>
 				<div class="guide_box">
 					<ul>
