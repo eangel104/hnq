@@ -69,7 +69,9 @@
     "use strict";
     //TODO: 개발 미비
     $(document).ready(function(){
-        $(".header").header("construction","설정");
+        $(".header").header("construction","설정", "", function(){
+			pageNav().init();
+		});
     });
     M.onReady(function(e) {
         //ready event handle code here
