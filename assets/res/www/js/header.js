@@ -16,7 +16,7 @@ $(document).ready(function(){
         */
         //랜더러 설정
         //TODO: 전체 페이지 연결 미비
-        var param = $.extends({},{
+        var param = $.extend({},{
             type:null,
             title:null,
             headerType:null,
@@ -78,7 +78,7 @@ $(document).ready(function(){
         }
 
         //callback 실행
-        (callback)?callback(this):"";
+        (param.callback)?param.callback(this):"";
     }
 
     // $(".header").header("construction","영업활동");
