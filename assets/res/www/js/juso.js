@@ -32,7 +32,7 @@ function juso(currentPage, countPerPage, keyword){
             currentPage: (currentPage) ? currentPage : 1,
             countPerPage: (countPerPage) ? countPerPage : 10,
             keyword: keyword,
-            confmKey: "U01TX0FVVEgyMDE4MTAyMzE2MzQyNjEwODI1NTg=",   // FIXME: key 한화한테 발급 받을것!
+            confmKey: "U01TX0FVVEgyMDE2MTAxMDExMjcyMTE1NjMx",   // 한화에서 발급 받은 Key
             resultType: "json"
         },
         dataType: "jsonp", // 크로스도메인으로 인한 jsonp 이용
