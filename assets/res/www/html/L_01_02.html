@@ -185,8 +185,15 @@
 	}
 
 	$(document).ready(function(){
-		var STORAGE_USER_ID = 'STORAGE_USER_ID';
+		var STORAGE_USER_ID = "STORAGE_USER_ID";
+		var STORAGE_AGREE_TO_TERMS = "STORAGE_AGREE_TO_TERMS";
 		var login_id = M.data.storage(STORAGE_USER_ID);
+
+		// 약관 동의 기록이 있으면 팝업 제거
+		// FIXME: 사라지는게 보임; 기본 숨김에서 hide()로 수정 필요
+		if (M.data.storage(STORAGE_AGREE_TO_TERMS)) {
+			$("#terms").hide();
+		}
 
 		// 약관 선택
 		// TODO: 약관은 앱 설치 후 최초 1회만 뜨게 구현
@@ -204,7 +211,8 @@
 		// 약관 동의 시 약관동의 팝업 제거
 		$("#btn_confirm").off("click").on("click", function() {
 			if ($(this).hasClass("orange")) {
-				$("#terms").css("display", "none");
+				$("#terms").hide();
+				M.data.storage(STORAGE_AGREE_TO_TERMS, true);
 			} else {
 				// Do nothing..
 			}
@@ -231,6 +239,10 @@
 				else {
 					M.data.removeStorage(STORAGE_USER_ID);
 				}
+				// TODO: 영업사원/시공사 구분해서 페이지 이동
+				M.page.html("L_01_08.html", {
+					action: "CLEAR_TOP"
+				});
 			} else {
 				M.pop.alert('잘못된 비밀번호 입니다.', {
 					title: '알림',
