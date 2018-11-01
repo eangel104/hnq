@@ -29,7 +29,7 @@
 	</div>
     <p class="app_msg" id="app_msg">앱 설치 및 사용문의(고객센터 전화번호 <span id="tel">1111-1111</span>)</p>
 	<!-- 약관동의 팝업 -->
-	<div class="layer_wrap large" style="display:block">
+	<div class="layer_wrap large" >
 		<div class="layer_popup" id="agreepopup">
 			<div class="popup_form">
 				<div class="header">
@@ -189,14 +189,12 @@
 		var STORAGE_AGREE_TO_TERMS = "STORAGE_AGREE_TO_TERMS";
 		var login_id = M.data.storage(STORAGE_USER_ID);
 
-		// 약관 동의 기록이 있으면 팝업 제거
-		// FIXME: 사라지는게 보임; 기본 숨김에서 hide()로 수정 필요
-		if (M.data.storage(STORAGE_AGREE_TO_TERMS)) {
-			popupClose("#agreepopup");
+		// 약관동의 팝업
+		if (M.data.storage(STORAGE_AGREE_TO_TERMS) === "false") {
+			popupOpen("#agreepopup");
 		}
 
-		// 약관 선택
-		// TODO: 약관은 앱 설치 후 최초 1회만 뜨게 구현
+		// 약관동의 선택
 		var terms = $("input[name='rdo_chk01']");
 		terms.change(function(){
 			var termsChecked = $("input[name='rdo_chk01']:checked");
@@ -211,8 +209,8 @@
 		// 약관 동의 시 약관동의 팝업 제거
 		$("#btn_confirm").off("click").on("click", function() {
 			if ($(this).hasClass("orange")) {
+				M.data.storage(STORAGE_AGREE_TO_TERMS, "true");
 				popupClose("#agreepopup");
-				M.data.storage(STORAGE_AGREE_TO_TERMS, true);
 			} else {
 				// Do nothing..
 			}
