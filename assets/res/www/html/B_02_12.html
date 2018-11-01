@@ -7,9 +7,6 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
 <link rel="stylesheet" type="text/css" href="../css/content2.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -18,8 +15,8 @@
 
 	<!-- header -->
 	<div class="header">
-		<h1 class="page_title">일정/업무</h1>
-		<a href="#n" class="page_prev">이전페이지</a>
+		<!-- <h1 class="page_title">일정/업무</h1>
+		<a href="#n" class="page_prev">이전페이지</a> -->
 	</div>
 
 	<!-- //header -->
@@ -32,47 +29,47 @@
 			<!-- 캘린더 -->
 			<div class="calendar">
                 <div class="inner">
-                    <span class="month">2018년 10월</span>
+                    <span class="month" id="weeksRange">2018년 10월</span>
                     <div class="btn_wrap">
-                        <a class="prev" href="">이전</a>
-                        <a class="next" href="">다음</a>
+                        <a id="prevWeek" class="prev" href="#">이전</a>
+                        <a id="nextWeek" class="next" href="#">다음</a>
                     </div>
                 </div>
                 <ul class="daliy">
                     <li>
                         <span class="week">일</span>
                         <span class="date">07</span>
-                        <span class="work">2</span>
+                        <span class="work"></span>
                     </li>
                     <li class="on">
                         <span class="week">월</span>
                         <span class="date">08</span>
-                        <span class="work">3</span>
+                        <span class="work"></span>
                     </li>
                     <li>
                         <span class="week">화</span>
                         <span class="date">09</span>
-                        <span class="work">3</span>
+                        <span class="work"></span>
                     </li>
                     <li>
                         <span class="week">수</span>
                         <span class="date">10</span>
-                        <span class="work">1</span>
+                        <span class="work"></span>
                     </li>
                     <li>
                         <span class="week">목</span>
                         <span class="date">11</span>
-                        <span class="work">2</span>
+                        <span class="work"></span>
                     </li>
                     <li>
                         <span class="week">금</span>
                         <span class="date">12</span>
-                        <span class="work">0</span>
+                        <span class="work"></span>
                     </li>
                     <li>
                         <span class="week">토</span>
                         <span class="date">13</span>
-                        <span class="work">4</span>
+                        <span class="work"></span>
                     </li>
                 </ul>
             </div>
@@ -84,7 +81,7 @@
 			<!--// 본문내용 -->
 		</div>
 		<div class="btn_fix">
-			<a href="#n" class="btn gray">취소</a>
+			<a href="#n" class="btn gray" data-event-back>취소</a>
 			<a href="#n" class="btn green">저장</a>
 		</div>
 	</div>
@@ -92,6 +89,74 @@
     
 </div>
 <!-- //wrap -->
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/eventPageNav.js"></script>
+<script type="text/javascript" src="../js/moment.min.js"></script>
+<script type="text/javascript" src="../js/locales.min.js"></script>
+<script type="text/javascript" src="../js/jquery.weekCalendar.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
 
+    //페이지 이동시 전달할 데이터
+    var pageData = {
+    }
+
+    //이전페이지 에서 받은 데이터 
+    var data = M.data.param();
+
+    //이전 페이지에서 받은 데이터 
+    console.log("data.param::",data);
+
+    $(document).ready(function(){
+        $(".header").header({
+            type:"sales",
+            title:"일정/업무",
+            callback:function(){
+                pageNav(pageData);
+            }
+        });
+
+        //캘린터
+        $(".calendar").weekCalendar({
+            workCallback:function(index,el,timeString){
+                console.log("workCallback :: ",arguments);
+                setTimeout(function(){
+                    $(el).text(Math.round(Math.random()*10));
+                },1000);
+            },
+            clickCallback:function(e,el,timeString){
+                console.log("clickCallback::",arguments);
+                alert("선택하신 날짜는 "+timeString+" 입니다.");
+            }
+        });
+    });
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>

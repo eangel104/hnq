@@ -61,13 +61,21 @@
 <script type="text/javascript">
     "use strict";
     //TODO: 개발 미비
+
+    //페이지 이동시 전달할 데이터
+    var pageData = {
+    }
+
+    //이전페이지 에서 받은 데이터 
+    var data = M.data.param();
+    
     $(document).ready(function(){
         $(".header").header({
             type:"sales",
             title:"템플릿",
             headerType:"menu",
             callback:function(){
-                pageNav();
+                pageNav(pageData);
             }
         });
     });

@@ -71,37 +71,37 @@
                             <li>
                                 <span class="week">일</span>
                                 <span class="date">07</span>
-                                <span class="work">2</span>
+                                <span class="work"></span>
                             </li>
                             <li class="on">
                                 <span class="week">월</span>
                                 <span class="date">08</span>
-                                <span class="work">3</span>
+                                <span class="work"></span>
                             </li>
                             <li>
                                 <span class="week">화</span>
                                 <span class="date">09</span>
-                                <span class="work">3</span>
+                                <span class="work"></span>
                             </li>
                             <li>
                                 <span class="week">수</span>
                                 <span class="date">10</span>
-                                <span class="work">1</span>
+                                <span class="work"></span>
                             </li>
                             <li>
                                 <span class="week">목</span>
                                 <span class="date">11</span>
-                                <span class="work">2</span>
+                                <span class="work"></span>
                             </li>
                             <li>
                                 <span class="week">금</span>
                                 <span class="date">12</span>
-                                <span class="work">0</span>
+                                <span class="work"></span>
                             </li>
                             <li>
                                 <span class="week">토</span>
                                 <span class="date">13</span>
-                                <span class="work">4</span>
+                                <span class="work"></span>
                             </li>
                         </ul>
                     </div>
@@ -109,7 +109,7 @@
                     <div class="section">
                         <div class="tit_btn big_btn mt10">
                             <h3 class="tit_type01">오늘의 할 일 (3건)</h3>
-                            <a href="#n" class="btn middle orange btn_r fs13 mw90">등록</a>
+                            <a href="#n" class="btn middle orange btn_r fs13 mw90" data-event-page="B_02_12.html" data-event-animat="top">등록</a>
                         </div>
 
                         <ul class="survey_list">
@@ -699,17 +699,6 @@
                     </div>
                 </div>
             </div>
-
-            <script type="text/javascript">
-                var swiper = new Swiper('.swiper-container', {
-                  slidesPerView: 4.5,
-                  spaceBetween: 0,
-                  freeMode: true,
-                });
-                $('#tab1').fnTab();
-                $('#tab2').fnTab();
-            </script>
-			
 			<!--// 본문내용 -->
 		</div>
 	</div>
@@ -728,13 +717,18 @@
 <script type="text/javascript">
     "use strict";
     //TODO: 개발 미비
+
+    var pageData = {
+        test:1
+    }
+
     $(document).ready(function(){
         $(".header").header({
             type:"sales",
             title:"영업활동",
             headerType:"menu",
             callback:function(){
-                pageNav();
+                pageNav(pageData);
             }
         });
 
