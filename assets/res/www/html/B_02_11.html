@@ -7,9 +7,6 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
 <link rel="stylesheet" type="text/css" href="../css/content2.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/swiper.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -68,10 +65,10 @@
                     <!-- 캘린더 -->
                     <div class="calendar">
                         <div class="inner">
-                            <span class="month">2018년 10월</span>
+                            <span class="month" id="weeksRange">2018년 10월</span>
                             <div class="btn_wrap">
-                                <a class="prev" href="">이전</a>
-                                <a class="next" href="">다음</a>
+				                <a id="prevWeek" class="prev" href="#">이전</a>
+				                <a id="nextWeek" class="next" href="#">다음</a>
                             </div>
                         </div>
                         <ul class="daliy">
@@ -724,6 +721,74 @@
 
 </div>
 <!-- //wrap -->
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/swiper.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/eventPageNav.js"></script>
+<script type="text/javascript" src="../js/moment.min.js"></script>
+<script type="text/javascript" src="../js/locales.min.js"></script>
+<script type="text/javascript" src="../js/jquery.weekCalendar.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
+    $(document).ready(function(){
+        $(".header").header({
+            type:"sales",
+            title:"템플릿",
+            headerType:"menu",
+            callback:function(){
+                pageNav();
+            }
+        });
 
+        //샹위 탭 
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 4.5,
+            spaceBetween: 0,
+            freeMode: true,
+        });
+        $('#tab1').fnTab();
+        $('#tab2').fnTab();
+
+        //캘린터
+        $(".calendar").weekCalendar({
+            workCallback:function(index,el,timeString){
+                console.log("workCallback :: ",arguments);
+                setTimeout(function(){
+                    $(el).text(Math.round(Math.random()*10));
+                },1000);
+            },
+            clickCallback:function(e,el,timeString){
+                console.log("clickCallback::",arguments);
+                alert("선택하신 날짜는 "+timeString+" 입니다.");
+            }
+        });
+    });
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
