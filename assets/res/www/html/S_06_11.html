@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="../css/content.css">
 <link rel="stylesheet" type="text/css" href="../css/content2.css">
 <script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -17,21 +16,21 @@
 
 	<!-- header -->
 	<div class="header">
-		<h1 class="page_title">실측</h1>
+		<!-- <h1 class="page_title">실측</h1>
 		<a href="#n" class="btn_home">home</a>
-		<a href="#n" class="btn_gnb">전체메뉴</a>
+		<a href="#n" class="btn_gnb">전체메뉴</a> -->
 
 		<!-- gnb -->
-		<div class="gnb">
+		<!-- <div class="gnb">
 			<ul>
 				<li class="green"><a href="#n">실측관리</a></li>
 				<li class="green"><a href="#n">시공관리</a></li>
 				<li class="setting"><a href="#n"><span>설정</span></a></li>
 			</ul>
-		</div>
+		</div> -->
 		<!-- //gnb -->
 
-		<a href="#n" class="page_prev">이전페이지</a>
+		<!-- <a href="#n" class="page_prev">이전페이지</a> -->
 	</div>
 
 	<!-- //header -->
@@ -45,7 +44,7 @@
 			
 			<div class="accept_wrap">
 				<strong class="date">2018-08-31</strong>
-				<a href="#n" class="btn middle orange">신규예약접수</a>
+				<a href="#n" class="btn middle orange" id="booking">신규예약접수</a>
 			</div>
 			
 			<div class="section">
@@ -175,6 +174,85 @@
 
 </div>
 <!-- //wrap -->
-
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/eventPageNav.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
+    $(document).ready(function(){
+        $(".header").header({
+            type:"sales",
+            title:"실측",
+            headerType:"menu",
+            callback:function(){
+                pageNav();
+            }
+		});
+		
+		// 신규예약접수
+		$("#booking").off("click").on("click", function() {
+			M.page.html("S_06_14.html");
+		});
+	});
+	
+    M.onReady(function(e) {
+        //ready event handle code here
+		console.log("onReady");
+		
+		// TODO: API 연동
+		M.net.http.send({
+			server: 'HTTP_APPSTORE_API',  // Manifest.xml 에 설정된 타겟 서버
+			path: '/api/sample/path/to/path',
+			method: 'POST',
+			timeout: 15000,	// msec
+			data : {
+				// TODO : send data here
+				parent_cate_cd : '',
+				system_name : 'iOS',
+			}, // request data
+			// user data
+			userData : {
+				// 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
+				service_id : 'appinfo',
+				action     : 'list',
+			}, // request data
+			success: function(recevedData, setting) {
+				console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
+				// TODO : did success control here
+			},
+			error: function(errCode, errMsg, setting) {
+				console.log("** onError", errCode, errMsg, setting);
+				// TODO : error control here
+			},
+			indicator: {
+				show : true,
+				message : '통신중입니다.',
+				cancelable : false
+			}
+		});
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>

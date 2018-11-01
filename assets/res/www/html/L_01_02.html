@@ -174,6 +174,11 @@
 <script type="text/javascript">
     //TODO: 개발 미비
 	"use strict";
+
+	// 영속 및 전역 변수
+	var GLOBAL_USER_TYPE = "GLOBAL_USER_TYPE";
+	var STORAGE_USER_ID = "STORAGE_USER_ID";
+	var STORAGE_AGREE_TO_TERMS = "STORAGE_AGREE_TO_TERMS";
 	
 	/**
 	 * 비밀먼호 유효 검증 함수
@@ -185,10 +190,6 @@
 	}
 
 	$(document).ready(function(){
-		var STORAGE_USER_ID = "STORAGE_USER_ID";
-		var STORAGE_AGREE_TO_TERMS = "STORAGE_AGREE_TO_TERMS";
-		var login_id = M.data.storage(STORAGE_USER_ID);
-
 		// 약관동의 팝업
 		if (M.data.storage(STORAGE_AGREE_TO_TERMS) === "false") {
 			popupOpen("#agreepopup");
@@ -217,6 +218,7 @@
 		});
 
 		// 저장한 아이디가 있으면 체크박스 켜기
+		var login_id = M.data.storage(STORAGE_USER_ID);
 		if (login_id) {
 			$('#login_id').val(login_id);
 			$('#chk_id_save').prop('checked', true);
@@ -227,9 +229,8 @@
 		$('#btn_login').off('click').on('click', function(e) {
 			var login_id = $('#login_id').val();
 			var login_pw = $('#login_pw').val();
-			var isValidate = checkPassword(login_pw);
 
-			if (isValidate) {
+			if (checkPassword(login_pw)) {
 				// 아이디 저장
 				if ($('#chk_id_save').prop('checked')) {
 					M.data.storage(STORAGE_USER_ID, $('#login_id').val());
@@ -237,8 +238,15 @@
 				else {
 					M.data.removeStorage(STORAGE_USER_ID);
 				}
-				// TODO: 영업사원/시공사 구분해서 페이지 이동
-				M.page.html("L_01_08.html", {
+
+				// 사용자 타입 저장
+				// TODO: 한화에서 유저 타입 받으면 수정 필
+				// 현재는 sales(영업사원), construction (시공사)
+				var userType = login_id.startsWith('s') ?  "sales" : "construction";
+				console.log("userType: " + userType);
+				M.data.storage(GLOBAL_USER_TYPE, userType);
+				console.log("result: " + "L_01_" + (userType === "sales" ? "08":"09") + ".html");
+				M.page.html("L_01_" + (userType === "sales" ? "08":"09") + ".html", {
 					action: "CLEAR_TOP"
 				});
 			} else {
@@ -247,17 +255,14 @@
 					buttons: ['확인']
 				});
 			}
-			console.log('GLOBAL_USER_ID: ' + M.data.storage(STORAGE_USER_ID));
-		});
-
-		// 고객센터 전화걸기
-		$('#app_msg').off('click').on('click', function(e){
-			M.sys.call($('#tel').text().replace('-', ''));
 		});
     });
 
     M.onReady(function(e) {
-		
+		// 고객센터 전화걸기
+		$('#app_msg').off('click').on('click', function(e){
+			M.sys.call($('#tel').text().replace('-', ''));
+		});
     }).onHide(function(e){
         //hide event handle code here
     }).onRestore(function(e) {
@@ -267,7 +272,18 @@
     }).onDestroy(function(e) {
         //destroy event handle code here
     }).onBack(function() {
-        //back event handle code here
+		//back event handle code here
+		// 종료하기
+		// TODO: 지우기(기획에 없음)
+		M.pop.alert("종료하시겠습니까?", {
+			title: "종료",
+			buttons: ["아니오", "예"],
+			callback: function(index) {
+				if(index === 1) {
+					M.sys.exit();
+				}
+			}
+		});
     }).onKey(function(e) {
         //key event handle code here(android only)
 	});
