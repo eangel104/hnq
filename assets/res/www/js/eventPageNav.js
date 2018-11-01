@@ -1,13 +1,15 @@
 /**
 * @author dh.lee@ttb.co.kr
 * @version 0.1
+* @param {object} pageData 페이지 이동시 전달할 데이터
 * @since 2018.10.22
 * @description 페이지 이동 이벤트 통합 관리
 * 태그의 속성으로 이벤트를 제어 한다. 
 * data-event-page : 이동할 페이지 정보 
 * data-event-animat : 이동시 에니메이션 효과 정보
+* data-event-back : 이전페이지로 이동
 */
-function pageNav() {
+function pageNav(pageData) {
     // DEFALUT : 왼쪽으로 이동되는 슬라이드 효과(SLIDE_LEFT)
     // NONE : 애니메이션 효과 없음
     // SLIDE_LEFT : 왼쪽으로 이동되는 슬라이드 효과
@@ -130,7 +132,7 @@ function pageNav() {
                 console.log("Nav eventPage::",$(this).data("eventPage"),pageInfo[$(this).data("eventPage")]);
                 console.log("Nav eventAnimat::",animation[$(this).data("eventAnimat")]);
                 var option = { 
-                    param:{ 'NAME' : $(this).data("eventPage")},
+                    param:$.extend({},{ 'NAME' : $(this).data("eventPage")},pageData),
                     animation : (animation[$(this).data("eventAnimat")])?animation[$(this).data("eventAnimat")]:animation["def"], 
                     action : 'NEW_SCR',
                     // orient : 'PORT'
