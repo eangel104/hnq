@@ -137,12 +137,14 @@ function pageNav() {
                 }
                 console.log(option);
                 M.page.html($(this).data("eventPage"),option);
+                // M.page.tab.html($(this).data("eventPage"),option);
             })
         });
         $("[data-event-back]").each(function(){
             $(this).off().on("click",function(e){
                 console.log("back::");
                 M.page.back();
+                // M.page.tab.back();
             });
         });
     }
