@@ -4,7 +4,7 @@
     <lang>ko</lang>
     <resource>
         <base_version>000000</base_version>
-        <target>app</target>
+        <target>app</target><!-- 배포 시 `doc` 권장 -->
         <update>
             <server/>
             <trcode/>
@@ -62,7 +62,15 @@
 		</plugins>
     </library>
     <network>
-        <http/>
+        <http>
+            <TEST_SERVER>
+                <path>lnc.idccon.implementation.HttpDefaultNetworkManager</path>
+                <address>http://118.130.19.74/api/</address>
+                <timeout>10000</timeout>
+                <encoding>utf-8</encoding>
+                <type>rest</type>
+            </TEST_SERVER>
+        </http>
         <socket/>
     </network>
     <application>
