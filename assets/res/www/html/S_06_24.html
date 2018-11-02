@@ -112,9 +112,9 @@
 				</div>
 			</div>
 
-			<script type="text/javascript">
+			<!-- <script type="text/javascript">
 				$('#tab1').fnTab();
-			</script>
+			</script> -->
 		</div>
 		<div class="btn_fix">
 			<a href="#n" class="btn gray">취소</a>
@@ -131,7 +131,12 @@
 <!-- // -->
 <script type="text/javascript">
     "use strict";
-    //TODO: 개발 미비
+	//TODO: 개발 미비
+	
+	function deleteImage(selector) {
+		$(selector).prev().children("img").attr("src", "../img/content/test_img.gif");
+	}
+
     $(document).ready(function(){
         $(".header").header({
             type:"sales",
@@ -139,11 +144,43 @@
             callback:function(){
                 pageNav();
             }
-        });
-    });
+		});
+		
+		$('#tab1').fnTab();
+
+		// 실측 사진 불러오기
+		$("#btn_load_survey_image").off("click").on("click", function() {
+			M.media.picker({
+				mode: "SINGLE",
+				media: "PHOTO",
+				path: "/media",
+				callback: function(status, result) {
+					console.log(status + ", " + JSON.stringify(result));
+					if(status === "SUCCESS") {
+						// TODO: Implement code here..
+						var size = result.size;
+						var saveDate = result.saveDate;
+						var filename = result.name;
+						var path = result.path;
+
+						// rendering 1 to 4 images
+						$("#img_survey_1").attr("src", path);
+					}
+					else {
+						// Do Something..
+					}
+				}
+			});
+		});
+
+		// 사진 제거하기
+		$(".btn_delete").off("click").on("click", function() {
+			$(this).prev().children("img").attr("src", "../img/content/test_img.gif");
+		});
+	});
+	
     M.onReady(function(e) {
-        //ready event handle code here
-        console.log("onReady");
+        
     }).onHide(function(e){
         //hide event handle code here
         console.log("onHide");
