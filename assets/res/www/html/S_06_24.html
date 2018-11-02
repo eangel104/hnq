@@ -133,10 +133,6 @@
     "use strict";
 	//TODO: 개발 미비
 	
-	function deleteImage(selector) {
-		$(selector).prev().children("img").attr("src", "../img/content/test_img.gif");
-	}
-
     $(document).ready(function(){
         $(".header").header({
             type:"sales",
@@ -148,12 +144,19 @@
 		
 		$('#tab1').fnTab();
 
+		var btn_load_images = $("#tab1-1 .btn.middle.orange");
+		var btn_check_customer = $("#tab1-2 .btn.middle.orange");
+
 		// 실측 사진 불러오기
-		$("#btn_load_survey_image").off("click").on("click", function() {
+		$(btn_load_images).off("click").on("click", function(){
+			var images = $(btn_site).parent().next().find("ul > li > a > img");
+
 			M.media.picker({
-				mode: "SINGLE",
+				mode: "MULTI",
 				media: "PHOTO",
 				path: "/media",
+				maxCount: "",
+				column: 1,
 				callback: function(status, result) {
 					console.log(status + ", " + JSON.stringify(result));
 					if(status === "SUCCESS") {
@@ -163,19 +166,12 @@
 						var filename = result.name;
 						var path = result.path;
 
-						// rendering 1 to 4 images
-						$("#img_survey_1").attr("src", path);
 					}
 					else {
 						// Do Something..
 					}
 				}
 			});
-		});
-
-		// 사진 제거하기
-		$(".btn_delete").off("click").on("click", function() {
-			$(this).prev().children("img").attr("src", "../img/content/test_img.gif");
 		});
 	});
 	
