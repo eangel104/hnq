@@ -40,6 +40,32 @@
                 }
             },1000);
         })(1);
+
+        //TODO:: http 통신 테스트
+		M.net.http.send({
+			server: "TEST_SERVER",
+			path: "svy/lst/inquireSvrList",
+			method: "POST",
+			timeout: 5000,
+			// userData : {
+			// 	// 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
+			// 	service_id : 'appinfo',
+			// 	action     : 'list',
+			// }, // request data
+			success: function(recevedData, setting) {
+				console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
+				// TODO : did success control here
+			},
+			error: function(errCode, errMsg, setting) {
+				console.log("** onError", errCode, errMsg, setting);
+				// TODO : error control here
+			},
+			indicator: {
+				show : true,
+				message : '통신중입니다.',
+				cancelable : false
+			}
+		});
     });
 </script>
 </body>
