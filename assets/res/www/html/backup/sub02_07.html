@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../css/content.css">
 <link rel="stylesheet" type="text/css" href="../css/content2.css">
 <script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
+
 <script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
@@ -17,7 +18,7 @@
 
 	<!-- header -->
 	<div class="header">
-		<h1 class="page_title">일정/업무</h1>
+		<h1 class="page_title">실측결과확인</h1>
 		<a href="#n" class="page_prev">이전페이지</a>
 	</div>
 
@@ -25,26 +26,39 @@
 
 	<!-- content -->
 	<div class="content">
-		
+	    탭화면으로 sub02_05화면과 합침. 삭제해야함.
 		<div class="content_area">
-			<!-- 본문내용 -->
-			<!-- 캘린더 날짜만 출력 -->
-			<div class="calendar">
-                <div class="inner">
-                    <span class="month">2018년 10월 10일</span>
-                </div>
-            </div>
-            <!-- // 캘린더 날짜만 출력 -->
-            
-			<div class="section">
-                <textarea class="h160" rows="3" cols="30" disabled>현대인테이러 방문 예정</textarea>
-				<a href="#n" class="btn middle gray business_btn">삭제</a>
+			<ul class="tabmenu02" id="tab1">
+				<li ><a href="#tab1-1"><span>실측지 정보</span></a></li><!-- 활성화 class = "on" -->
+				<li class="on"><a href="#tab1-2"><span>고객확인</span></a></li>
+			</ul>
+
+			<div class="tab_panel" id="tab_cont1">
+				<div id="tab1-1" class="panel">
+					
+				</div>
+				<div id="tab1-2" class="panel">
+					<!-- 본문내용 -->
+					<div class="section">
+
+						<div class="tac">
+							<a href="#n" class="btn middle orange">고객확인</a>
+						</div>
+
+						<div class="sign_box mt20"></div> <!-- 싸인영역 -->
+
+					</div>
+					<!-- 본문내용 -->
+				</div>
 			</div>
-			<!--// 본문내용 -->
+
+			<script type="text/javascript">
+				$('#tab1').fnTab();
+			</script>
 		</div>
 		<div class="btn_fix">
 			<a href="#n" class="btn gray">취소</a>
-			<a href="#n" class="btn green">수정</a>
+			<a href="#n" class="btn green">저장</a>
 		</div>
 	</div>
 	<!-- //content -->

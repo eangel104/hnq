@@ -152,15 +152,14 @@
                         <div class="srch_wrap on">
                             <div class="srch_area business_srch">
                                 <ul>
-                                    <li>
+                                    <li><!-- 1031 수정 : 검색영역 수정 -->
                                         <strong class="tit">거래처명</strong>
                                         <div class="webkit_box">
                                             <span class="box_flex1">
-                                                <select>
-                                                    <option>전체</option>
-                                                    <option>선택1</option>
-                                                    <option>선택2</option>
-                                                </select>
+                                                <input type="text" placeholder="거래처명 입력">
+                                            </span>
+                                            <span class="box_flex0">
+                                                <a href="#n" class="btn large green mw50">검색</a>
                                             </span>
                                         </div>
                                     </li>
@@ -180,7 +179,7 @@
                                     </li>
 
                                 </ul>
-                                <span class="btn_srch"><a href="#n" class="btn middle gray">검색</a></span>
+                                <span class="btn_srch"><a href="#n" class="btn middle gray">조회</a></span>
                             </div>
                         </div>
                         <!-- //검색박스 -->
@@ -247,119 +246,112 @@
                         </div>
                         <div id="tab2-2" class="panel" style="display: none;">
                             <div class="section">
-                                <div class="tbl business_table">
-                                    <table>
-                                        <caption></caption>
-                                        <colgroup>
-                                            <col style="width:35%">
-                                            <col style="width:65%">
-                                        </colgroup>
-                                        <tbody>
-                                            <tr>
-                                                <th rowspan="5">륨</th>
-                                                <td >
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">참다움참다움참다움참다움참다움</span>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">명가</span>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">황실</span>
-                                                    </label>
-                                                </td>	
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">소리지움</span>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">황토펫트</span>
-                                                    </label>
-                                                </td>	
-                                            </tr>
-                                            <tr>
-                                                <th rowspan="4">기타</th>
-                                                <td>
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">디럭스</span>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">참다움</span>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">명가</span>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="chk_style">
-                                                        <input type="checkbox" name="chk_chk04">
-                                                        <span class="chk_txt">황실</span>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <!-- 1031 수정 : 마크업수정 -->
+                                <dl class="accordion">
+                                    <dt class="on"><a href="#n">륨</a></dt><!-- 활성화 class = "on" -->
+                                    <dd>
+                                        <ul class="chk_list">
+                                            <li>
+                                                <label class="chk_style">
+                                                    <input type="checkbox" name="chk_rom">
+                                                    <span class="chk_txt webkit_box">
+                                                        <strong class="box_flex1 name">참다움</strong>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="chk_style">
+                                                    <input type="checkbox" name="chk_rom">
+                                                    <span class="chk_txt webkit_box">
+                                                        <strong class="box_flex1 name">명가</strong>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="chk_style">
+                                                    <input type="checkbox" name="chk_rom">
+                                                    <span class="chk_txt webkit_box">
+                                                        <strong class="box_flex1 name">황실</strong>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="chk_style">
+                                                    <input type="checkbox" name="chk_rom">
+                                                    <span class="chk_txt webkit_box">
+                                                        <strong class="box_flex1 name">소리지움</strong>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="chk_style">
+                                                    <input type="checkbox" name="chk_rom">
+                                                    <span class="chk_txt webkit_box">
+                                                        <strong class="box_flex1 name">황토펫트</strong>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                    <dt class="on"><a href="#n">기타</a></dt>
+                                    <dd>
+                                        <ul class="chk_list">
+                                            <li>
+                                                <label class="chk_style">
+                                                    <input type="checkbox" name="rdo_etc">
+                                                    <span class="chk_txt webkit_box">
+                                                        <strong class="box_flex1 name">참다움</strong>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="chk_style">
+                                                    <input type="checkbox" name="rdo_etc">
+                                                    <span class="chk_txt webkit_box">
+                                                        <strong class="box_flex1 name">명가</strong>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <!-- //1031 수정 : 마크업수정 -->
                             </div>
                         </div>
                         <div id="tab2-3" class="panel" style="display: none;">
                             <div class="section">
-                                <ul class="survey_list">
+                                <ul class="survey_list"><!-- 1031 수정 : list 마크업 수정 -->
                                     <li>
-                                        <div class="mid mh112">
-                                            <span class="date">2018-08-31 (수요일)</span>
-                                            <span class="addr fc71">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
-                                        </div>
+                                        <a href="#n">
+                                            <div class="mid mh112">
+                                                <span class="date">2018-08-31 (수요일)</span>
+                                                <span class="addr fc71">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+                                            </div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <div class="mid mh112">
-                                            <span class="date">2018-08-31 (수요일)</span>
-                                            <span class="addr fc71">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
-                                        </div>
+                                        <a href="#n">
+                                            <div class="mid mh112">
+                                                <span class="date">2018-08-31 (수요일)</span>
+                                                <span class="addr fc71">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+                                            </div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <div class="mid mh112">
-                                            <span class="date">2018-08-31 (수요일)</span>
-                                            <span class="addr fc71">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
-                                        </div>
+                                        <a href="#n">
+                                            <div class="mid mh112">
+                                                <span class="date">2018-08-31 (수요일)</span>
+                                                <span class="addr fc71">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+                                            </div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <div class="mid mh112">
-                                            <span class="date">2018-08-31 (수요일)</span>
-                                            <span class="addr fc71">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
-                                        </div>
+                                        <a href="#n">
+                                            <div class="mid mh112">
+                                                <span class="date">2018-08-31 (수요일)</span>
+                                                <span class="addr fc71">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+                                            </div>
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="tac mt20">
@@ -376,9 +368,16 @@
                         <div class="srch_wrap on mb0">
                             <div class="srch_area business_srch">
                                 <ul>
-                                    <li>
+                                    <li><!-- 1031 수정 : 검색영역 수정 -->
                                         <strong class="tit">거래처명</strong>
-                                        <input type="text" value="전용지물인테리어">
+                                        <div class="webkit_box">
+                                            <span class="box_flex1">
+                                                <input type="text" placeholder="거래처명 입력">
+                                            </span>
+                                            <span class="box_flex0">
+                                                <a href="#n" class="btn large green mw50">검색</a>
+                                            </span>
+                                        </div>
                                     </li>
                                     <li>
                                         <strong class="tit">조회기간</strong>
@@ -501,33 +500,33 @@
                                 <tbody>
                                     <tr>
                                         <th>상재</th>
-                                        <td>000,000,000</td>
+                                        <td class="tar">000,000,000</td>
                                     </tr>
                                     <tr>
                                         <th>벽지</th>
-                                        <td>000,000,000</td>
+                                        <td class="tar">000,000,000</td>
                                     </tr>
                                     <tr>
                                         <th>창호</th>
-                                        <td>000,000,000</td>
+                                        <td class="tar">000,000,000</td>
                                     </tr>
                                     <tr>
                                         <th>가구</th>
-                                        <td>000,000,000</td>
+                                        <td class="tar">000,000,000</td>
                                     </tr>
                                     <tr>
                                         <th>도어</th>
-                                        <td>000,000,000</td>
+                                        <td class="tar">000,000,000</td>
                                     </tr>
                                     <tr>
                                         <th>기타</th>
-                                        <td>000,000,000</td>
+                                        <td class="tar">000,000,000</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>합계</th>
-                                        <td>000,000,000</td>
+                                        <td class="tar">000,000,000</td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -543,11 +542,11 @@
                                 <tbody>
                                     <tr>
                                         <th class="">수금액(원)</th>
-                                        <td class=""><span>1,000</span>원</td>
+                                        <td class="tar"><span>1,000</span>원</td>
                                     </tr>
                                     <tr>
                                         <th class="">채권잔액</th>
-                                        <td class=""><span>1,000</span>원</td>
+                                        <td class="tar"><span>1,000</span>원</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -620,8 +619,10 @@
                     </div>
                    <div class="b2c_wrap">
                         <div class="total_wrap">
-                            <span class="total">총 할당 : <span>10</span></span>
-                            <span class="call">해피콜 미진행 <input type="text" value="5">건</span>
+                            <ul class="total_ul">
+                                <li><span class="total">총 할당 : <span>10</span></span></li>
+                                <li><span class="call">해피콜 미진행 <input type="text" class="point_input" value="5">건</span><!-- 1031 수정 : class = "point_input" 추가 --></li>
+                            </ul>
                         </div>
                         <ul>
                             <li>

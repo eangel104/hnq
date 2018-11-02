@@ -87,6 +87,9 @@
                                             <span class="box_flex1">
                                                 <input type="text" placeholder="제품명 입력">
                                             </span>
+                                            <span class="box_flex0">
+                                                <a href="#n" class="btn large green mw50">검색</a>
+                                            </span>
                                         </div>
                                     </li>
                                 </ul>
@@ -113,8 +116,8 @@
                                     </div>
                                 </div>
                                 <div class="gray_box">
-                                    <span class="left_txt">*VAT 별도</span>
-                                    <span class="right_txt"><span>23,000</span><span>원</span> </span>
+                                    <span class="left_txt"><span>23,000</span><span>원</span> </span>
+                                    <span class="right_txt">*VAT 별도</span>                                   
                                 </div>
                             </li>
                             <li>
@@ -130,8 +133,8 @@
                                     </div>
                                 </div>
                                 <div class="gray_box">
-                                    <span class="left_txt">*VAT 별도</span>
-                                    <span class="right_txt"><span>23,000</span><span>원</span> </span>
+                                    <span class="left_txt"><span>23,000</span><span>원</span> </span>
+                                    <span class="right_txt">*VAT 별도</span>  
                                 </div>
                             </li>
                             <li>
@@ -147,8 +150,8 @@
                                     </div>
                                 </div>
                                 <div class="gray_box">
-                                    <span class="left_txt">*VAT 별도</span>
-                                    <span class="right_txt"><span>23,000</span><span>원</span> </span>
+                                    <span class="left_txt"><span>23,000</span><span>원</span> </span>
+                                    <span class="right_txt">*VAT 별도</span>  
                                 </div>
                             </li>
                         </ul>
@@ -393,13 +396,13 @@
                                             <li>
                                                 <strong class="tit">출고가능액</strong>
                                                 <div class="gray_box">
-                                                    <span class="left_txt">25,000,000원</span>
+                                                    <span class="right_txt">25,000,000원</span>
                                                 </div>
                                             </li>
                                             <li>
                                                 <strong class="tit">총여신액</strong>
                                                 <div class="gray_box">
-                                                    <span class="left_txt">25,000,000원</span>
+                                                    <span class="right_txt">25,000,000원</span>
                                                 </div>
                                             </li>
                                             <li>
@@ -549,18 +552,50 @@
                                 </div>
                             </dd>
                             <dt class=""><a href="#n">주문내역리스트</a></dt>
-                            <dd class="order_list">
-                                <div class="basic_box">
-                                    <span class="left_txt">제품명 텍스트로 출력</span><span class="right_txt">000</span><br>
-                                    <span class="right_txt">3,000,000원</span>
+                            <dd class="order_list"><!-- 1031 수정 : 마크업 수정 -->
+                                <p class="tit">자재</p>
+                                <div class="basic_box gray">
+                                    <span class="name">제품명 텍스트로 출력</span>
+                                    <span class="clear">
+                                        <span class="fl">000</span>
+                                        <span class="fr">3,000,000원</span>
+                                    </span>
                                 </div>
-                                <div class="basic_box">
-                                    <span class="left_txt">제품명 텍스트로 출력</span><span class="right_txt">000</span><br>
-                                    <span class="right_txt">3,000,000원</span>
+                                <div class="basic_box gray">
+                                    <span class="name">제품명 텍스트로 출력</span>
+                                    <span class="clear">
+                                        <span class="fl">000</span>
+                                        <span class="fr">3,000,000원</span>
+                                    </span>
                                 </div>
-                                <div class="basic_box">
-                                    <span class="left_txt">제품명 텍스트로 출력</span><span class="right_txt">000</span><br>
-                                    <span class="right_txt">3,000,000원</span>
+                                <div class="basic_box gray">
+                                    <span class="name">제품명 텍스트로 출력</span>
+                                    <span class="clear">
+                                        <span class="fl">000</span>
+                                        <span class="fr">3,000,000원</span>
+                                    </span>
+                                </div>
+                                <p class="tit">기타부자재</p>
+                                <div class="basic_box gray">
+                                    <span class="name">제품명 텍스트로 출력</span>
+                                    <span class="clear">
+                                        <span class="fl">000</span>
+                                        <span class="fr">3,000,000원</span>
+                                    </span>
+                                </div>
+                                <div class="basic_box gray">
+                                    <span class="name">제품명 텍스트로 출력</span>
+                                    <span class="clear">
+                                        <span class="fl">000</span>
+                                        <span class="fr">3,000,000원</span>
+                                    </span>
+                                </div>
+                                <div class="basic_box gray">
+                                    <span class="name">제품명 텍스트로 출력</span>
+                                    <span class="clear">
+                                        <span class="fl">000</span>
+                                        <span class="fr">3,000,000원</span>
+                                    </span>
                                 </div>
                                 <div class="order_box">
                                     <span class="left_txt">합계<span>3,000,000</span>원</span>
@@ -591,7 +626,7 @@
                     <div class="section  quotation mb20">
                         <div class="list_num mt10">
                             <span>주방벽 길이</span>
-                            <input type="text" value="" class="mt10" placeholder="숫자만 입력">
+                            <input type="text" value="" class="mt10 tar" placeholder="숫자만 입력">
                         </div>
                     </div>
                     <div class="section gray">
@@ -631,7 +666,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <span>*부가세 포함</span>
+                            <span>*VAT 포함</span>
                         </div>
                         <div class="psbtn_area">
                             <div class="btn_choice">

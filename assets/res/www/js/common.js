@@ -41,6 +41,13 @@ $(document).ready(function(){
 	$('.business_dl .btn_cls').on('click',function(){
 		$(this).parents('.business_dl').removeClass('on');
 	});
+
+	//input, textarea 초기화
+	var iptReset = $('.input_wrap .btn_reset');
+	iptReset.on('click',function(){
+		$(this).siblings('input , textarea').val('');
+	});
+	
 });
 
 //탭메뉴

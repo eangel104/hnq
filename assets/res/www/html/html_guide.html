@@ -85,7 +85,7 @@
 				</div>
 
 				<h2 class="guide_tit" id="titBtn">버튼</h2>
-				<div class="guide_box">
+                <div class="guide_box">
 					<h3 class="guide_tit_s">small</h3>
 					<a href="#n" class="btn small basic">btn small basic</a>
 					<h3 class="guide_tit_s">middle</h3>
@@ -94,10 +94,13 @@
 					<a href="#n" class="btn middle gray">btn middle gray</a>
 					<h3 class="guide_tit_s">large</h3>
 					<a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+					<a href="#n" class="btn large green"><span class="add">더보기</span></a>
 					<h3 class="guide_tit_s">min-width 50 / min-width 80 / min-width 80</h3>
 					<a href="#n" class="btn middle basic mw50">50</a>
 					<a href="#n" class="btn middle basic mw80">80</a>
 					<a href="#n" class="btn middle basic mw90">90</a>
+					<h3 class="guide_tit_s">disable</h3>
+					<a href="#n" class="btn middle orange disable">disable</a>
 				</div>
 
 				<h2 class="guide_tit" id="titSpace">Margin/Padding</h2>
@@ -361,6 +364,12 @@
 					<ul>
 						<li><input type="text" value="input type='text'"></li>
 						<li class="mt10">
+							<span class="input_wrap">
+								<input type="text" value="input type='text'">
+								<a href="#n" class="btn_reset">초기화</a>
+							</span>
+						</li>
+						<li class="mt10">
 							<select>
 								<option>select</option>
 							</select>
@@ -370,6 +379,12 @@
 						</li>
 						<li class="mt10">
 							<textarea class="h160" rows="3" cols="30">textarea</textarea>
+						</li>
+						<li class="mt10">
+							<span class="input_wrap">
+								<textarea class="h160" rows="3" cols="30">textarea</textarea>
+								<a href="#n" class="btn_reset">초기화</a>
+							</span>
 						</li>
 						<li class="mt10">
 							<label class="chk_style">
