@@ -180,6 +180,17 @@
 	var GLOBAL_USER_TYPE = "GLOBAL_USER_TYPE";
 	var STORAGE_USER_ID = "STORAGE_USER_ID";
 	var STORAGE_AGREE_TO_TERMS = "STORAGE_AGREE_TO_TERMS";
+
+	function redirectToMain(){
+		// 사용자 타입 저장
+		// TODO: 한화에서 유저 타입 받으면 수정 필
+		// 현재는 sales(영업사원), construction (시공사)
+		var userType = $('#login_id').val().startsWith('s') ?  "sales" : "construction";
+		M.data.storage(GLOBAL_USER_TYPE, userType);
+		M.page.html("L_01_" + (userType === "sales" ? "08":"09") + ".html", {
+			action: "CLEAR_TOP"
+		});
+	}
 	
 	/**
 	 * 비밀먼호 유효 검증 함수
@@ -193,8 +204,12 @@
 	$(document).ready(function(){
 		// ********************* TODO: 디버그 단추. 배포 전 반드시 지우기 *********************
 		$("#btn_debug_popup").off("click").on("click", function(){
-			M.data.storage(STORAGE_AGREE_TO_TERMS, "false");
-			popupOpen("#agreepopup");
+			M.data.removeStorage(STORAGE_AGREE_TO_TERMS);
+			M.pop.instance({
+				message: STORAGE_AGREE_TO_TERMS + " 제거 완료",
+				showtime: "SHORT"
+			});
+			// popupOpen("#agreepopup");
 		});
 		// ********************* TODO: 디버그 단추. 배포 전 반드시 지우기 *********************
 
@@ -215,15 +230,7 @@
 			if ($(this).hasClass("orange")) {
 				M.data.storage(STORAGE_AGREE_TO_TERMS, "true");
 				popupClose("#agreepopup");
-
-				// 사용자 타입 저장
-				// TODO: 한화에서 유저 타입 받으면 수정 필
-				// 현재는 sales(영업사원), construction (시공사)
-				var userType = $('#login_id').val().startsWith('s') ?  "sales" : "construction";
-				M.data.storage(GLOBAL_USER_TYPE, userType);
-				M.page.html("L_01_" + (userType === "sales" ? "08":"09") + ".html", {
-					action: "CLEAR_TOP"
-				});
+				redirectToMain();
 			} else {
 				// Do nothing..
 			}
@@ -245,23 +252,12 @@
 				path: "svy/lst/inquireSvrList",
 				method: "POST",
 				timeout: 5000,
-				userData : {
-					// 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
-					service_id : 'appinfo',
-					action     : 'list',
-				},
 				// data: {
 				// 	user_id: "",
 				// 	user_pw: "",
 				// },
 				success: function(recevedData, setting) {
-					console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
-
-					// 약관동의 팝업
-					if (M.data.storage(STORAGE_AGREE_TO_TERMS) !== "true") {
-						popupOpen("#agreepopup");
-					}
-
+					// console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
 					// 아이디 저장
 					if ($('#chk_id_save').prop('checked')) {
 						M.data.storage(STORAGE_USER_ID, $('#login_id').val());
@@ -269,11 +265,12 @@
 						M.data.removeStorage(STORAGE_USER_ID);
 					}
 
-					console.log(M.data.global("aslkdjfs9df74sdf924lfkhsdf9sdf"));
-					console.log(M.data.global("service_id"));
-					console.log(M.data.global("list"));
-
-					
+					// 약관동의 팝업
+					if (M.data.storage(STORAGE_AGREE_TO_TERMS) !== "true") {
+						popupOpen("#agreepopup");
+					} else {
+						redirectToMain();
+					}
 				},
 				error: function(errCode, errMsg, setting) {
 					console.log("** onError", errCode, errMsg, setting);
