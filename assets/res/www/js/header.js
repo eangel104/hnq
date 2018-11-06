@@ -36,7 +36,7 @@ $(document).ready(function(){
             // console.log(path,$($el).find("a").data("eventPage"));
 
             if(path === $($el).find("a").data("eventPage")){
-                $($el).find("a").removeAttr("data-event-page");
+                $($el).find("a").removeAttr("data-event-page").addClass("gnb_on");
                 // console.log($($el).find("a"),$($el)[0].outerHTML);
                 return $($el)[0].outerHTML;
             }else{
