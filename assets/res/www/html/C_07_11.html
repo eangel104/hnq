@@ -6,8 +6,6 @@
 <title>한화 Home &amp; Q</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -16,11 +14,9 @@
 
 	<!-- header -->
 	<div class="header">
-		<h1 class="page_title">시공</h1>
+		<!-- <h1 class="page_title">시공</h1>
 		<a href="#n" class="btn_home">home</a>
 		<a href="#n" class="btn_gnb">전체메뉴</a>
-		
-		<!-- gnb -->
 		<div class="gnb">
 			<ul>
 				<li class="green"><a href="#n">실측관리</a></li>
@@ -28,9 +24,7 @@
 				<li class="setting"><a href="#n"><span>설정</span></a></li>
 			</ul>
 		</div>
-		<!-- //gnb -->
-
-		<a href="#n" class="page_prev">이전페이지</a>
+		<a href="#n" class="page_prev">이전페이지</a> -->
 	</div>
 
 	<!-- //header -->
@@ -44,7 +38,7 @@
 			
 			<div class="accept_wrap">
 				<strong class="date">2018-08-31</strong>
-				<a href="#n" class="btn middle orange fs13">신규예약접수</a>
+				<a href="#n" class="btn middle orange fs13" data-event-page="C_07_13.html">신규예약접수</a>
 			</div>
 			
 			<div class="section">
@@ -137,7 +131,7 @@
 									<span class="order_num">0000000000</span>
 							</div>
 							<div class="mid">
-								<span class="num">[TI20160523000000] 비거주(개보수)</span>
+								<span class="num" >[TI20160523000000] 비거주(개보수)</span>
 								<span class="addr">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
 							</div>
 						</a>
@@ -175,6 +169,56 @@
 
 </div>
 <!-- //wrap -->
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/eventPageNav.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
 
+    //페이지 이동시 전달할 데이터
+    var pageData = {}
+
+    //이전페이지 에서 받은 데이터 
+    // var data = M.data.param();
+    
+    $(document).ready(function(){
+        $(".header").header({
+            type:"construction",
+            title:"시공",
+            headerType:"menu",
+            callback:function(){
+                pageNav(pageData);
+            }
+        });
+    });
+
+    // 통신
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>

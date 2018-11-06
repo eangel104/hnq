@@ -6,8 +6,6 @@
 <title>한화 Home &amp; Q</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -16,8 +14,8 @@
 
 	<!-- header -->
 	<div class="header">
-		<h1 class="page_title">현장이슈</h1>
-		<a href="#n" class="page_prev">이전페이지</a>
+		<!-- <h1 class="page_title">현장이슈</h1>
+		<a href="#" class="page_prev">이전페이지</a> -->
 	</div>
 
 	<!-- //header -->
@@ -30,7 +28,7 @@
 			<!-- 본문내용 -->
 			<div class="section">
 				<div class="tac">
-					<a href="#n" class="btn large orange">현장이슈 등록</a>
+					<a href="#" class="btn large orange" data-event-page="C_07_26.html">현장이슈 등록</a>
 				</div>
 				
 				<div class="list_num mt30">
@@ -43,10 +41,10 @@
 							<span class="orange_txt">시공이슈</span>
 							<!-- TODO : 기획서 UX Scenario_20181012 버전에서 삭제됨 -->
 							<!--<span class="issue_name">벽지손상</span>-->
-							<a href="#n" class="btn small gray mw50">삭제</a>
+							<a href="#" class="btn small gray mw50">삭제</a>
 						</div>
 						<div class="issue_con">
-							<a href="#n">
+							<a href="#">
 								<span>철거 중 벽지 손상철거 중 벽지 손상철거 중 벽지 손상철거 중 벽지 손상철거 중 벽지 손상</span>
 							</a>	
 						</div>
@@ -56,10 +54,10 @@
 							<span class="orange_txt">시공이슈</span>
 							<!-- TODO : 기획서 UX Scenario_20181012 버전에서 삭제됨 -->
 							<!--<span class="issue_name">벽지손상</span>-->
-							<a href="#n" class="btn small gray mw50">삭제</a>
+							<a href="#" class="btn small gray mw50">삭제</a>
 						</div>
 						<div class="issue_con">
-							<a href="#n">
+							<a href="#">
 								<span>철거 중 벽지 손상</span>
 							</a>	
 						</div>
@@ -69,10 +67,10 @@
 							<span class="orange_txt">시공이슈</span>
 							<!-- TODO : 기획서 UX Scenario_20181012 버전에서 삭제됨 -->
 							<!--<span class="issue_name">벽지손상</span>-->
-							<a href="#n" class="btn small gray mw50">삭제</a>
+							<a href="#" class="btn small gray mw50">삭제</a>
 						</div>
 						<div class="issue_con">
-							<a href="#n">
+							<a href="#">
 								<span>철거 중 벽지 손상</span>
 							</a>	
 						</div>
@@ -82,10 +80,10 @@
 							<span class="orange_txt">시공이슈</span>
 							<!-- TODO : 기획서 UX Scenario_20181012 버전에서 삭제됨 -->
 							<!--<span class="issue_name">벽지손상</span>-->
-							<a href="#n" class="btn small gray mw50">삭제</a>
+							<a href="#" class="btn small gray mw50">삭제</a>
 						</div>
 						<div class="issue_con">
-							<a href="#n">
+							<a href="#">
 								<span>철거 중 벽지 손상</span>
 							</a>	
 						</div>
@@ -99,6 +97,79 @@
 
 </div>
 <!-- //wrap -->
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/eventPageNav.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
 
+    //페이지 이동시 전달할 데이터
+    var pageData = {}
+
+    //이전페이지 에서 받은 데이터 
+    // var data = M.data.param();
+    
+    $(document).ready(function(){
+        $(".header").header({
+            type:"construction",
+            title:"현장이슈",
+            callback:function(){
+                pageNav(pageData);
+            }
+        });
+    });
+
+    // 통신
+    // M.net.http.send({
+    //     server: "TEST_SERVER",
+    //     path: "svy/lst/inquireSvrList",
+    //     method: "POST",
+    //     timeout: 5000,
+    //     userData : {
+    //         // 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
+    //         service_id : 'appinfo',
+    //         action     : 'list',
+    //     }, // request data
+    //     success: function(recevedData, setting) {
+    //         console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
+    //         // TODO : did success control here
+    //     },
+    //     error: function(errCode, errMsg, setting) {
+    //         console.log("** onError", errCode, errMsg, setting);
+    //         // TODO : error control here
+    //     },
+    //     indicator: {
+    //         show : true,
+    //         message : '통신중입니다.',
+    //         cancelable : false
+    //     }
+    // });
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
