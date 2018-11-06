@@ -88,6 +88,7 @@ input.point_input{border:1px solid #fd6702;}
 .gnb ul li:nth-child(3n+1){width:33.4%;}
 .gnb ul li:nth-child(3n){padding-right: 0px;}
 .gnb ul li a{display:block;padding:10px 0;border-radius: 3px; text-align:center;box-sizing:border-box;}
+.gnb ul li a.gnb_on{ background-color: #d7d7d7 !important;border: 1px solid #000 !important;padding: 9px 0 !important;}
 .gnb ul li.blue a{background: #dbecf6;}
 .gnb ul li.yellow a{background: #f4edda;}
 .gnb ul li.pink a{background: #fae5f4;}
