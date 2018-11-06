@@ -63,28 +63,28 @@
 
 			<ul class="bbs_list">
 				<li>
-					<a href="#n">
+					<a href="#" data-event-page="L_01_11.html" data-event-data='{"no":1}'>
 						<span class="cate">[공지분류]</span>
 						<span class="date">2018-09-01</span>
 						<p>20. 바닥에 바닥재 곰팡이가 곰팡이가 바닥에 바닥재 곰팡이가 곰팡이가</p>
 					</a>
 				</li>
 				<li>
-					<a href="#n">
+					<a href="#" data-event-page="L_01_11.html" data-event-data='{"no":2}'>
 						<span class="cate">[공지분류]</span>
 						<span class="date">2018-09-01</span>
 						<p>20. 바닥에 바닥재 곰팡이가 곰팡이가 바닥에 바닥재 곰팡이가 곰팡이가</p>
 					</a>
 				</li>
 				<li>
-					<a href="#n">
+					<a href="#" data-event-page="L_01_11.html" data-event-data='{"no":3}'>
 						<span class="cate">[공지분류]</span>
 						<span class="date">2018-09-01</span>
 						<p>20. 바닥에 바닥재 곰팡이가 곰팡이가 바닥에 바닥재 곰팡이가 곰팡이가</p>
 					</a>
 				</li>
 				<li>
-					<a href="#n">
+					<a href="#" data-event-page="L_01_11.html" data-event-data='{"no":4}'>
 						<span class="cate">[공지분류]</span>
 						<span class="date">2018-09-01</span>
 						<p>20. 바닥에 바닥재 곰팡이가 곰팡이가 바닥에 바닥재 곰팡이가 곰팡이가</p>
@@ -113,13 +113,19 @@
 <script type="text/javascript">
     "use strict";
     //TODO: 개발 미비
+    //페이지 이동시 전달할 데이터
+    var pageData = {}
+
+    //이전페이지 에서 받은 데이터 
+    var data = M.data.param();
+
     $(document).ready(function(){
         $(".header").header({
             type:"construction",
             title:"공지사항",
             headerType:"menu",
             callback:function(){
-                pageNav();
+                pageNav(pageData);
             }
         });
     });

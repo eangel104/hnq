@@ -67,7 +67,7 @@
 				</div>
 
 				<div class="tac mt20">
-					<a href="#n" class="btn large basic"><span class="add">목록</span></a>
+					<a href="#" class="btn large basic" data-event-page="L_01_10.html"><span class="add">목록</span></a>
 				</div>
 
 			</div>
@@ -88,12 +88,18 @@
 <script type="text/javascript">
     "use strict";
     //TODO: 개발 미비
+    //페이지 이동시 전달할 데이터
+    var pageData = {}
+
+    //이전페이지 에서 받은 데이터 
+    var data = M.data.param();
+
     $(document).ready(function(){
         $(".header").header({
             type:"construction",
             title:"공지사항",
             callback:function(){
-                pageNav();
+                pageNav(pageData);
             }
         });
     });

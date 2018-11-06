@@ -113,22 +113,22 @@
 					<a href="#" class="btn_add" data-event-page="L_01_10.html">공지사항 더보기</a>
 				</div>
 				<ul class="notice_list">
-					<li>
+					<li data-event-page="L_01_11.html">
 					    <span class="type">공지</span>
 						<a href="#n">바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가곰팡이가</a>
 						<span class="date">2018-09-01</span>
 					</li>
-					<li>
+					<li data-event-page="L_01_11.html">
 					    <span class="type">공지</span>
 						<a href="#n">바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가</a>
 						<span class="date">2018-09-01</span>
 					</li>
-					<li>
+					<li data-event-page="L_01_11.html">
 					    <span class="type">공지</span>
 						<a href="#n">바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가</a>
 						<span class="date">2018-09-01</span>
 					</li>
-					<li>
+					<li data-event-page="L_01_11.html">
 					    <span class="type">공지</span>
 						<a href="#n">바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가</a>
 						<span class="date">2018-09-01</span>
@@ -153,12 +153,19 @@
 <script type="text/javascript">
     "use strict";
     //TODO: 개발 미비
+    //페이지 이동시 전달할 데이터
+    var pageData = {
+    }
+
+    //이전페이지 에서 받은 데이터 
+    var data = M.data.param();
+
     $(document).ready(function(){
         $(".header").header({
             type:"sales",
             headerType:"main",
             callback:function(){
-                pageNav();
+                pageNav(pageData);
             }
         });
     });

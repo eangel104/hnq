@@ -1,6 +1,6 @@
 /**
 * @author dh.lee@ttb.co.kr
-* @version 0.1
+* @version 0.2
 * @param {object} pageData 페이지 이동시 전달할 데이터
 * @since 2018.10.22
 * @description 페이지 이동 이벤트 통합 관리
@@ -8,6 +8,10 @@
 * data-event-page : 이동할 페이지 정보 
 * data-event-animat : 이동시 에니메이션 효과 정보
 * data-event-back : 이전페이지로 이동
+* version 0.2
+* - data-event-data 기능 추가 구현
+*   주의사항 data-event-data='{"no":1}' 형식처럼 '' 안에 데이터를 넣고 키는 "" 으로 감싸야만 한다. 
+*   그래야 $(this).data("eventData") 호출시 객체로 자동 변환되어 넘어 온다. 
 */
 function pageNav(pageData) {
     // DEFALUT : 왼쪽으로 이동되는 슬라이드 효과(SLIDE_LEFT)
@@ -131,8 +135,9 @@ function pageNav(pageData) {
             $(this).off().on("click",function(e){
                 console.log("Nav eventPage::",$(this).data("eventPage"),pageInfo[$(this).data("eventPage")]);
                 console.log("Nav eventAnimat::",animation[$(this).data("eventAnimat")]);
+                console.log("Nav eventData::",$(this).data("eventData"));
                 var option = { 
-                    param:$.extend({},{ 'NAME' : $(this).data("eventPage")},pageData),
+                    param:$.extend({},{ 'NAME' : $(this).data("eventPage")},pageData,$(this).data("eventData")),
                     animation : (animation[$(this).data("eventAnimat")])?animation[$(this).data("eventAnimat")]:animation["def"], 
                     action : 'NEW_SCR',
                     // orient : 'PORT'
