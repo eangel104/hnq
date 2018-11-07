@@ -6,8 +6,6 @@
 <title>한화 Home &amp; Q</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -16,9 +14,7 @@
 
 	<!-- header -->
 	<div class="header">
-		<h1 class="page_title">시공상세</h1>
-		
-		<!-- gnb -->
+		<!-- <h1 class="page_title">시공상세</h1>
 		<div class="gnb">
 			<ul>
 				<li class="green"><a href="#n">실측관리</a></li>
@@ -26,9 +22,7 @@
 				<li class="setting"><a href="#n"><span>설정</span></a></li>
 			</ul>
 		</div>
-		<!-- //gnb -->
-
-		<a href="#n" class="page_prev">이전페이지</a>
+		<a href="#n" class="page_prev">이전페이지</a> -->
 	</div>
 
 	<!-- //header -->
@@ -73,16 +67,16 @@
 					</li>
 				</ul>
 				<div class="mt10 tac">
-					<a href="#n" class="btn middle basic mw80">실측지</a>
-					<a href="#n" class="btn middle basic mw80 ml10">현장</a>
-					<a href="#n" class="btn middle basic mw80 ml10">제품</a>
+					<a href="#" class="btn middle basic mw80" data-event-page="C_07_22.html">실측지</a>
+					<a href="#" class="btn middle basic mw80 ml10" data-event-page="C_07_23.html">현장</a>
+					<a href="#" class="btn middle basic mw80 ml10" data-event-page="C_07_24.html">제품</a>
 				</div>
 				
 				<hr class="mt30">
 				
 				<div class="tit_btn big_btn">
 					<h3 class="tit_type01">현장진행등록</h3>
-					<a href="#n" class="btn middle orange btn_r fs13 mw90">현장이슈</a>
+					<a href="#n" class="btn middle orange btn_r fs13 mw90" data-event-page="C_07_25.html">현장이슈</a>
 				</div>
 				
 				<dl class="accordion mt10">
@@ -185,6 +179,80 @@
 
 </div>
 <!-- //wrap -->
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/eventPageNav.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
 
+    //페이지 이동시 전달할 데이터
+    var pageData = {}
+
+    //이전페이지 에서 받은 데이터 
+    // var data = M.data.param();
+    
+    $(document).ready(function(){
+        $(".header").header({
+            type:"construction",
+            title:"시공상세",
+            headerType:"menu",
+            callback:function(){
+                pageNav(pageData);
+            }
+        });
+    });
+
+    // 통신
+    // M.net.http.send({
+    //     server: "TEST_SERVER",
+    //     path: "svy/lst/inquireSvrList",
+    //     method: "POST",
+    //     timeout: 5000,
+    //     userData : {
+    //         // 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
+    //         service_id : 'appinfo',
+    //         action     : 'list',
+    //     }, // request data
+    //     success: function(recevedData, setting) {
+    //         console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
+    //         // TODO : did success control here
+    //     },
+    //     error: function(errCode, errMsg, setting) {
+    //         console.log("** onError", errCode, errMsg, setting);
+    //         // TODO : error control here
+    //     },
+    //     indicator: {
+    //         show : true,
+    //         message : '통신중입니다.',
+    //         cancelable : false
+    //     }
+    // });
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>

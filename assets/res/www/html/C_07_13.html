@@ -7,8 +7,6 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
 <link rel="stylesheet" type="text/css" href="../css/content2.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
@@ -17,11 +15,9 @@
 
 	<!-- header -->
 	<div class="header">
-		<h1 class="page_title">신규예약접수</h1>
+		<!-- <h1 class="page_title">신규예약접수</h1>
 		<a href="#n" class="btn_home">home</a>
 		<a href="#n" class="btn_gnb">전체메뉴</a>
-
-		<!-- gnb -->
 		<div class="gnb">
 			<ul>
 				<li class="green"><a href="#n">실측관리</a></li>
@@ -29,9 +25,7 @@
 				<li class="setting"><a href="#n"><span>설정</span></a></li>
 			</ul>
 		</div>
-		<!-- //gnb -->
-
-		<a href="#n" class="page_prev">이전페이지</a>
+		<a href="#n" class="page_prev">이전페이지</a> -->
 	</div>
 
 	<!-- //header -->
@@ -68,7 +62,7 @@
 								</div>
 								<div class="bot">
 									<span class="company">서울 창호 시스템</span>
-									<a href="#n" class="btn small basic">주문접수</a>
+									<a href="#n" class="btn small basic" data-event-page="C_07_14.html">주문접수</a>
 								</div>
 							</li>
 							
@@ -82,19 +76,122 @@
 					<!-- 본문내용 -->
 					</div>
 				<div id="tab1-2" class="panel">
-					tab content2
+					<!-- 본문내용 -->
+					<div class="section">
+						<div class="list_num">
+							<span><em>12</em>건 / 총 <em>12</em>건</span>
+						</div>
+						<ul class="survey_list">
+							<li>
+                                <div class="division type02">
+                                    <span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
+                                    <span class="rignt_txt">신규주문</span>
+                                </div>
+                                <div class="top">
+                                    <span class="date">2018-08-31</span>
+                                    <span class="order_num">0000000000</span>
+                                </div>
+                                <div class="mid order">
+                                    <span class="num">[TI20160523000000] 비거주(개보수)</span>
+                                    <span class="addr">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+                                </div>
+                                <div class="bot">
+                                    <span class="company">서울 창호 시스템</span>
+                                    <span class="charge"><span class="split_g">김프로(01012344321)</span><span data-event-page="C_07_17.html">4명</span></span>
+                                </div>
+                            </li>
+						</ul>
+						<div class="tac mt20">
+							<a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+						</div>
+					</div>
+
+					<hr>
+					<!-- 본문내용 -->
 				</div>
 			</div>
-
-			<script type="text/javascript">
-				$('#tab1').fnTab();
-			</script>
 		</div>
 	</div>
 	<!-- //content -->
 
 </div>
 <!-- //wrap -->
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/eventPageNav.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
 
+    //페이지 이동시 전달할 데이터
+    var pageData = {}
+
+    //이전페이지 에서 받은 데이터 
+    // var data = M.data.param();
+    
+    $(document).ready(function(){
+        $(".header").header({
+            type:"construction",
+            title:"신규예약접수",
+            headerType:"menu",
+            callback:function(){
+                pageNav(pageData);
+            }
+        });
+
+        $('#tab1').fnTab();
+    });
+
+    // 통신
+    // M.net.http.send({
+    //     server: "TEST_SERVER",
+    //     path: "svy/lst/inquireSvrList",
+    //     method: "POST",
+    //     timeout: 5000,
+    //     userData : {
+    //         // 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
+    //         service_id : 'appinfo',
+    //         action     : 'list',
+    //     }, // request data
+    //     success: function(recevedData, setting) {
+    //         console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
+    //         // TODO : did success control here
+    //     },
+    //     error: function(errCode, errMsg, setting) {
+    //         console.log("** onError", errCode, errMsg, setting);
+    //         // TODO : error control here
+    //     },
+    //     indicator: {
+    //         show : true,
+    //         message : '통신중입니다.',
+    //         cancelable : false
+    //     }
+    // });
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
