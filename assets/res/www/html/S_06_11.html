@@ -43,7 +43,7 @@
 			
 			<div class="accept_wrap">
 				<strong class="date">2018-08-31</strong>
-				<a href="#n" class="btn middle orange" id="booking">신규예약접수</a>
+				<a href="#n" class="btn middle orange" data-event-page="S_06_14.html">신규예약접수</a>
 			</div>
 			
 			<div class="section">
@@ -188,11 +188,6 @@
             callback:function(){
                 pageNav();
             }
-		});
-		
-		// 신규예약접수
-		$("#booking").off("click").on("click", function() {
-			M.page.html("S_06_14.html");
 		});
 	});
 	
