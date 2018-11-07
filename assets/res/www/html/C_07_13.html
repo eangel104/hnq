@@ -46,7 +46,7 @@
 						<div class="list_num">
 							<span><em>12</em>건 / 총 <em>12</em>건</span>
 						</div>
-						<ul class="survey_list">
+						<ul id="list1" class="survey_list">
 							<li>
 								<div class="division type02">
                                     <span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
@@ -68,7 +68,7 @@
 							
 						</ul>
 						<div class="tac mt20">
-							<a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+							<a id="listAdd1" href="#n" class="btn large basic"><span class="add">더보기</span></a>
 						</div>
 					</div>
 
@@ -81,11 +81,11 @@
 						<div class="list_num">
 							<span><em>12</em>건 / 총 <em>12</em>건</span>
 						</div>
-						<ul class="survey_list">
+						<ul id="list2" class="survey_list">
 							<li>
                                 <div class="division type02">
                                     <span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
-                                    <span class="rignt_txt">신규주문</span>
+                                    <span class="rignt_txt">주문접수</span>
                                 </div>
                                 <div class="top">
                                     <span class="date">2018-08-31</span>
@@ -102,7 +102,7 @@
                             </li>
 						</ul>
 						<div class="tac mt20">
-							<a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+							<a id="listAdd2" href="#n" class="btn large basic"><span class="add">더보기</span></a>
 						</div>
 					</div>
 
@@ -141,6 +141,77 @@
         });
 
         $('#tab1').fnTab();
+
+        //검색 결과 리스트로 생성하는 함수
+        function listMake(type,param){
+            param = [{
+                type: "창호",
+                companyName:"현대인테리어",
+                state:"주문접수",
+                date:"2018-08-31",
+                orderNum:"000000000",
+                num:"[TI20160523000000] 비거주(개보수)",
+                addr:"서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호",
+                company:"서울 창호 시스템",
+                charge:"김프로(01012344321)",
+                workmanNum:"4"
+            }];
+
+            //태그 생성 
+            //TODO : 미구현 목록 
+            /*
+            */
+            function makeTag(type,data){
+                var tag = $('<li>\
+                    <div class="division type02">\
+                        <span class="left_txt"><span class="split_w">'+data.type+'</span><span>'+data.companyName+'</span></span>\
+                        <span class="rignt_txt">'+data.state+'</span>\
+                    </div>\
+                    <div class="top">\
+                        <span class="date">'+data.date+'</span>\
+                        <span class="order_num">'+data.orderNum+'</span>\
+                    </div>\
+                    <div class="mid order">\
+                        <span class="num">'+data.num+'</span>\
+                        <span class="addr">'+data.addr+'</span>\
+                    </div>\
+                    <div class="bot">\
+                        <span class="company">'+data.company+'</span>\
+                        <span class="charge"><span class="split_g">'+data.charge+'</span><span data-event-page="C_07_17.html">'+data.workmanNum+'명</span></span>\
+                    </div>\
+                </li>');
+                
+                if(type == "list1"){
+                    $(tag).find(".bot .charge").remove();
+                    $(tag).find(".bot").append('<a href="#n" class="btn small basic" data-event-page="C_07_14.html">주문접수</a>');
+                }
+
+                return tag;
+            };
+            
+            //태그 랜더링 
+            if(type == "list1"){
+                $(param).each(function(index,el){
+                    $("#list1").append(makeTag(type,el));
+                });
+            }
+            if(type == "list2"){
+                $(param).each(function(index,el){
+                    $("#list2").append(makeTag(type,el));
+                });
+            }
+        };
+
+
+        listMake("list1");
+        listMake("list2");
+        // 더보기 버튼 클릭시 액션
+        $("#listAdd1").off("click").on("click",function(){
+    
+        });
+        $("#listAdd2").off("click").on("click",function(){
+    
+        });
     });
 
     // 통신
