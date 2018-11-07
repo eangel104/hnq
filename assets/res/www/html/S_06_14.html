@@ -69,7 +69,7 @@
 					</table>
 				</div>
                 <!-- //table -->
-                <div class="gray_box dark mt10"><!-- 1031 수정 : 실측자 내용 box 스타일로 수정 -->
+                <div class="gray_box dark mt10" hidden><!-- 1031 수정 : 실측자 내용 box 스타일로 수정 -->
 					<span class="left_txt">실측자</span>
 					<span class="right_txt">김프로(010 - 1234 - 4321)</span>
 				</div>
@@ -90,14 +90,14 @@
                                 <input type="radio" name="rdo_chk01">
                                 <span class="chk_txt webkit_box">
                                     <strong class="box_flex1 name">나프로 팀장</strong>
-                                    <span class="mr10 box_flex0 tel">010-1234-5678</span>
+                                    <span class="mr10 box_flex0 tel">010-4444-5678</span>
                                 </span>
                             </label>
                             <label class="chk_style">
                                 <input type="radio" name="rdo_chk01">
                                 <span class="chk_txt webkit_box">
                                     <strong class="box_flex1 name">다프로 팀장</strong>
-                                    <span class="mr10 box_flex0 tel">010-1234-5678</span>
+                                    <span class="mr10 box_flex0 tel">010-3333-2222</span>
                                 </span>
                             </label>
                         </li>
@@ -131,6 +131,16 @@
             }
 		});
 
+		// 실측자 정보 변경
+		// FIXME: 전화 클릭시 라벨이 선택됨 -> PM한테 연락함
+		$(".srch_area strong.name").off("click").on("click", function() {
+			var status = $(".gray_box.dark.mt10");
+
+			status.show();
+			status.children(".left_txt").text($(this).text());
+			status.children(".right_txt").text($(this).next(".tel").text());
+		});
+
 		// 저장
 		$("#btn_confirm").off("click").on("click", function(e) {
 			//
@@ -139,14 +149,26 @@
 				buttons: ["취소", "확인"],
 				callback: function(index) {
 					if(index === 1) {
-						// TODO: API 연동 후 토스트 메세지 삭제
-						M.pop.instance({
-							message: "저장했습니다.",
-							showtime: "SHORT"
+						// TODO: API 통신
+						M.net.http.send({
+							server: "TEST_SERVER",
+							path: "svy/lst/inquireSvrList",
+							method: "POST",
+							timeout: 5000,
+							success: function(recevedData, setting) {
+								// TODO : did success control here
+								M.pop.instance("성공");
+							},
+							error: function(errCode, errMsg, setting) {
+								// TODO : error control here
+								M.pop.instance("실패");
+							},
+							indicator: {
+								show : true,
+								message : '통신중입니다.',
+								cancelable : false
+							}
 						});
-
-						// 저장 후 닫기
-						M.page.back();
 					} else {
 						// Do Nothing..
 					}
@@ -160,8 +182,10 @@
 	});
 	
     M.onReady(function(e) {
-        //ready event handle code here
-        console.log("onReady");
+		// 고객센터 전화걸기
+		$(".srch_area span.tel").off('click').on('click', function(){
+			M.sys.call($(this).text().replace('-', ''));
+		});
     }).onHide(function(e){
         //hide event handle code here
         console.log("onHide");

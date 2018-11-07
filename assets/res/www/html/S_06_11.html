@@ -43,7 +43,7 @@
 			
 			<div class="accept_wrap">
 				<strong class="date">2018-08-31</strong>
-				<a href="#n" class="btn middle orange" data-event-page="S_06_14.html">신규예약접수</a>
+				<a href="#n" class="btn middle orange" data-event-page="S_06_13.html">신규예약접수</a>
 			</div>
 			
 			<div class="section">
@@ -189,7 +189,14 @@
             }
 		});
 
-		$(".accept_wrap .date").text(moment().format("YYYY-MM-DD hh:mm:ss"));
+		// 상단 날짜 표시
+		$(".accept_wrap .date").text(moment().format("YYYY-MM-DD"));
+
+		// 검색 초기화
+		$(".srch_control .btn_reset").off("click").on("click", function() {
+			$(".srch_area li input").val("");
+			$(".srch_area li select").val("전체");
+		});
 	});
 	
     M.onReady(function(e) {
