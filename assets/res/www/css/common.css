@@ -88,7 +88,7 @@ input.point_input{border:1px solid #fd6702;}
 .gnb ul li:nth-child(3n+1){width:33.4%;}
 .gnb ul li:nth-child(3n){padding-right: 0px;}
 .gnb ul li a{display:block;padding:10px 0;border-radius: 3px; text-align:center;box-sizing:border-box;}
-.gnb ul li a.gnb_on{ background-color: #d7d7d7 !important;border: 1px solid #000 !important;padding: 9px 0 !important;}
+.gnb ul li a.gnb_on{    background-color: #d7d7d7 !important;border: 1px solid #000 !important;padding: 9px 0 !important;}
 .gnb ul li.blue a{background: #dbecf6;}
 .gnb ul li.yellow a{background: #f4edda;}
 .gnb ul li.pink a{background: #fae5f4;}
@@ -156,12 +156,12 @@ input.point_input{border:1px solid #fd6702;}
 .tit_btn .tit_type01{margin-top:0;}
 .tit_btn .btn_add{position:absolute;top:6px;right:2px;}
 .tit_btn .btn_r{position:absolute;top:0;right:0;}
-.btn_cell{display:block;position:relative;padding:0 10px 0 0;font-size:13px;color:#222;}
-.btn_cell:after{content:"";display:block;position:absolute;top:50%;right:0;width:6px;height:6px;margin-top:-3px;border-right:1px solid #bababa;border-bottom:1px solid #bababa;transform:rotate(-45deg);}
+.btn_cell{display:block;position:relative;width: 12px;height: 12px;float: right;font-size:13px;color:#222;}
+.btn_cell:after{content:"";display:block;position:absolute;top:50%;right:0;width:8px;height:8px;border-right:1px solid #bababa;border-bottom:1px solid #bababa;transform:rotate(-45deg);}
 
 .point01{color:#fc761a !important;}/* 오렌지 */
 .point02{color:#717171 !important;}/* 회색 */
-
+.red{color:red !important}
 .webkit_box{display:-webkit-box !important;}
 .box_flex0{display:block;-webkit-box-flex:0;}
 .box_flex1{display:block;-webkit-box-flex:1;width:100%;}

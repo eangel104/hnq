@@ -100,8 +100,8 @@
 .survey_list li .mid .schedule_name{display:block;font-family:'noto-medium';color:#333;}
 .survey_list li .mid .mit_name{display:block;font-family:'noto-medium';color:#717171;}
 .survey_list li .mid .mit_time{display:block;font-family:'noto-medium';color:#717171;}
-.survey_list li .mid:before{content:'';position:absolute;top:50%;right:15px;width:30px;height:30px;margin-top:-15px;border:1px solid #d7d7d7;border-radius:3px;box-sizing:border-box;}
-.survey_list li .mid:after{content:'';position:absolute;top:50%;right:26px;width:10px;height:10px;margin-top:-6px;border-right:2px solid #666;border-bottom:2px solid #666;transform:rotate(-45deg);}
+.survey_list li .mid .go_list{content:'';position:absolute;top:50%;right:15px;width:30px;height:30px;margin-top:-15px;border:1px solid #d7d7d7;border-radius:3px;box-sizing:border-box;}
+.survey_list li .mid .go_list:after{content:'';position:absolute;top:50%;left:5px;width:10px;height:10px;margin-top:-6px;border-right:2px solid #666;border-bottom:2px solid #666;transform:rotate(-45deg);}
 .survey_list li .mid.full{padding:15px 10px;}
 .survey_list li .mid.order{padding:0px 15px 10px 15px;}
 .survey_list li .mid.full:after,.survey_list li .mid.order:after{display:none;}
@@ -160,13 +160,14 @@
 .issue_list li .issue_tit .orange_txt{font-size:13px;color:#fd6702;}
 .issue_list li .issue_tit .issue_name{margin-left:5px;color:#222;}
 .issue_list li .issue_tit .btn{position:absolute;top:7px;right:15px;}
-.issue_list li .issue_con a{display:block;padding:15px;background:#f5f5f5;color:#717171;}
-.issue_list li .issue_con a span{display:block;position:relative;padding-right:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.issue_list li .issue_con a span:after{content:"";display:block;position:absolute;top:50%;right:1px;width:6px;height:6px;margin-top:-3px;border-right:1px solid #bababa;border-bottom:1px solid #bababa;transform:rotate(-45deg);}
+.issue_list li .issue_con div{display:block;padding:15px;background:#f5f5f5;color:#717171;}
+.issue_list li .issue_con div span{display:inline-block;position:relative;width: 90%;padding-right:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/* .issue_list li .issue_con div span:after{content:"";display:block;position:absolute;top:50%;right:1px;width:6px;height:6px;margin-top:-3px;border-right:1px solid #bababa;border-bottom:1px solid #bababa;transform:rotate(-45deg);} */
 
 /* 기본 리스트 */
 .basic_list{border:1px solid #d7d7d7;}
-.basic_list li{padding:0 15px;border-bottom:1px solid #d7d7d7;line-height:40px;}
+.basic_list li{padding:10px 15px;border-bottom:1px solid #d7d7d7;}
+/* padding:0 15px;border-bottom:1px solid #d7d7d7;line-height:40px; */
 .basic_list li:last-child{border-bottom:0;}
 
 /* 표준시공항목 */

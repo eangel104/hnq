@@ -92,12 +92,12 @@
 .choice_btn.webkit_box{width: 90%;margin: 20px auto;}
 .choice_btn .btn_cell.box_flex1{font-size: 13px}
 .choice_btn .btn_cell.left{padding: 0 10px 0 15px;}
-.choice_btn .btn_cell.left:after{left:22px;transform: rotate(135deg);} 
+.choice_btn .btn_cell.left:after{top: 13px;left:22px;transform: rotate(135deg);} 
 .choice_btn .btn_cell.right{padding: 0 15px 0 10px;}
-.choice_btn .btn_cell.right:after{right:22px;} 
+.choice_btn .btn_cell.right:after{top: 13px;right:22px;} 
 .choice_btn .box_flex1.choice_txt{line-height: 33px;text-align: center;font-size: 13px}
 .box_address{margin-bottom: 10px;}
-.box_address .box_flex0.chk_span1{width: 20%;vertical-align: top;}
+.box_address .box_flex0.chk_span1{width: 60px;vertical-align: top;}
 .box_address .box_flex0.chk_span2{width: 75%;}
 
 /* 견적 */
