@@ -1,5 +1,10 @@
 /**
 * @author dh.lee@ttb.co.kr
+* @since 2018.10.22
+* @description 모든 페이지 에서 주로 사용되는 공통 모듈을 정의
+*/
+/**
+* @author dh.lee@ttb.co.kr
 * @version 0.2
 * @param {object} pageData 페이지 이동시 전달할 데이터
 * @since 2018.10.22

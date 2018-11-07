@@ -50,33 +50,33 @@
 								<strong class="tit">기간</strong>
 								<div class="webkit_box mt10">
 									<span class="box_flex1">
-										<input type="date">
+										<input type="text" id="startDate">
 									</span>
 									<span class="box_flex0 dash">
 										~
 									</span>
 									<span class="box_flex1">
-										<input type="date">
+										<input type="text" id="endDate">
 									</span>
 								</div>
 							</li>
 							<li>
 								<strong class="tit">업체명</strong>
-								<input type="text" value="">
+								<input type="text" value="" id="companyName">
 							</li>
 							<li>
 								<strong class="tit">주소</strong>
-								<input type="text" value="">
+								<input type="text" value="" id="addr">
 							</li>
 							<li>
 								<strong class="tit">주문번호</strong>
-								<input type="text" value="">
+								<input type="text" value="" id="orderNum">
 							</li>
 						</ul>
-						<span class="btn_srch"><a href="#n" class="btn middle gray">검색</a></span>
+						<span class="btn_srch"><a href="#n" class="btn middle gray" id="search">검색</a></span>
 						<div class="srch_control">
-							<a href="#n" class="btn_reset">초기화</a>
-							<a href="#n" class="btn_cls"><span>닫기</span></a>
+							<a href="#n" class="btn_reset" id="initSearch">초기화</a>
+							<a href="#n" class="btn_cls" id="closeSearch"><span>닫기</span></a>
 						</div>
 					</div>
 				</div>
@@ -171,11 +171,19 @@
 <!-- //wrap -->
 <script type="text/javascript" src="../js/mcore.min.js"></script>
 <script type="text/javascript" src="../js/header.js"></script>
-<script type="text/javascript" src="../js/eventPageNav.js"></script>
+<script type="text/javascript" src="../js/module.js"></script>
+<script type="text/javascript" src="../js/moment.min.js"></script>
+<script type="text/javascript" src="../js/locales.min.js"></script>
 <!-- // -->
 <script type="text/javascript">
     "use strict";
     //TODO: 개발 미비
+    /*기능 구현 리스트
+    1. 검색 기능 
+    2. 검색 결과 리스트 뿌리는 기능 
+    3. 더보기 기능
+    4. 페이지 이동 기능 
+    */
 
     //페이지 이동시 전달할 데이터
     var pageData = {}
@@ -191,6 +199,51 @@
             callback:function(){
                 pageNav(pageData);
             }
+        });
+
+        //검색 값 초기화
+        $("#startDate").val("");
+        $("#endDate").val("");
+        $("#companyName").val("");
+        $("#addr").val("");
+        $("#orderNum").val("");
+
+        //검색 이벤트 처리
+        $("#search").off("click").on("click", function(){});
+        $("#initSearch").off("click").on("click", function(){});
+        $("#closeSearch").off("click").on("click", function(){});
+
+        $("#startDate,#endDate").off("click").on("click", function(){
+            //M.pop.date 이용해서 date 선택창 노출
+            console.log("date click");
+            // 네이티브 데이트 피커를 호출 한다.
+            // - HM12 // - HM24 // - YMD // - YM
+            // : MMddAM (ex> 1130PM or 1130AM) : HHmm (ex> 2310)
+            // : yyyyMMdd (ex> 20110102)
+            // : yyyyMM (ex> 201101)
+            // - MMYYYY : MMyyyy (ex> 012011)
+            var that = this;
+            M.pop.date({ 
+                type : 'YMD',
+                initDate : moment().day(0).format("YYYYMMDD"), //현재 날짜 +1 하면 오늘 기준 내일 -1 하면 오늘기준 어제 
+                // startDate : '20180901', 
+                // endDate : '20181201'
+            }, function(result, option) {
+                console.log("date :: ",result, option,this);
+                // result :: { MM: "04", dd: "07", status: "SUCCESS", week: 6 ,yyyy: "2018"}
+            // 선택한 시간이 json 형태로 리턴 된다.
+            // - HM12 // - HM24 // - YMD
+            // : {"HH":"08","mm":"40","part":"AM"} : {"HH":"20","mm":"40"}
+            // : {"yyyy":"2010","MM":"01","dd":"01"}
+            // - YM : {"yyyy":"2010","MM":"01"}
+            // - MMYYYY : {"yyyy":"2010","MM":"01"} var year = result.yyyy;
+
+            if(result.status == "SUCCESS"){
+                console.log(moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
+                $(that).val(moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
+            }
+
+            });
         });
     });
 
