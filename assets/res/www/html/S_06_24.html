@@ -130,7 +130,7 @@
 <script type="text/javascript" src="../js/module.js"></script>
 <!-- // -->
 <script type="text/javascript">
-    "use strict";
+	"use strict";
 	//TODO: 개발 미비
 	
     $(document).ready(function(){
@@ -143,82 +143,7 @@
 		});
 		
 		$('#tab1').fnTab();
-
-		var btnLoadImages = $("#tab1-1 .btn.middle.orange");
-		var btnCheckCustomer = $("#tab1-2 .btn.middle.orange");
-
-		// 사진 불러오기
-		$(btnLoadImages).off("click").on("click", function(){
-			var imageList = $(this).parent().next().children("ul");
-			var maxCount = parseInt(imageList.attr("data-max-images"));
-			var images = $(imageList).find("img");
-
-			// 카메라, 앨범 선택 팝업
-			M.pop.list({
-				mode: "SINGLE",
-				title: "프로필 사진",
-				button: [],	// `취소` 버튼이 무조건 생성됨..
-				list: [
-					{ title: "카메라", value: "camera" },
-					{ title: "갤러리", value: "album" }
-				],
-				callback: function(buttonIdx, rowInfo, setting) {
-					var non_images = $(images).filter("[src='../img/content/test_img.gif']");
-					if(non_images.length < 1) {
-						M.pop.alert("사진을 더 이상 첨부 할 수 없습니다.");
-						return;
-					}
-
-					// 카메라
-					if(rowInfo.value === "camera") {
-						M.media.camera({
-							path: "/media",
-							mediaType: "PHOTO",
-							saveAlbum: false,
-							callback: function(status, result) {
-								if (status == 'SUCCESS') {
-									$(non_images[0]).attr("src", result.path);
-								} else {
-									// Error handling here..
-								}
-							}
-						});
-					} 
-					// 앨범
-					else if(rowInfo.value === "album") {
-						M.media.picker({
-							mode: "MULTI",
-							media: "PHOTO",
-							// path: "/media",
-							maxCount: non_images.length,
-							column: 4,
-							detail: true,
-							callback: function(status, result) {
-								if(status === "SUCCESS") {
-									// 사진 등록
-									result.map(function(photo, index) {
-										$(non_images[index]).attr("src", photo.path);
-									});
-								} else {
-									// Error handling here..
-								}
-							}
-						});
-					}
-				}
-			});
-		});
-		
-		// 이미지 클릭 시 원본 크기로 보여주기
-		$("#tab1-1 li img").off("click").on("click", function() {
-			// TODO
-			console.log(this);
-		});
-		
-		// 등록한 사진 삭제
-		$(".btn_delete").off("click").on("click", function() {
-			$(this).siblings().children("img").attr("src", "../img/content/test_img.gif");
-		});
+        $("#tab1-1 .btn.middle.orange").camAlbum();
 
 		// 저장하기
 		$("#btn_save").off("click").on("click", function() {
