@@ -15,7 +15,7 @@
 	<!-- header -->
 	<div class="header">
 		<!-- <h1 class="page_title">시공완료 승인요청</h1>
-		<a href="#n" class="page_prev">이전페이지</a> -->
+		<a href="#" class="page_prev">이전페이지</a> -->
 	</div>
 
 	<!-- //header -->
@@ -49,12 +49,12 @@
 					<li class="del">
 						<div class="txt_area">
 						    <span>추가시공비 항목</span>
-				            <a class="btn_del" href="#n">삭제</a>
+				            <a class="btn_del" href="#">삭제</a>
 				        </div>
 						<div class="price_area">
 							<div class="p_m fr">
 								<a class="minus" href="#">빼기</a>
-								<input type="text" value="0">
+                                <input type="text" value="0" min="0" step="0.01">
 								<a class="plus" href="#">더하기</a>
 							</div>
 						</div>
@@ -86,8 +86,8 @@
 			<!-- 본문내용 -->
 		</div>
 		<div class="btn_fix">
-			<a href="#n" class="btn gray">취소</a>
-			<a href="#n" class="btn green">승인요청</a>
+			<a id="cancel" href="#" class="btn gray">취소</a>
+			<a id="save" href="#" class="btn green">승인요청</a>
 		</div>
 	</div>
 	<!-- //content -->
@@ -115,6 +115,42 @@
             callback:function(){
                 pageNav(pageData);
             }
+        });
+
+
+        $("#cancel").off("click").on("click",function(e){});
+        $("#save").off("click").on("click",function(e){});
+
+
+        //숫자 컨트롤 모듈 나중에 모듈화 
+        var $num = $(".price_area input[type='text']");
+        var minNum = 0;
+        var maxNum = 5;
+        var step = 0.1;
+
+        function min(num,min){
+            if(num <= min) return min;
+            return num;
+        }
+
+        function max(num,max){
+            if(num >= max) return max;
+            return num;
+        }
+
+        $(".price_area .minus").off("click").on("click",function(e){
+            console.log("minus");
+            $num.val(min(parseFloat(parseFloat($($num).val()) - step).toFixed(2),minNum));
+        });
+
+        $(".price_area .plus").off("click").on("click",function(e){
+            console.log("plus");
+            $num.val(max(parseFloat(parseFloat($($num).val()) + step).toFixed(2),maxNum));
+        });
+
+        $($num).off("change").on("change",function(e){
+            console.log("change");
+            $num.val(max(min(parseFloat($($num).val()).toFixed(2),minNum),maxNum));
         });
     });
 
