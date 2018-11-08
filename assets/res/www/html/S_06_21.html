@@ -74,14 +74,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>실측결과시간</th>
+                                <th>실측결과확인</th>
                                 <td class="tal">
                                     <span hidden></span>
                                     <a href="#n" class="btn small basic">등록</a>
                                 </td>
                             </tr>
                             <tr>
-                                <th>시공완료승인요청</th>
+                                <th>실측완료승인요청</th>
                                 <td class="tal">
                                     <span hidden></span>
                                     <a href="#n" class="btn small basic">등록</a>
@@ -124,8 +124,6 @@
         // 등록
         if(!$(this).hasClass("btn_cell")) {
             var self = this;
-            console.log('click!');
-
             // 팝업
             M.pop.alert({
                 title: "알림",
@@ -163,9 +161,19 @@
                                 system_name : 'iOS',
                             },
                             success: function(recevedData, setting) {
-                                // TODO: 등록 성공 후 [등록] 버튼 제거 및 변경
+                                // 등록 성공 후 [등록] 버튼 제거 및 변경
                                 $(self).siblings("span").show().text(moment().format("YYYY-MM-DD hh:mm"));
                                 $(self).addClass("btn_cell").removeClass("btn small basic").text("");
+
+                                // 페이지 이동
+                                // TODO: data 전달
+                                var item = $(self).parent().prev("th").text();
+                                if(item === '실측결과확인') {
+                                    $(self).attr('data-event-page', 'S_06_24.html');
+                                } else if(item === '실측완료승인요청') {
+                                    $(self).attr('data-event-page', 'S_06_27.html');
+                                }
+                                pageNav();
                             },
                             error: function(errCode, errMsg, setting) {
                                 console.log("** onError", errCode, errMsg, setting);
@@ -180,13 +188,6 @@
                 }
             });
         }
-        // 조회
-        else {
-            // TODO: 조회 구현
-            console.log("조회다요!");
-        }
-
-        
     });
 
     // 실측결과확인
