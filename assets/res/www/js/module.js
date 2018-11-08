@@ -226,3 +226,44 @@ $.fn.mDate = function(param){
         });
     });
 };
+
+/**
+* @author dh.lee@ttb.co.kr
+* @version 0.1
+* @since 2018.11.08
+* @description 사인패드 유틸리티
+*/
+$.fn.signPad = function(param){
+    var defParam = $.extend({},{
+        cancelSelecter:"",
+        saveSelecter:""
+    },param);
+    $(this).addClass("signature-pad--body").append("<canvas></canvas>");
+    var canvas = $(this).children("canvas")[0];
+
+    var signaturePad = new SignaturePad(canvas, {
+        // backgroundColor: 'rgb(255, 255, 255)'
+    });
+
+    function resizeCanvas() {
+        var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+        signaturePad.clear();
+    }
+    
+    resizeCanvas();
+    
+    $(window).off("resize").on("resize",function(){
+        resizeCanvas();
+    })
+    return {
+        save: function(callback){
+            if(callback){
+                //empty signFlag, data
+                callback(!signaturePad.isEmpty(),signaturePad.toDataURL());
+            }
+        }
+    }
+}

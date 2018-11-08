@@ -6,6 +6,7 @@
 <title>한화 Home &amp; Q</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
+<link rel="stylesheet" type="text/css" href="../css/signature-pad.css"/>
 </head>
 <body>
 
@@ -52,13 +53,14 @@
 					<a href="#n" class="btn large orange">고객확인</a>
 				</div>
 				
-				<div class="sign_box mt20"></div> <!-- 싸인영역 -->
+				<div class="sign_box mt20">
+                </div> <!-- 싸인영역 -->
 			</div>
 			<!-- 본문내용 -->
 		</div>
 		<div class="btn_fix">
-			<a href="#n" class="btn gray">취소</a>
-			<a href="#n" class="btn green">저장</a>
+			<a id="cancel" href="#" class="btn gray">취소</a>
+			<a id="save" href="#" class="btn green">저장</a>
 		</div>
 	</div>
 	<!-- //content -->
@@ -66,6 +68,7 @@
 </div>
 <!-- //wrap -->
 <script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/signature_pad.umd.js"></script>
 <script type="text/javascript" src="../js/header.js"></script>
 <script type="text/javascript" src="../js/module.js"></script>
 <!-- // -->
@@ -86,6 +89,20 @@
             callback:function(){
                 pageNav(pageData);
             }
+        });
+
+        //싸인패드 
+
+        var signpad = $(".sign_box").signPad();
+
+        $("#cancel").off("click").on("click",function(){
+    
+        })
+
+        $("#save").off("click").on("click",function(){
+            signpad.save(function(signFlag,data){
+                console.log(signFlag, data);
+            });
         });
     });
 
