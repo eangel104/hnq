@@ -27,8 +27,8 @@
 
 			<!-- 본문내용 -->
 			<div class="section">
-				<ul class="survey_list mt10">
-					<li>
+				<ul id="list1" class="survey_list mt10">
+					<!-- <li>
 						<div class="division type02">
 							<span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
 							<span class="rignt_txt">신규주문</span>
@@ -45,7 +45,7 @@
 							<span class="company">서울 창호 시스템</span>
 							<span class="charge"><span class="split_g">김프로(01012344321)</span><span>4명</span></span>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 				
 				<div class="list_num mt30">
@@ -55,8 +55,8 @@
 				<dl class="accordion mt10">
 					<dt class="on"><a href="#n">시공인원</a></dt><!-- 활성화 class = "on" -->
 					<dd>
-						<ul class="chk_list">
-							<li>
+						<ul id="worker" class="chk_list">
+							<!-- <li>
 								<label class="chk_style">
 									<input type="checkbox" name="chk_chk01" checked>
 									<span class="chk_txt webkit_box">
@@ -82,13 +82,13 @@
 										<span class="box_flex0 tel">010-1234-5678</span>
 									</span>
 								</label>
-							</li>
+							</li> -->
 						</ul>
 					</dd>
 					<dt class="on"><a href="#n">시공담당자</a></dt>
 					<dd>
-						<ul class="chk_list"><!-- 1031 수정 : list 마크업 수정 -->
-							<li>
+						<ul id="construction" class="chk_list"><!-- 1031 수정 : list 마크업 수정 -->
+							<!-- <li>
 								<label class="chk_style">
 									<input type="radio" name="chk_rdo01">
 									<span class="chk_txt webkit_box">
@@ -114,21 +114,21 @@
 										<span class="box_flex0 tel">010-1234-5678</span>
 									</span>
 								</label>
-							</li>
+							</li> -->
 						</ul>
 					</dd>
 				</dl>
 				
 				<div class="gray_box mt20">
-					<span class="left_txt">담당 : 김프로</span>
-					<span class="right_txt">4명</span>
+					<span id="constructionSel" class="left_txt">담당 : 김프로</span>
+					<span id="workerNum" class="right_txt">4명</span>
 				</div>
 			</div>
 			<!-- 본문내용 -->
 		</div>
 		<div class="btn_fix">
-			<a href="#n" class="btn gray">취소</a>
-			<a href="#n" class="btn green">접수</a>
+			<a id="cancel" href="#" class="btn gray">취소</a>
+			<a id="save" href="#" class="btn green">접수</a>
 		</div>
 	</div>
 	<!-- //content -->
@@ -152,11 +152,163 @@
     $(document).ready(function(){
         $(".header").header({
             type:"construction",
-            title:"신규주문접수",
+            title:"신규예약접수",
             callback:function(){
                 pageNav(pageData);
             }
         });
+
+        function listMake(type,param){
+            param = [{
+                type: "창호",
+                companyName:"현대인테리어",
+                state:"주문접수",
+                date:"2018-08-31",
+                orderNum:"000000000",
+                num:"[TI20160523000000] 비거주(개보수)",
+                addr:"서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호",
+                company:"서울 창호 시스템",
+                charge:"김프로(01012344321)",
+                workmanNum:"4"
+            }];
+
+            //태그 생성 
+            //TODO : 미구현 목록 
+            /*
+            */
+            function makeTag(type,data){
+                return $('<li>\
+                    <div class="division type02">\
+                        <span class="left_txt"><span class="split_w">'+data.type+'</span><span>'+data.companyName+'</span></span>\
+                        <span class="rignt_txt">'+data.state+'</span>\
+                    </div>\
+                    <div class="top">\
+                        <span class="date">'+data.date+'</span>\
+                        <span class="order_num">'+data.orderNum+'</span>\
+                    </div>\
+                    <div class="mid order">\
+                        <span class="num">'+data.num+'</span>\
+                        <span class="addr">'+data.addr+'</span>\
+                    </div>\
+                    <div class="bot">\
+                        <span class="company">'+data.company+'</span>\
+                        <span class="charge"><span class="split_g">'+data.charge+'</span><span>'+data.workmanNum+'명</span></span>\
+                    </div>\
+                </li>');
+            };
+            
+            //태그 랜더링 
+            if(type == "list1"){
+                $(param).each(function(index,el){
+                    $("#list1").append(makeTag(type,el));
+                });
+            }
+        };
+
+        //선택 타입 랜더링 
+        // input type, data 
+        $.fn.inputBoxMake = function inputBoxMake(param){
+            console.log("inputBoxMake::",this);
+            var defParam = $.extend({},{
+                inputType:"",
+                param:null,
+                clickCallback:null
+            },param);
+
+            var that = this;
+            //input type 에 맞는 태그 생성해서 리턴 
+            function makeTag(inputType,param){
+                if(inputType == "radio" || inputType == "checkbox"){
+                    return $('<li>\
+								<label class="chk_style">\
+									<input type="'+inputType+'" name="in_'+inputType+'01">\
+									<span class="chk_txt webkit_box">\
+										<strong class="box_flex1 name">'+param.userName+'</strong>\
+										<span class="box_flex0 tel">'+param.tel+'</span>\
+									</span>\
+								</label>\
+							</li>');
+                }
+                return "";
+            }
+            
+            //랜더링 
+            $(defParam.param).each(function(index,el){
+                $(that).append(makeTag(defParam.inputType,el));
+            });
+
+            //이벤트 태그 구조로 인해 2번 이벤트가 걸리므로 잘 걸러내야 한다. 
+            $(that).off("click").on("click",function(e){
+                console.log("li click::",e,$(this).find("input:checked"));
+                if(e.target.nodeName == "INPUT" && defParam.clickCallback){
+                    console.log("input checked::",$(this).find("input:checked"));
+                    defParam.clickCallback(e,$(this).find("input:checked").parents("label"));
+                }
+            });
+        };
+        
+        listMake("list1");
+
+        //시공인원 랜더링 
+        $("#worker").inputBoxMake({
+            inputType:"checkbox",
+            param:[
+                {
+                    userName:"김프로 팀장",
+                    tel:"010-1234-5678"
+                },
+                {
+                    userName:"이프로 팀장",
+                    tel:"010-1234-5678"
+                },
+                {
+                    userName:"박프로 팀장",
+                    tel:"010-1234-5678"
+                },
+            ],
+            clickCallback:function(e,inputCheckList){
+                console.log(e,inputCheckList);
+                $("#workerNum").text(inputCheckList.length+"명");
+            }
+        });
+
+        //시공담당자 랜더링
+        $("#construction").inputBoxMake({
+            inputType:"radio",
+            param:[
+                {
+                    userName:"김프로 팀장",
+                    tel:"010-1234-5678"
+                },
+                {
+                    userName:"이프로 팀장",
+                    tel:"010-1234-5678"
+                },
+                {
+                    userName:"박프로 팀장",
+                    tel:"010-1234-5678"
+                },
+            ],
+            clickCallback:function(e,inputCheckList){
+                console.log(e,inputCheckList);
+                
+                $("#constructionSel").text()
+            }
+        });
+
+        //이벤트 
+        //저장
+        $("#cancel").off("click").on("click",function(){
+            M.page.back();
+        })
+        $("#save").off("click").on("click",function(){
+            M.pop.alert('시공 주문을 접수 하시겠습니까?',
+            { title : '알림',buttons : ['확인','취소']},
+            function(index, option) {
+                    console.log("alert:",index,option);
+            });
+        })
+        //취소
     });
 
     // 통신
