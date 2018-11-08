@@ -26,8 +26,8 @@
         <library api="2.1" id="m.client.library.addon.zip" revision="4.2" type="addon"/>
         <library api="2.1" id="m.client.library.addon.locale" revision="4.3" type="addon"/>
         <library api="2.1" id="m.client.library.plugin.drawing" revision="1.8" type="plugin"/>
-        <library api="2.1" id="m.client.library.plugin.location" revision="0.5" type="plugin"/>
         <library api="2.1" id="m.client.library.plugin.viewer" revision="1.4" type="plugin"/>
     	<library api="2.1" id="m.client.library.plugin.push" revision="5.8" type="plugin"></library>
+		<library api="2.1" id="m.client.library.plugin.location" revision="0.5" type="plugin"></library>
 	</libraries>
 </application>

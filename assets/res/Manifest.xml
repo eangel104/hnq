@@ -56,9 +56,9 @@
         </addons>
         <plugins>
             <path>m.client.library.plugin.drawing.WNInterfaceDrawing</path>
-            <path>m.client.library.plugin.location.WNInterfaceLocation</path>
             <path>m.client.library.plugin.viewer.WNInterfaceViewer</path>
         	<path>m.client.library.plugin.push.WNInterfacePush</path>
+			<path>m.client.library.plugin.location.WNInterfaceLocation</path>
 		</plugins>
     </library>
     <network>
