@@ -290,9 +290,9 @@
                 },
             ],
             clickCallback:function(e,inputCheckList){
-                console.log(e,inputCheckList);
-                
-                $("#constructionSel").text()
+                console.log(e,$(inputCheckList).find("strong.name").text());
+
+                $("#constructionSel").text($(inputCheckList).find("strong.name").text());
             }
         });
 
