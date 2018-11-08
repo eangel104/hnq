@@ -13,28 +13,28 @@
 <!-- wrap -->
 <div class="wrap">
 
-	<!-- header -->
-	<div class="header">
-		<!-- <h1 class="page_title">신규예약접수</h1>
+    <!-- header -->
+    <div class="header">
+        <!-- <h1 class="page_title">신규예약접수</h1>
 
-		<div class="gnb">
-			<ul>
-				<li class="green"><a href="#n">실측관리</a></li>
-				<li class="green"><a href="#n">시공관리</a></li>
-				<li class="setting"><a href="#n"><span>설정</span></a></li>
-			</ul>
-		</div>
+        <div class="gnb">
+            <ul>
+                <li class="green"><a href="#n">실측관리</a></li>
+                <li class="green"><a href="#n">시공관리</a></li>
+                <li class="setting"><a href="#n"><span>설정</span></a></li>
+            </ul>
+        </div>
 
-		<a href="#n" class="page_prev">이전페이지</a> -->
-	</div>
+        <a href="#n" class="page_prev">이전페이지</a> -->
+    </div>
 
-	<!-- //header -->
+    <!-- //header -->
 
-	<!-- content -->
-	<div class="content newreser">
-		<div class="content_area">
-			<div class="section">
-		    	<ul class="survey_list">
+    <!-- content -->
+    <div class="content newreser">
+        <div class="content_area">
+            <div class="section">
+                <ul class="survey_list">
                     <li>
                         <div class="division type02">
                                 <span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
@@ -47,35 +47,35 @@
                         </div>
                     </li>
                 </ul>
-				<h3 class="tit_type01">서울 창호 시스템</h3>
-				<!-- table -->
-				<div class="tbl04">
-					<table>
-						<caption></caption>
-						<colgroup>
-							<col style="width:35%">
-							<col style="width:65%">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th>실측 예정일</th>
-								<td>2018.08.31</td>
-							</tr>
-							<tr>
-								<th>실측 예정시간</th>
-								<td>09:30 ~ 10:30 </td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+                <h3 class="tit_type01">서울 창호 시스템</h3>
+                <!-- table -->
+                <div class="tbl04">
+                    <table>
+                        <caption></caption>
+                        <colgroup>
+                            <col style="width:35%">
+                            <col style="width:65%">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>실측 예정일</th>
+                                <td>2018.08.31</td>
+                            </tr>
+                            <tr>
+                                <th>실측 예정시간</th>
+                                <td>09:30 ~ 10:30 </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <!-- //table -->
-                <div class="gray_box dark mt10"><!-- 1031 수정 : 실측자 내용 box 스타일로 수정 -->
-					<span class="left_txt">실측자</span>
-					<span class="right_txt">김프로(010 - 1234 - 4321)</span>
-				</div>
-				<div class="list_num">
-					<span>총 <em>000</em>건</span>
-				</div>
+                <div class="gray_box dark mt10" hidden><!-- 1031 수정 : 실측자 내용 box 스타일로 수정 -->
+                    <span class="left_txt">실측자</span>
+                    <span class="right_txt">김프로(010 - 1234 - 4321)</span>
+                </div>
+                <div class="list_num">
+                    <span>총 <em>000</em>건</span>
+                </div>
                 <div class="srch_area">
                     <ul>
                         <li class="ps_check">
@@ -103,17 +103,17 @@
                         </li>
                     </ul>
                 </div>
-			</div>
-		</div>
-		<div class="btn_fix">
-			<a href="#n" class="btn gray" id="btn_cancel">취소</a>
-			<a href="#n" class="btn green" id="btn_confirm">저장</a>
-		</div>
-		<div class="btn_fix">
-			<a href="#n" class="btn orange" id="btn_confirm">실측 접수 취소</a>
-		</div>
-	</div>
-	<!-- //content -->
+            </div>
+        </div>
+        <div class="btn_fix">
+            <a href="#n" class="btn gray" data-event-back>취소</a>
+            <a href="#n" class="btn green">저장</a>
+        </div>
+        <div class="btn_fix">
+            <a href="#n" class="btn orange">실측 접수 취소</a>
+        </div>
+    </div>
+    <!-- //content -->
 
 </div>
 <!-- //wrap -->
@@ -123,6 +123,13 @@
 <!-- // -->
 <script type="text/javascript">
     "use strict";
+    /*
+    * S_06_14.html 과 같은 화면
+    * 신규예약접수가 아니기 때문에 실측접수취소 버튼이 있다.
+    * 하는 일이 같다..
+    * 굳이 파일을 나눌 필요가 있나?
+    * TODO: API 연동 후 S_06_14로 합침
+    */
     //TODO: 개발 미비
     $(document).ready(function(){
         $(".header").header({
@@ -131,39 +138,63 @@
             callback:function(){
                 pageNav();
             }
+        });
+
+        // 실측자 정보 변경
+		// FIXME: 전화 클릭시 라벨이 선택됨 -> PM한테 연락함
+		$(".srch_area strong.name").off("click").on("click", function() {
+			var status = $(".gray_box.dark.mt10");
+
+			status.show();
+			status.children(".left_txt").text($(this).text());
+			status.children(".right_txt").text($(this).next(".tel").text());
 		});
 
-		// 저장
-		$("#btn_confirm").off("click").on("click", function(e) {
-			//
-			M.pop.alert("실측 예약을 접수하시겠습니까?", {
-				title: "알림",
-				buttons: ["취소", "확인"],
-				callback: function(index) {
-					if(index === 1) {
-						// TODO: API 연동 후 토스트 메세지 삭제
-						M.pop.instance({
-							message: "저장했습니다.",
-							showtime: "SHORT"
-						});
+        // 저장
+        $(".btn_fix .btn.green").off("click").on("click", function(e) {
+            M.pop.alert("실측 예약을 접수하시겠습니까?", {
+                title: "알림",
+                buttons: ["취소", "확인"],
+                callback: function(index) {
+                    if(index === 1) {
+                        // TODO: API 연동 후 토스트 메세지 삭제
+                        M.pop.instance({
+                            message: "저장했습니다.",
+                            showtime: "SHORT"
+                        });
+                    } else {
+                        // Do Nothing..
+                    }
+                }
+            });
+        });
 
-						// 저장 후 닫기
-						M.page.back();
-					} else {
-						// Do Nothing..
-					}
-				}
-			});
-		});
-		// 취소
-		$("#btn_cancel").off("click").on("click", function(e) {
-			M.page.back();
-		});
-	});
-	
+        // 실측 접수 취소
+        $(".btn_fix .btn.orange").off("click").on("click", function() {
+            M.pop.alert("실측 예약을 취소 하시겠습니까?\n"
+            + "취소를 진행 할 경우 영업 담당자에게\n"
+            + "실측 재예약 여부를 반드시 확인하시기 바랍니다.", 
+            {
+                title: "알림",
+                buttons: ["취소", "확인"],
+                callback: function(index) {
+                    if(index === 1) {
+                        // TODO: API 연동
+
+                        M.page.back();
+                    } else {
+                        // Do Nothing..
+                    }
+                }
+            });
+        });
+    });
+    
     M.onReady(function(e) {
-        //ready event handle code here
-        console.log("onReady");
+        // 전화걸기
+        $(".srch_area span.tel").off('click').on('click', function(){
+            M.sys.call($(this).text().replace('-', ''));
+        });
     }).onHide(function(e){
         //hide event handle code here
         console.log("onHide");
