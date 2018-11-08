@@ -41,12 +41,12 @@
 							<span class="orange_txt">시공이슈</span>
 							<!-- TODO : 기획서 UX Scenario_20181012 버전에서 삭제됨 -->
 							<!--<span class="issue_name">벽지손상</span>-->
-							<a href="#n" class="btn small gray mw50">삭제</a>
+							<a href="#" class="btn small gray mw50" data-del>삭제</a>
 						</div>
 						<div class="issue_con">
 							<div>
 								<span>철거 중 벽지 손상 철거 중 벽지 손상</span>
-								<a href="#n" class="btn_cell"></a>
+								<a href="#" class="btn_cell" data-event-page="C_07_26.html"></a>
 							</div>
 						</div>
 					</li>
@@ -55,12 +55,12 @@
 							<span class="orange_txt">시공이슈</span>
 							<!-- TODO : 기획서 UX Scenario_20181012 버전에서 삭제됨 -->
 							<!--<span class="issue_name">벽지손상</span>-->
-							<a href="#n" class="btn small gray mw50">삭제</a>
+							<a href="#" class="btn small gray mw50" data-del>삭제</a>
 						</div>
 						<div class="issue_con">
 							<div>
 								<span>철거 중 벽지 손상 철거 중 벽지 손상</span>
-								<a href="#n" class="btn_cell"></a>
+								<a href="#" class="btn_cell" data-event-page="C_07_26.html"></a>
 							</div>
 						</div>
 					</li>
@@ -69,12 +69,12 @@
 							<span class="orange_txt">시공이슈</span>
 							<!-- TODO : 기획서 UX Scenario_20181012 버전에서 삭제됨 -->
 							<!--<span class="issue_name">벽지손상</span>-->
-							<a href="#n" class="btn small gray mw50">삭제</a>
+							<a href="#" class="btn small gray mw50" data-del>삭제</a>
 						</div>
 						<div class="issue_con">
 							<div>
 								<span>철거 중 벽지 손상 철거 중 벽지 손상</span>
-								<a href="#n" class="btn_cell"></a>
+								<a href="#" class="btn_cell" data-event-page="C_07_26.html"></a>
 							</div>
 						</div>
 					</li>
@@ -83,12 +83,12 @@
 							<span class="orange_txt">시공이슈</span>
 							<!-- TODO : 기획서 UX Scenario_20181012 버전에서 삭제됨 -->
 							<!--<span class="issue_name">벽지손상</span>-->
-							<a href="#n" class="btn small gray mw50">삭제</a>
+							<a href="#" class="btn small gray mw50" data-del>삭제</a>
 						</div>
 						<div class="issue_con">
 							<div>
 								<span>철거 중 벽지 손상 철거 중 벽지 손상</span>
-								<a href="#n" class="btn_cell"></a>
+								<a href="#" class="btn_cell" data-event-page="C_07_26.html"></a>
 							</div>
 						</div>
 					</li>
@@ -123,6 +123,19 @@
                 pageNav(pageData);
             }
         });
+
+        //삭제 버튼 클릭 
+        $("[data-del]").off("click").on("click",function(e){
+            console.log("click");
+            M.pop.alert({
+                title: '알림',
+                message: '삭제하시겠습니까?',
+                buttons: ['확인', '취소'],
+                callback: function(index) {
+                        console.log( "index: ", index );
+                }
+            });
+        })
     });
 
     // 통신
