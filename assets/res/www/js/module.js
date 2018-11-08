@@ -194,10 +194,10 @@ $.fn.mDate = function(param){
             // - MMYYYY : MMyyyy (ex> 012011)
             var that = this;
             M.pop.date({ 
-                type : 'YMD',
-                initDate : moment().day(0).format("YYYYMMDD"), //현재 날짜 +1 하면 오늘 기준 내일 -1 하면 오늘기준 어제 
-                // startDate : '20180901', 
-                // endDate : '20181201'
+                type : defParam.type,
+                initDate : defParam.initDate, //현재 날짜 +1 하면 오늘 기준 내일 -1 하면 오늘기준 어제 
+                startDate : defParam.startDate, 
+                endDate : defParam.endDate,
                 callback:function(result, option) {
                     console.log("date :: ",result, option,this);
                     // result :: { MM: "04", dd: "07", status: "SUCCESS", week: 6 ,yyyy: "2018"}
@@ -215,7 +215,7 @@ $.fn.mDate = function(param){
                         var type = {
                             "INPUT":"val"
                         }
-                        //input 인경우 
+                        //input 인경우 값을 넣어준다. 
                         $(that)[type[that.nodeName]](moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
         
                         //콜백 실행
@@ -235,8 +235,6 @@ $.fn.mDate = function(param){
 */
 $.fn.signPad = function(param){
     var defParam = $.extend({},{
-        cancelSelecter:"",
-        saveSelecter:""
     },param);
     $(this).addClass("signature-pad--body").append("<canvas></canvas>");
     var canvas = $(this).children("canvas")[0];
