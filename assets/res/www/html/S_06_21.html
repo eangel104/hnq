@@ -69,21 +69,21 @@
                             <tr>
                                 <th>현장도착</th>
                                 <td class="tal">
-                                    <span>2018.05.05 00:00</span>
-                                    <a href="#n" class="btn_cell"></a>
+                                    <span hidden></span>
+                                    <a href="#n" class="btn small basic">등록</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th>실측결과시간</th>
                                 <td class="tal">
-                                    <span>2018.05.05 00:00</span>
-                                    <a href="#n" class="btn_cell"></a>
+                                    <span hidden></span>
+                                    <a href="#n" class="btn small basic">등록</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th>시공완료승인요청</th>
                                 <td class="tal">
-                                    <span></span>
+                                    <span hidden></span>
                                     <a href="#n" class="btn small basic">등록</a>
                                 </td>
                             </tr>
@@ -101,6 +101,9 @@
 <script type="text/javascript" src="../js/mcore.min.js"></script>
 <script type="text/javascript" src="../js/header.js"></script>
 <script type="text/javascript" src="../js/module.js"></script>
+<script type="text/javascript" src="../js/moment.min.js"></script>
+<script type=“text/javascript” src="../js/locales.min.js"></script>
+<script type="text/javascript" src="../js/module.js"></script>
 <!-- // -->
 <script type="text/javascript">
     "use strict";
@@ -116,34 +119,74 @@
         });
     });
 
-    // 현장도착
-    $(".tal a").first().off("click").on("click", function() {
-        M.plugin("location").current({
-            timeout: 10000,
-            maximumAge: 1,
-            callback: function( result ){
-                if ( result.status === 'NS' ) {
-                    console.log('This Location Plugin is not supported');
+    // 실측진행등록
+    $(".tal a").off("click").on("click", function() {
+        // 등록
+        if(!$(this).hasClass("btn_cell")) {
+            var self = this;
+            console.log('click!');
+
+            // 팝업
+            M.pop.alert({
+                title: "알림",
+                message: $(self).parent().prev("th").text() + "을 등록 하시겠습니까?",
+                buttons: ["취소", "확인"],
+                callback: function(index) {
+                    if(index === 1) {
+                        // 좌표 저장
+                        M.plugin("location").current({
+                            timeout: 10000,
+                            maximumAge: 1,
+                            callback: function( result ){
+                                if (result.status === "SUCCESS") {
+                                    if (result.coords) {
+                                        console.log(result.coords.latitude);
+                                        console.log(result.coords.longitude);
+                                    }
+                                    else {
+                                        console.log( 'It cann\'t get GPS Coords.' );
+                                    }
+                                } else {
+                                    // Error Handling here..
+                                }
+                            }
+                        });
+                        // TODO: API 연동
+                        M.net.http.send({
+                            server: "TEST_SERVER",
+                            path: "svy/lst/inquireSvrList",
+                            method: "POST",
+                            timeout: 5000,
+                            data : {
+                                // TODO : send data here
+                                parent_cate_cd : '',
+                                system_name : 'iOS',
+                            },
+                            success: function(recevedData, setting) {
+                                // TODO: 등록 성공 후 [등록] 버튼 제거 및 변경
+                                $(self).siblings("span").show().text(moment().format("YYYY-MM-DD hh:mm"));
+                                $(self).addClass("btn_cell").removeClass("btn small basic").text("");
+                            },
+                            error: function(errCode, errMsg, setting) {
+                                console.log("** onError", errCode, errMsg, setting);
+                            },
+                            indicator: {
+                                show : true,
+                                message : '통신중입니다.',
+                                cancelable : false
+                            }
+                        });
+                    }
                 }
-                else if ( result.status !== 'SUCCESS' ) {
-                    if ( result.message ) {
-                        console.log( result.status + ":" + result.message );
-                    }
-                    else {
-                        console.log( 'Getting GPS coords is failed' );
-                    }
-                }
-                else {
-                    if ( result.coords ) {
-                        console.log( JSON.stringify(result.coords) );
-                        rander().div("#gpsInfo",result);
-                    }
-                    else {
-                        console.log( 'It cann\'t get GPS Coords.' );
-                    }
-                }
-            }
-        });
+            });
+        }
+        // 조회
+        else {
+            // TODO: 조회 구현
+            console.log("조회다요!");
+        }
+
+        
     });
 
     // 실측결과확인
