@@ -164,3 +164,65 @@ function pageNav(pageData) {
     //초기화 실행
     init();
 }
+
+  /**
+    * @author dh.lee@ttb.co.kr
+    * @version 0.1
+    * @since 2018.11.07
+    * @description 모피어스 데이터 피커 공통화 
+    */
+$.fn.mDate = function(param){
+    var defParam = $.extend({},{ 
+        type : 'YMD',
+        initDate : moment().day(0).format("YYYYMMDD"), //현재 날짜 +1 하면 오늘 기준 내일 -1 하면 오늘기준 어제 
+        startDate : '', 
+        endDate : '',
+        callback:null
+    },param);
+
+    // 이벤트 걸기 
+    $(this).each(function(){
+        console.log(this);
+        $(this).off("click").on("click", function(){
+            //M.pop.date 이용해서 date 선택창 노출
+            console.log("date click",$(this));
+            // 네이티브 데이트 피커를 호출 한다.
+            // - HM12 // - HM24 // - YMD // - YM
+            // : MMddAM (ex> 1130PM or 1130AM) : HHmm (ex> 2310)
+            // : yyyyMMdd (ex> 20110102)
+            // : yyyyMM (ex> 201101)
+            // - MMYYYY : MMyyyy (ex> 012011)
+            var that = this;
+            M.pop.date({ 
+                type : 'YMD',
+                initDate : moment().day(0).format("YYYYMMDD"), //현재 날짜 +1 하면 오늘 기준 내일 -1 하면 오늘기준 어제 
+                // startDate : '20180901', 
+                // endDate : '20181201'
+                callback:function(result, option) {
+                    console.log("date :: ",result, option,this);
+                    // result :: { MM: "04", dd: "07", status: "SUCCESS", week: 6 ,yyyy: "2018"}
+                    // 선택한 시간이 json 형태로 리턴 된다.
+                    // - HM12 // - HM24 // - YMD
+                    // : {"HH":"08","mm":"40","part":"AM"} : {"HH":"20","mm":"40"}
+                    // : {"yyyy":"2010","MM":"01","dd":"01"}
+                    // - YM : {"yyyy":"2010","MM":"01"}
+                    // - MMYYYY : {"yyyy":"2010","MM":"01"} var year = result.yyyy;
+        
+                    if(result.status == "SUCCESS"){
+                        console.log(moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
+        
+                        // nodeName : 실행할 함수 이름
+                        var type = {
+                            "INPUT":"val"
+                        }
+                        //input 인경우 
+                        $(that)[type[that.nodeName]](moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
+        
+                        //콜백 실행
+                        if(defParam.callback) defParam.callback(result,moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
+                    }
+                }   
+            });
+        });
+    });
+};

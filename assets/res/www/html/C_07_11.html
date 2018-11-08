@@ -86,7 +86,7 @@
 					<span><em>12</em>건 / 총 <em>12</em>건</span>
 				</div>
 				<!-- TODO : 20181025 li a영역 수정 -->
-				<ul class="survey_list mt10">
+				<ul id="list" class="survey_list mt10">
 					<li>
                         <div class="division type02">
                             <span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
@@ -110,7 +110,7 @@
 							<div class="progress">
 								<span class="start_txt on">도착</span> <!-- 활성화시 on클래스 추가 -->
 								<div class="progress_wrap">
-									<div class="inner" style="width:50%;"><!-- 진행상황 위치값 변경 -->
+									<div class="inner" style="width:33%;"><!-- 진행상황 위치값 변경 -->
 										<span class="stu_txt">진행상황</span><!-- TODO: 진행상황 텍스트 없을시 삭제해주세요 -->
 									</div>
 								</div>
@@ -140,10 +140,10 @@
 						<!-- 진행단계 -->
 						<div class="bot">
 							<div class="progress">
-								<span class="start_txt on">도착</span> <!-- 활성화시 on클래스 추가 -->
+								<span class="start_txt">도착</span> <!-- 활성화시 on클래스 추가 -->
 								<div class="progress_wrap">
 									<div class="inner" style="width:50%;"><!-- 진행상황 위치값 변경 -->
-										<!-- <span class="stu_txt">진행상황</span> --><!-- TODO: 진행상황 텍스트 없을시 삭제해주세요 -->
+										<!-- <span class="stu_txt">진행상황</span>TODO: 진행상황 텍스트 없을시 삭제해주세요 -->
 									</div>
 								</div>
 								<span class="end_txt">현장완료</span>
@@ -154,7 +154,7 @@
 				</ul>
 				<!--// TODO : 20181025 li a영역 수정 -->
 				<div class="tac mt20">
-					<a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+					<a id="listAdd" href="#n" class="btn large basic"><span class="add">더보기</span></a>
 				</div>
 				
 			</div>
@@ -203,11 +203,10 @@
         function searchBox(){
             //검색 값 초기화
             function init(){
-                $("#startDate").val("");
-                $("#endDate").val("");
                 $("#companyName").val("");
                 $("#addr").val("");
                 $("#orderNum").val("");
+                $("[data-mdate]").val("");
             }
 
             init();
@@ -217,74 +216,82 @@
             $("#search").off("click").on("click", function(){});
             //초기화 이벤트
             $("#initSearch").off("click").on("click", init);
+
+            //날짜 데이터 피커 공통 모듈
+            $("[data-mdate]").mDate();
         }
 
-        searchBox();
+        //검색 결과 리스트로 생성하는 함수
+        function listMake(param){
+            param = [{
+                type: "창호",
+                companyName:"현대인테리어",
+                state:"주문접수",
+                date:"2018-08-31",
+                orderNum:"000000000",
+                num:"[TI20160523000000] 비거주(개보수)",
+                addr:"서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호",
+                company:"서울 창호 시스템",
+                charge:"김프로(01012344321)",
+            }];
 
-        //날짜 데이터 피커 공통 모듈
-        /**
-        * @author dh.lee@ttb.co.kr
-        * @version 0.1
-        * @since 2018.11.07
-        * @description 모피어스 데이터 피커 공통화 
-        */
-        $.fn.mDate = function(param){
-            var defParam = $.extend({},{ 
-                type : 'YMD',
-                initDate : moment().day(0).format("YYYYMMDD"), //현재 날짜 +1 하면 오늘 기준 내일 -1 하면 오늘기준 어제 
-                startDate : '', 
-                endDate : '',
-                callback:null
-            },param);
+            //태그 생성 
+            //TODO : 미구현 목록 
+            /*
+            주문 접수 상태 일때 
+            1. start_txt 클래스 에 on 클래스 추가
+            2. progress_wrap 및에 진행 상태에 따라 적용 
+            신규 주문 상태 일때 
+            1. stu_txt 태그 삭제 
+            */
+            function makeTag(data){
+                return $('<li>\
+                    <div class="division type02">\
+                        <span class="left_txt"><span class="split_w">'+data.type+'</span><span>'+data.companyName+'</span></span>\
+                        <span class="rignt_txt">'+data.state+'</span>\
+                    </div>\
+                    <div class="top">\
+                        <span class="date">'+data.state+'</span>\
+                        <span class="order_num">'+data.orderNum+'</span>\
+                    </div>\
+                    <div class="mid">\
+                        <span class="num">'+data.num+'</span>\
+                        <span class="addr">'+data.addr+'</span>\
+                        <a href="#" class="go_list" data-event-page="C_07_21.html"></a>\
+                    </div>\
+                    <div class="bot">\
+                        <span class="company">'+data.company+'</span>\
+                        <span class="charge">'+data.charge+'</span>\
+                    </div>\
+                    <div class="bot">\
+                        <div class="progress">\
+                            <span class="start_txt on">도착</span>\
+                            <div class="progress_wrap">\
+                                <div class="inner" style="width:33%;">\
+                                    <span class="stu_txt">진행상황</span>\
+                                </div>\
+                            </div>\
+                            <span class="end_txt">현장완료</span>\
+                        </div>\
+                    </div>\
+                </li>');
+            };
             
-            // 이벤트 걸기 
-            $(this).each(function(){
-                console.log(this);
-                $(this).off("click").on("click", function(){
-                    //M.pop.date 이용해서 date 선택창 노출
-                    console.log("date click",$(this));
-                    // 네이티브 데이트 피커를 호출 한다.
-                    // - HM12 // - HM24 // - YMD // - YM
-                    // : MMddAM (ex> 1130PM or 1130AM) : HHmm (ex> 2310)
-                    // : yyyyMMdd (ex> 20110102)
-                    // : yyyyMM (ex> 201101)
-                    // - MMYYYY : MMyyyy (ex> 012011)
-                    var that = this;
-                    M.pop.date({ 
-                        type : 'YMD',
-                        initDate : moment().day(0).format("YYYYMMDD"), //현재 날짜 +1 하면 오늘 기준 내일 -1 하면 오늘기준 어제 
-                        // startDate : '20180901', 
-                        // endDate : '20181201'
-                        callback:function(result, option) {
-                            console.log("date :: ",result, option,this);
-                            // result :: { MM: "04", dd: "07", status: "SUCCESS", week: 6 ,yyyy: "2018"}
-                            // 선택한 시간이 json 형태로 리턴 된다.
-                            // - HM12 // - HM24 // - YMD
-                            // : {"HH":"08","mm":"40","part":"AM"} : {"HH":"20","mm":"40"}
-                            // : {"yyyy":"2010","MM":"01","dd":"01"}
-                            // - YM : {"yyyy":"2010","MM":"01"}
-                            // - MMYYYY : {"yyyy":"2010","MM":"01"} var year = result.yyyy;
-                
-                            if(result.status == "SUCCESS"){
-                                console.log(moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
-                
-                                // nodeName : 실행할 함수 이름
-                                var type = {
-                                    "INPUT":"val"
-                                }
-                                //input 인경우 
-                                $(that)[type[that.nodeName]](moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
-                
-                                //콜백 실행
-                                if(defParam.callback) defParam.callback(result,moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
-                            }
-                        }   
-                    });
-                });
-            });
-        };
+            //태그 랜더링 
+            $(param).each(function(index,el){
+                console.log(el);
+                $("#list").append(makeTag(el));
+            })
+        }
+        // 더보기 버튼 클릭시 액션
+        $("#listAdd").off("click").on("click",function(){
 
-        $("[data-mdate]").mDate();
+        })
+
+        searchBox();
+        listMake();
+        //재 랜더링 이후에 이벤트 다시 걸음
+        pageNav(pageData);
     });
 
     // 통신

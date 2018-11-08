@@ -51,7 +51,7 @@ $(document).ready(function(){
                 home:'L_01_08.html',//메인 페이지 정보
                 nav:[
                     '<li class="yellow"><a href="#" data-event-page="B_02_11.html">일정/업무</a></li>',
-                    '<li class="blue"><a href="#" data-event-page="E_03_21.html">상재단가조회</a></li>',
+                    '<li class="blue"><a href="#" data-event-page="E_03_11.html">상재단가조회</a></li>',
                     '<li class="blue"><a href="#" data-event-page="E_03_44.html">가구PS 간단견적</a></li>',
                     '<li class="yellow"><a href="#" data-event-page="B_02_21.html">거래처 정보</a></li>',
                     '<li class="blue"><a href="#" data-event-page="E_03_21.html">재고조회</a></li>',
