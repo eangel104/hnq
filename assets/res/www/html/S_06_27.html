@@ -46,7 +46,7 @@
 
 		</div>
 		<div class="btn_fix">
-			<a href="#n" class="btn gray">취소</a>
+			<a href="#n" class="btn gray" data-event-back>취소</a>
 			<a href="#n" class="btn green">승인요청</a>
 		</div>
 	</div>
@@ -69,6 +69,25 @@
                 pageNav();
             }
         });
+
+        // 승인요청 및 취소 버튼
+        $('a.btn').off('click').on('click', function() {
+            // 승인
+            if($(this).hasClass('green')) {
+                M.pop.alert({
+                    title: '알림',
+                    message: '승인요청을 하시겠습니까?\n승인요청 한 실측은 수정할 수 없습니다.',
+                    buttons: ['취소', '확인'],
+                    callback: function(index) {
+                        if(index === 1) {
+                            //
+                        }
+                    }
+                });
+            } else {
+                // Do Nothing..
+            }
+        })
     });
     M.onReady(function(e) {
         //ready event handle code here
