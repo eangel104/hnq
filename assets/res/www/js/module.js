@@ -255,13 +255,16 @@ $.fn.signPad = function(param){
     
     $(window).off("resize").on("resize",function(){
         resizeCanvas();
-    })
+    });
     return {
         save: function(callback){
             if(callback){
                 //empty signFlag, data
                 callback(!signaturePad.isEmpty(),signaturePad.toDataURL());
             }
+        },
+        resize:function(){
+            resizeCanvas();
         }
     }
 }

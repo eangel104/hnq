@@ -144,9 +144,13 @@
             }
         });
         
-        $('#tab1').fnTab();
         $("#tab1-1 .btn.middle.orange").camAlbum();
-        $(".sign_box.mt20").signPad();
+        
+        var sign = $(".sign_box").signPad();
+
+        $('#tab1').fnTab(function(){
+            sign.resize();
+        });
 
         // 저장하기
         $("#btn_save").off("click").on("click", function() {
