@@ -271,11 +271,14 @@ $.fn.signPad = function(param){
 
 /**
 * @author hy.lee@ttb.co.kr
-* @version 0.1
+* @version 0.2
 * @param {object} btnLoadImages 이미지 버튼
 * @since 2018.11.08
 * @description 사진 불러오기
-* 이미지 불러오기 버튼을 selector로 사용하면 된다.
+* 이미지 불러오기 버튼을 selector로 사용
+* 버튼 속성: `data-image-for`
+* ul 속성: `data-image-list`
+* 위 두 속성의 값이 같으면 해당 버튼이 해당 ul에 이미지를 뿌려준다.
 */
 $.fn.camAlbum = function(param){
     var defParam = $.extend({},{
@@ -283,9 +286,11 @@ $.fn.camAlbum = function(param){
     },param);
     
     $(this).off("click").on("click", function(){
-        var imageList = $(this).parent().next().children("ul");
-        var maxCount = parseInt(imageList.attr("data-max-images"));
+        var imageList = $('[data-image-list="' + $(this).attr("data-image-for") + '"]');
         var images = $(imageList).find("img");
+
+        console.log(imageList);
+        console.log(images);
 
         // 카메라, 앨범 선택 팝업
         M.pop.list({
@@ -298,6 +303,7 @@ $.fn.camAlbum = function(param){
             ],
             callback: function(buttonIdx, rowInfo, setting) {
                 var non_images = $(images).filter("[src='../img/content/test_img.gif']");
+                console.log(non_images);
                 if(non_images.length < 1) {
                     M.pop.alert("사진을 더 이상 첨부 할 수 없습니다.");
                     return;
