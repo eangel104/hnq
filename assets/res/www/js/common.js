@@ -51,7 +51,7 @@ $(document).ready(function(){
 });
 
 //탭메뉴
-$.fn.fnTab = function(){
+$.fn.fnTab = function(clickCallback){
 	var $id = $(this).attr('id');
 	var $idNum = $id.replace('tab','');
 	var tabContId = $('#tab_cont' + $idNum);
@@ -63,7 +63,8 @@ $.fn.fnTab = function(){
 		btn.parent().removeClass('on');
 		$(this).parent().addClass('on');
 		tabContId.find('> .panel').hide();
-		$(targetLink).show();
+        $(targetLink).show();
+        if(clickCallback) clickCallback();
 		e.preventDefault();
 	});
 }
