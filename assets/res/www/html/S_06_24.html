@@ -152,6 +152,22 @@
             sign.resize();
         });
 
+        // 고객 사인 저장
+        $("#tab1-2 .btn.middle.orange").off("click").on("click", function() {
+            M.pop.alert({
+                title: '알림',
+                message: '저장하시겠습니까?',
+                buttons: ['취소', '확인'],
+                callback: function(index) {
+                    if(index === 1) {
+                        // TOOD: API 연동
+
+                        M.page.back();
+                    }
+                }
+            });
+        });
+
         // 저장하기
         $("#btn_save").off("click").on("click", function() {
             console.log("save");
