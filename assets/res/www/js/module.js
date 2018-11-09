@@ -272,14 +272,12 @@ $.fn.signPad = function(param){
 /**
 * @author hy.lee@ttb.co.kr
 * @version 0.1
-* @param {object} btnLoadImages 이미지 버튼
 * @since 2018.11.08
 * @description 사진 불러오기
 * 이미지 불러오기 버튼을 selector로 사용하면 된다.
 */
 $.fn.camAlbum = function(param){
     var defParam = $.extend({},{
-        btnLoadImages: null,
     },param);
     
     $(this).off("click").on("click", function(){

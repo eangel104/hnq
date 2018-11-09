@@ -113,6 +113,8 @@
                 pageNav(pageData);
             }
         });
+        //앨범 카메라 연결 모듈 
+        $(".btn.middle.orange").camAlbum();
 
         $("#cancel").off("click").on("click",function(e){
             M.page.back();
