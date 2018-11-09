@@ -26,7 +26,7 @@
 			<!-- 본문내용 -->
 			<div class="section">
 				<!-- TODO : 기획서 UX Scenario_20181012 버전에서 항목수정됨 -->
-				<ul class="chk_list half right">
+				<ul class="chk_list right">
 					<li>
 						<label class="chk_style">
 							<input type="checkbox" name="chk_chk04" checked>
@@ -39,10 +39,10 @@
 				
 				<div class="tit_btn big_btn">
 					<h3 class="tit_type01">양증 현장 사진</h3>
-					<a href="#n" class="btn middle orange btn_r fs13 mw90">사진불러오기</a>
+					<a href="#n" class="btn middle orange btn_r fs13 mw90" data-image-for="image_list">사진불러오기</a>
 				</div>
 				
-				<ul class="image_list">
+				<ul class="image_list" data-image-list="image_list">
 					<li>
 						<a href="#n">
 							<img src="../img/content/test_img.gif" alt="테스트이미지" />
@@ -72,8 +72,8 @@
 			<!-- 본문내용 -->
 		</div>
 		<div class="btn_fix">
-			<a href="#n" class="btn gray">취소</a>
-			<a href="#n" class="btn green">저장</a>
+			<a id="cancel" href="#n" class="btn gray">취소</a>
+			<a id="save" href="#n" class="btn green">저장</a>
 		</div>
 	</div>
 	<!-- //content -->
@@ -104,31 +104,24 @@
         });
     });
 
-    // 통신
-    // M.net.http.send({
-    //     server: "TEST_SERVER",
-    //     path: "svy/lst/inquireSvrList",
-    //     method: "POST",
-    //     timeout: 5000,
-    //     userData : {
-    //         // 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
-    //         service_id : 'appinfo',
-    //         action     : 'list',
-    //     }, // request data
-    //     success: function(recevedData, setting) {
-    //         console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
-    //         // TODO : did success control here
-    //     },
-    //     error: function(errCode, errMsg, setting) {
-    //         console.log("** onError", errCode, errMsg, setting);
-    //         // TODO : error control here
-    //     },
-    //     indicator: {
-    //         show : true,
-    //         message : '통신중입니다.',
-    //         cancelable : false
-    //     }
-    // });
+    //앨범 카메라 연결 모듈 
+    $(".btn.middle.orange").camAlbum();
+
+    $("#cancel").off("click").on("click",function(e){
+        M.page.back();
+    });
+
+    $("#save").off("click").on("click",function(e){
+        M.pop.alert({
+            title: '알림',
+            message: '저장하시겠습니까?',
+            buttons: ['확인', '취소'],
+            callback: function(index) {
+                    console.log( "index: ", index );
+            }
+        });
+    });
+
     M.onReady(function(e) {
         //ready event handle code here
         console.log("onReady");
