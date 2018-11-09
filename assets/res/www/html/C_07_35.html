@@ -54,7 +54,7 @@
 						<div class="price_area">
 							<div class="p_m fr">
 								<a class="minus" href="#">빼기</a>
-                                <input type="text" value="0" min="0" step="0.01">
+                                <input class="span_num" type="number" value="0">
 								<a class="plus" href="#">더하기</a>
 							</div>
 						</div>
@@ -123,7 +123,7 @@
 
 
         //숫자 컨트롤 모듈 나중에 모듈화 
-        var $num = $(".price_area input[type='text']");
+        var $num = $(".price_area input[type='number']");
         var minNum = 0;
         var maxNum = 5;
         var step = 0.1;

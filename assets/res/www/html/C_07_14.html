@@ -61,7 +61,7 @@
 									<input type="checkbox" name="chk_chk01" checked>
 									<span class="chk_txt webkit_box">
 										<strong class="box_flex1 name">김프로 팀장</strong>
-										<span class="box_flex0 tel">010-1234-5678</span>
+										<a href="tel:010-1234-5678" class="box_flex0 tel">010-1234-5678</a>
 									</span>
 								</label>
 							</li>
@@ -70,7 +70,7 @@
 									<input type="checkbox" name="chk_chk01">
 									<span class="chk_txt webkit_box">
 										<strong class="box_flex1 name">김프로 팀장</strong>
-										<span class="box_flex0 tel">010-1234-5678</span>
+										<a href="tel:010-1234-5678" class="box_flex0 tel">010-1234-5678</a>
 									</span>
 								</label>
 							</li>
@@ -79,7 +79,7 @@
 									<input type="checkbox" name="chk_chk01" checked>
 									<span class="chk_txt webkit_box">
 										<strong class="box_flex1 name">김프로 팀장</strong>
-										<span class="box_flex0 tel">010-1234-5678</span>
+										<a href="tel:010-1234-5678" class="box_flex0 tel">010-1234-5678</a>
 									</span>
 								</label>
 							</li> -->
@@ -89,29 +89,29 @@
 					<dd>
 						<ul id="construction" class="chk_list"><!-- 1031 수정 : list 마크업 수정 -->
 							<!-- <li>
-								<label class="chk_style">
+								<label class="chk_style2">
 									<input type="radio" name="chk_rdo01">
 									<span class="chk_txt webkit_box">
 										<strong class="box_flex1 name">김프로 팀장</strong>
-										<span class="box_flex0 tel">010-1234-5678</span>
+										<a href="tel:010-1234-5678" class="box_flex0 tel">010-1234-5678</a>
 									</span>
 								</label>
 							</li>
 							<li>
-								<label class="chk_style">
+								<label class="chk_style2">
 									<input type="radio" name="chk_rdo01">
 									<span class="chk_txt webkit_box">
 										<strong class="box_flex1 name">김프로 팀장</strong>
-										<span class="box_flex0 tel">010-1234-5678</span>
+										<a href="tel:010-1234-5678" class="box_flex0 tel">010-1234-5678</a>
 									</span>
 								</label>
 							</li>
 							<li>
-								<label class="chk_style">
+								<label class="chk_style2">
 									<input type="radio" name="chk_rdo01">
 									<span class="chk_txt webkit_box">
 										<strong class="box_flex1 name">김프로 팀장</strong>
-										<span class="box_flex0 tel">010-1234-5678</span>
+										<a href="tel:010-1234-5678" class="box_flex0 tel">010-1234-5678</a>
 									</span>
 								</label>
 							</li> -->
@@ -218,13 +218,17 @@
             var that = this;
             //input type 에 맞는 태그 생성해서 리턴 
             function makeTag(inputType,param){
+                var type = {
+                    "radio":"chk_style2",
+                    "checkbox":"chk_style"
+                }
                 if(inputType == "radio" || inputType == "checkbox"){
                     return $('<li>\
-								<label class="chk_style">\
+								<label class="'+type[inputType]+'">\
 									<input type="'+inputType+'" name="in_'+inputType+'01">\
 									<span class="chk_txt webkit_box">\
 										<strong class="box_flex1 name">'+param.userName+'</strong>\
-										<span class="box_flex0 tel">'+param.tel+'</span>\
+                                        <a href="#" class="box_flex0 tel">'+param.tel+'</a>\
 									</span>\
 								</label>\
 							</li>');
