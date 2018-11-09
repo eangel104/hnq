@@ -276,7 +276,7 @@ $.fn.signPad = function(param){
 */
 $.fn.camAlbum = function(param){
     var defParam = $.extend({},{
-        btnLoadImages: $("#tab1-1 .btn.middle.orange"),
+        btnLoadImages: null,
     },param);
     
     $(this).off("click").on("click", function(){
