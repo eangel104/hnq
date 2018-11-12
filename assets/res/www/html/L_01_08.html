@@ -113,26 +113,6 @@
                     <a href="#" class="btn_add" data-event-page="L_01_10.html">공지사항 더보기</a>
                 </div>
                 <ul class="notice_list">
-                    <li data-event-page="L_01_11.html">
-                        <span class="type">공지</span>
-                        <a href="#n">바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가곰팡이가</a>
-                        <span class="date">2018-09-01</span>
-                    </li>
-                    <li data-event-page="L_01_11.html">
-                        <span class="type">공지</span>
-                        <a href="#n">바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가</a>
-                        <span class="date">2018-09-01</span>
-                    </li>
-                    <li data-event-page="L_01_11.html">
-                        <span class="type">공지</span>
-                        <a href="#n">바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가</a>
-                        <span class="date">2018-09-01</span>
-                    </li>
-                    <li data-event-page="L_01_11.html">
-                        <span class="type">공지</span>
-                        <a href="#n">바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가</a>
-                        <span class="date">2018-09-01</span>
-                    </li>
                 </ul>
 
             </div>			
@@ -160,6 +140,14 @@
     //이전페이지 에서 받은 데이터 
     // var data = M.data.param();
 
+    function render(data) {
+        return '<li data-event-page="L_01_11.html">\
+            <span class="type">' + data.type + '</span>\
+            <a href="#">' + data.title + '</a>\
+            <span class="date">' + data.date + '</span>\
+        </li>'
+    }
+
     $(document).ready(function(){
         $(".header").header({
             type:"sales",
@@ -168,6 +156,41 @@
                 pageNav(pageData);
             }
         });
+
+        // 데이터 받아오기
+        // TODO: API 연동하고 아래 삭제
+        var response = [
+            {
+                type: '공지',
+                title: '곰팡이 호열이 곰팡이',
+                date: '2018-09-07'
+            },
+            {
+                type: '공지',
+                title: '곰팡이 호열이 곰팡이',
+                date: '2018-09-08'
+            },
+            {
+                type: '공지',
+                title: '곰팡이 호열이 곰팡이 바닥에 바닥재 곰팡이가 곰팡이가 곰팡이가곰팡이가',
+                date: '2018-09-09'
+            },
+            {
+                type: '공지',
+                title: '곰팡이 이두한 과장님 곰팡이 더러워 우웨에에엑',
+                date: '2018-09-10'
+            },
+            {
+                type: '공지',
+                title: '곰팡이 호열이 곰팡이',
+                date: '2018-09-11'
+            },
+        ]
+
+        // 공지사항 출력
+        response.forEach(function(record, index) {
+            $('.notice_list').append(render(record));
+        })
     });
     M.onReady(function(e) {
         //ready event handle code here
