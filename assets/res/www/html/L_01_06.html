@@ -7,54 +7,91 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/content.css">
 <link rel="stylesheet" type="text/css" href="../css/content2.css">
-<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
-
-<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 
 <!-- layer_wrap -->
 <div class="layer_wrap">
-	<div class="layer_popup" id="customer">
-		<!-- header -->
-		<div class="header">
-			<h1 class="page_title">위치정보 이용약관</h1>
-			<a href="#n" class="page_close" onclick="popupClose(this);">이전페이지</a>
-		</div>
-		<!-- //header -->
+    <div class="layer_popup" id="customer">
+        <!-- header -->
+        <div class="header">
+            <!-- <h1 class="page_title">위치정보 이용약관</h1>
+            <a href="#" class="page_close" data-event-back>이전페이지</a> -->
+        </div>
+        <!-- //header -->
 
-		<!-- content -->
-		<div class="content newreser">
-			<div class="content_area gray">
-				<div class="section ">
-					<div class="clause tbl">
-							<h3>모바일 프로그램 사용을 위한 개인정보 수집‧이용 동의서</h3>
-							<hr/>
-							한화엘앤씨㈜의 모바일 프로그램 사용 권한을 부여하기 위하여 아래와 같이 개인정보를 수집∙이용하고자 합니다. 내용을 자세히 읽으신 후 동의 여부를 결정하여 주십시오
-							<span class="black mt10">■ 개인정보 수집∙이용 내역</span>
-							<table>
-									<tbody>
-										<tr>
-											<th class="tac">수집‧이용 항목</th>
-											<th class="tac">수집‧이용 목적</th>
-											<th class="tac">보유기간</th>
-										</tr>
-										<tr>
-											<td class="tac">성명, 전화번호,위치정보</td>
-											<td class="tac">모바일 프로그램 사용 권한 부여<br/>(이용자 식별)</td>
-											<td class="tac">당사의 시공 업무 종료 시까지</td>
-										</tr>
-									</tbody>
-								</table>
-							※ 위의 개인정보 수집‧이용에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 모바일 프로그램 사용에 제한을 받을 수 있습니다. 
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- //content -->
-	</div>
+        <!-- content -->
+        <div class="content newreser">
+            <div class="content_area gray">
+                <div class="section ">
+                    <div class="clause tbl">
+                            <h3>모바일 프로그램 사용을 위한 개인정보 수집‧이용 동의서</h3>
+                            <hr/>
+                            한화엘앤씨㈜의 모바일 프로그램 사용 권한을 부여하기 위하여 아래와 같이 개인정보를 수집∙이용하고자 합니다. 내용을 자세히 읽으신 후 동의 여부를 결정하여 주십시오
+                            <span class="black mt10">■ 개인정보 수집∙이용 내역</span>
+                            <table>
+                                    <tbody>
+                                        <tr>
+                                            <th class="tac">수집‧이용 항목</th>
+                                            <th class="tac">수집‧이용 목적</th>
+                                            <th class="tac">보유기간</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="tac">성명, 전화번호,위치정보</td>
+                                            <td class="tac">모바일 프로그램 사용 권한 부여<br/>(이용자 식별)</td>
+                                            <td class="tac">당사의 시공 업무 종료 시까지</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            ※ 위의 개인정보 수집‧이용에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 모바일 프로그램 사용에 제한을 받을 수 있습니다. 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //content -->
+    </div>
 </div>
 <!-- //layer_wrap -->
-
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/module.js"></script>
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
+    $(document).ready(function(){
+        $(".header").header({
+            type:"sales",
+            title:"개인정보취급방침",
+            callback:function(){
+                pageNav();
+            }
+        });
+    });
+    
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
