@@ -132,7 +132,8 @@
 .layer_popup .popup_form .popup_list .tit_type02{font-size:13px}
 .layer_popup .popup_form .popup_list .btn.middle{padding:0 30px}
 .layer_popup .popup_form .tbl th, .layer_popup .popup_form .tbl td{font-size: 12px}
-
+.layer_popup .popup_form .popup_gallery{padding:20px;background-color:#f5f5f5;}
+.layer_popup .popup_form .popup_gallery img{width:100%}
 /* 설정 */
 .clause{white-space: pre-line;padding: 10px;border: 1px solid #d7d7d7;font-size: 12px;background-color: #fff;}
 .clause h3{font-size: 16px;}
