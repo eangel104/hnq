@@ -347,6 +347,9 @@ $.fn.camAlbum = function(param){
     // 이미지 클릭 시 원본 크기로 보여주기
     $("li a img").off("click").on("click", function() {
         console.log(this);
+        if($(this).attr('src') === '../img/content/test_img.gif') {
+            return;
+        }
         $('#img_popup').find('img').attr('src', $(this).attr('src'));
         popupOpen('#img_popup');
     });
