@@ -68,7 +68,7 @@
                         </div>
                         <div class="tit_btn">
                             <h3 class="tit_type01">현장 정보 사진</h3>
-                            <a href="#n" class="btn middle orange"data-image-for="img2">사진 불러오기</a>
+                            <a href="#n" class="btn middle orange" data-image-for="img2">사진 불러오기</a>
                         </div>
                         <div>
                             <ul class="image_list" data-image-list="img2">
@@ -112,10 +112,24 @@
                     <!-- 본문내용 -->
                 </div>
             </div>
-
             <!-- <script type="text/javascript">
                 $('#tab1').fnTab();
             </script> -->
+            <!-- 원본사진 팝업 -->
+            <div class="layer_wrap large">
+                <div class="layer_popup" id="img_popup">
+                    <div class="popup_form">
+                        <div class="header">
+                            <h3 class="page_title">원본사진</h3>
+                            <a href="#n" class="page_close" onclick="popupClose(this);">이전페이지</a>
+                        </div>
+                        <div class="popup_gallery">
+                            <img src="../img/gallery/img1.jpg" alt="원본 이미지"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //원본사진 팝업 -->
         </div>
         <div class="btn_fix">
             <a href="#n" class="btn gray" id="btn_cancel">취소</a>
@@ -123,7 +137,6 @@
         </div>
     </div>
     <!-- //content -->
-
 </div>
 <!-- //wrap -->
 <script type="text/javascript" src="../js/mcore.min.js"></script>

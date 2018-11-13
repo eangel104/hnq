@@ -287,9 +287,6 @@ $.fn.camAlbum = function(param){
         var imageList = $('[data-image-list="' + $(this).attr("data-image-for") + '"]');
         var images = $(imageList).find("img");
 
-        console.log(imageList);
-        console.log(images);
-
         // 카메라, 앨범 선택 팝업
         M.pop.list({
             mode: "SINGLE",
@@ -345,16 +342,17 @@ $.fn.camAlbum = function(param){
                 }
             }
         });
+    });
 
-        // 이미지 클릭 시 원본 크기로 보여주기
-        $("#tab1-1 li img").off("click").on("click", function() {
-            // TODO
-            console.log(this);
-        });
-		
-		// 등록한 사진 삭제
-		$(".btn_delete").off("click").on("click", function() {
-			$(this).siblings().children("img").attr("src", "../img/content/test_img.gif");
-		});
+    // 이미지 클릭 시 원본 크기로 보여주기
+    $("li a img").off("click").on("click", function() {
+        console.log(this);
+        $('#img_popup').find('img').attr('src', $(this).attr('src'));
+        popupOpen('#img_popup');
+    });
+    
+    // 등록한 사진 삭제
+    $(".btn_delete").off("click").on("click", function() {
+        $(this).siblings().children("img").attr("src", "../img/content/test_img.gif");
     });
 }
