@@ -71,7 +71,20 @@
 							<li>
 								<strong class="tit">주문번호</strong>
 								<input type="text" value="" id="orderNum">
-							</li>
+                            </li>
+                            <li>
+                                <strong class="tit">현재진행상태</strong>
+                                <div class="webkit_box">
+                                    <span class="box_flex1">
+                                        <select>
+                                            <option>전체</option>
+                                            <option>시공예약</option>
+                                            <option>시공완료</option>
+                                            <option>시공승인요청</option>
+                                        </select>
+                                    </span>
+                                </div>
+                            </li>
 						</ul>
 						<span class="btn_srch"><a href="#n" class="btn middle gray" id="search">검색</a></span>
 						<div class="srch_control">
@@ -191,7 +204,8 @@
     
     $(document).ready(function(){
         $(".header").header({
-            type:"construction",
+            // type:"construction",
+            type:"sales",
             title:"시공",
             headerType:"menu",
             callback:function(){

@@ -16,8 +16,7 @@
 
 	<!-- header -->
 	<div class="header">
-		<h1 class="page_title">승인관리</h1>
-		<!-- gnb -->
+		<!-- <h1 class="page_title">승인관리</h1>
 		<div class="gnb">
 			<ul>
 				<li class="green"><a href="#n">실측관리</a></li>
@@ -25,8 +24,7 @@
 				<li class="setting"><a href="#n"><span>설정</span></a></li>
 			</ul>
 		</div>
-		<!-- //gnb -->
-		<a href="#n" class="page_prev">이전페이지</a>
+		<a href="#n" class="page_prev">이전페이지</a> -->
 	</div>
 
 	<!-- //header -->
@@ -76,8 +74,8 @@
     $(document).ready(function(){
         $(".header").header({
             type:"sales",
-            title:"템플릿",
-            headerType:"menu",
+            title:"승인관리",
+            // headerType:"menu",
             callback:function(){
                 pageNav(pageData);
             }
@@ -89,8 +87,8 @@
             // spacing   : "20px",
             starWidth: (($("#rateYo").width()/5+3.5)+"px"),
             ratedFill: "red",
-            onSet: function (rating, rateYoInstance) {
-                alert("Rating is set to: " + rating);
+            onChange: function (rating, rateYoInstance) {
+                alert("onChange: " + rating);
             }
         });
     });
