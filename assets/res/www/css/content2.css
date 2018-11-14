@@ -74,9 +74,9 @@
 .order_list .srch_control .btn_cls span:before{content:"";position:absolute;top:8px;left:4px;width:9px;border-top:1px solid #222;transform:rotate(45deg);}
 
 /* 주문요청 */
-.header .page_close{position: absolute;top: 0;right: 0;width: 50px;height: 45px;overflow: hidden;text-indent: -9999px;}
-.header .page_close:before{content: "";display: inline-block;position: absolute;top: 50%;left: 50%;width: 2px;height: 26px;margin: -13px 0 0 -1px;background: #fff;transform: rotate(-45deg);}
-.header .page_close:after{content: "";display: inline-block;position: absolute;top: 50%;left: 50%;width: 26px;height: 2px;margin: -1px 0 0 -13px;background: #fff;transform: rotate(-45deg);}
+.header .page_close, .popup_header .page_close{position: absolute;top: 0;right: 0;width: 50px;height: 45px;overflow: hidden;text-indent: -9999px;}
+.header .page_close:before, .popup_header .page_close:before{content: "";display: inline-block;position: absolute;top: 50%;left: 50%;width: 2px;height: 26px;margin: -13px 0 0 -1px;background: #fff;transform: rotate(-45deg);}
+.header .page_close:after, .popup_header .page_close:after{content: "";display: inline-block;position: absolute;top: 50%;left: 50%;width: 26px;height: 2px;margin: -1px 0 0 -13px;background: #fff;transform: rotate(-45deg);}
 /* 주소조회 */
 .font_bold{font-weight: bold}
 .type03 .left_txt{font-family: 'noto-regular';}

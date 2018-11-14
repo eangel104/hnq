@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+<title>한화 Home &amp; Q</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/content.css">
+<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+</head>
+<body>
+
+<!-- wrap -->
+<div class="wrap">
+
+	<!-- header -->
+	<div class="header">
+		<!-- <h1 class="page_title">이슈상세</h1>
+		<a href="#" class="page_prev">이전페이지</a> -->
+	</div>
+
+	<!-- //header -->
+
+	<!-- content -->
+	<div class="content">
+		
+		<div class="content_area">
+
+			<!-- 본문내용 -->
+			<div class="section">
+				<h3 class="tit_type01 mt0">반려</h3>
+				<ul>
+					<li class="mt10">
+						<select>
+                            <option>기타</option>
+                            <option>추가시공비 오입력(과다청구)</option>
+                            <option>시공상태 불량</option>
+                            <option>청소상태 불량</option>
+                            <option>현장 훼손</option>
+						</select>
+					</li>
+					<li class="mt10">
+						<span class="input_wrap"><!-- 1031 수정 : reset 기능 추가 -->
+							<textarea rows="3" cols="30" placeholder="승인요청 반려 비고"></textarea>
+							<a href="#" class="btn_reset">초기화</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+			<!-- 본문내용 -->
+		</div>
+		<div class="btn_fix">
+			<a id="cancel" href="#" class="btn gray">취소</a>
+			<a id="save" href="#" class="btn green">저장</a>
+		</div>
+	</div>
+	<!-- //content -->
+</div>
+<!-- //wrap -->
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/module.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
+
+    //페이지 이동시 전달할 데이터
+    var pageData = {}
+
+    //이전페이지 에서 받은 데이터 
+    // var data = M.data.param();
+    
+    $(document).ready(function(){
+        $(".header").header({
+            type:"construction",
+            title:"승인관리",
+            callback:function(){
+                pageNav(pageData);
+            }
+        });
+
+        //앨범 카메라 연결 모듈 
+        $(".btn.middle.orange").camAlbum();
+
+        $("#cancel").off("click").on("click",function(e){
+            M.page.back();
+        });
+        
+        $("#save").off("click").on("click",function(e){
+            M.pop.alert({
+                title: '알림',
+                message: '저장하시겠습니까?',
+                buttons: ['확인', '취소'],
+                callback: function(index) {
+                        console.log( "index: ", index );
+                }
+            });
+        });
+    });
+
+    // 통신
+    // M.net.http.send({
+    //     server: "TEST_SERVER",
+    //     path: "svy/lst/inquireSvrList",
+    //     method: "POST",
+    //     timeout: 5000,
+    //     userData : {
+    //         // 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
+    //         service_id : 'appinfo',
+    //         action     : 'list',
+    //     }, // request data
+    //     success: function(recevedData, setting) {
+    //         console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
+    //         // TODO : did success control here
+    //     },
+    //     error: function(errCode, errMsg, setting) {
+    //         console.log("** onError", errCode, errMsg, setting);
+    //         // TODO : error control here
+    //     },
+    //     indicator: {
+    //         show : true,
+    //         message : '통신중입니다.',
+    //         cancelable : false
+    //     }
+    // });
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
+</body>
+</html>

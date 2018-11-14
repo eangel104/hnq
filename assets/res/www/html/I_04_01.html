@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+<title>한화 Home &amp; Q</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/content.css">
+</head>
+<body>
+
+<!-- wrap -->
+<div class="wrap">
+
+	<!-- header -->
+	<div class="header">
+		<!-- <h1 class="page_title">시공</h1>
+		<a href="#n" class="btn_home">home</a>
+		<a href="#n" class="btn_gnb">전체메뉴</a>
+		<div class="gnb">
+			<ul>
+				<li class="green"><a href="#n">실측관리</a></li>
+				<li class="green"><a href="#n">시공관리</a></li>
+				<li class="setting"><a href="#n"><span>설정</span></a></li>
+			</ul>
+		</div>
+		<a href="#n" class="page_prev">이전페이지</a> -->
+	</div>
+
+	<!-- //header -->
+
+	<!-- content -->
+	<div class="content">
+		
+		<div class="content_area">
+
+			<!-- 본문내용 -->
+			<div class="section">
+				<div class="srch_wrap">
+					<a href="#n" class="btn_srch_open">검색</a>
+					<div class="srch_area">
+						<ul>
+							<li>
+								<strong class="tit">기간</strong>
+								<div class="webkit_box mt10">
+									<span class="box_flex1">
+										<input type="text" data-mdate>
+									</span>
+									<span class="box_flex0 dash">
+										~
+									</span>
+									<span class="box_flex1">
+										<input type="text" data-mdate>
+									</span>
+								</div>
+							</li>
+							<li>
+								<strong class="tit">업체명</strong>
+								<input type="text" value="" id="companyName">
+							</li>
+							<li>
+								<strong class="tit">주소</strong>
+								<input type="text" value="" id="addr">
+							</li>
+							<li>
+								<strong class="tit">주문번호</strong>
+								<input type="text" value="" id="orderNum">
+							</li>
+						</ul>
+						<span class="btn_srch"><a href="#n" class="btn middle gray" id="search">검색</a></span>
+						<div class="srch_control">
+							<a href="#n" class="btn_reset" id="initSearch">초기화</a>
+							<a href="#n" class="btn_cls"><span>닫기</span></a>
+						</div>
+					</div>
+				</div>
+				<!-- //srch_wrap -->
+
+				<div class="list_num">
+					<span><em>12</em>건 / 총 <em>12</em>건</span>
+				</div>
+				<!-- TODO : 20181025 li a영역 수정 -->
+				<ul id="list" class="survey_list mt10">
+					<li>
+                        <div class="division type02">
+                            <span class="left_txt"><span class="split_w">창호</span><span>현대인테리어</span></span>
+                            <span class="rignt_txt">주문접수</span>
+                        </div>
+				        <div class="top">
+                            <span class="date">2018-08-31</span>
+                            <span class="order_num">0000000000</span>
+                        </div>
+                        <div class="mid">
+                            <span class="num">[TI20160523000000] 비거주(개보수)</span>
+                            <span class="addr">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+                            <a href="#" class="go_list" data-event-page="I_04_03.html"></a>
+                        </div>
+						<div class="bot">
+							<span class="company">서울 창호 시스템</span>
+							<span class="charge">김프로(01012344321)</span>
+						</div>
+						<!-- 진행단계 -->
+						<div class="bot">
+							<div class="progress">
+								<span class="start_txt on">도착</span> <!-- 활성화시 on클래스 추가 -->
+								<div class="progress_wrap">
+									<div class="inner" style="width:33%;"><!-- 진행상황 위치값 변경 -->
+										<span class="stu_txt">진행상황</span><!-- TODO: 진행상황 텍스트 없을시 삭제해주세요 -->
+									</div>
+								</div>
+								<span class="end_txt">현장완료</span>
+							</div>
+						</div>
+						<!-- //진행단계 -->
+					</li>
+					<li>
+                        <div class="division type02">
+                            <span class="left_txt"><span class="split_w">상재</span><span>현대인테리어</span></span>
+                            <span class="rignt_txt">신규주문</span>
+                        </div>
+			        	<div class="top">
+                            <span class="date">2018-08-31</span>
+                            <span class="order_num">0000000000</span>
+                        </div>
+                        <div class="mid">
+                            <span class="num">[TI20160523000000] 비거주(개보수)</span>
+                            <span class="addr">서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호</span>
+                            <a href="#" class="go_list" data-event-page="I_04_03.html"></a>
+                        </div>
+						<div class="bot">
+							<span class="company">경동우드텍</span>
+							<span class="charge">김프로(01012344321)</span>
+						</div>
+						<!-- 진행단계 -->
+						<div class="bot">
+							<div class="progress">
+								<span class="start_txt">도착</span> <!-- 활성화시 on클래스 추가 -->
+								<div class="progress_wrap">
+									<!-- <div class="inner" style="width:50%;"> -->
+										<!-- <span class="stu_txt">진행상황</span>TODO: 진행상황 텍스트 없을시 삭제해주세요 -->
+									<!-- </div> -->
+								</div>
+								<span class="end_txt">현장완료</span>
+							</div>
+						</div>
+						<!-- //진행단계 -->
+					</li>
+				</ul>
+				<!--// TODO : 20181025 li a영역 수정 -->
+				<div class="tac mt20">
+					<a id="listAdd" href="#n" class="btn large basic"><span class="add">더보기</span></a>
+				</div>
+				
+			</div>
+			<!-- 본문내용 -->
+
+		</div>
+
+	</div>
+	<!-- //content -->
+
+</div>
+<!-- //wrap -->
+<script type="text/javascript" src="../js/mcore.min.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/moment.min.js"></script>
+<script type="text/javascript" src="../js/locales.min.js"></script>
+<script type="text/javascript" src="../js/module.js"></script>
+<!-- // -->
+<script type="text/javascript">
+    "use strict";
+    //TODO: 개발 미비
+    /*기능 구현 리스트
+    1. 검색 기능 
+    2. 검색 결과 리스트 뿌리는 기능 
+    3. 더보기 기능
+    4. 페이지 이동 기능 
+    */
+
+    //페이지 이동시 전달할 데이터
+    var pageData = {}
+
+    //이전페이지 에서 받은 데이터 
+    // var data = M.data.param();
+    
+    $(document).ready(function(){
+        $(".header").header({
+            type:"construction",
+            title:"이슈관리",
+            headerType:"menu",
+            callback:function(){
+                pageNav(pageData);
+            }
+        });
+
+        //검색 박스 함수
+        function searchBox(){
+            //검색 값 초기화
+            function init(){
+                $("#companyName").val("");
+                $("#addr").val("");
+                $("#orderNum").val("");
+                $("[data-mdate]").val("");
+            }
+
+            init();
+
+            //검색 이벤트 처리
+            //검색 이벤트
+            $("#search").off("click").on("click", function(){});
+            //초기화 이벤트
+            $("#initSearch").off("click").on("click", init);
+
+            //날짜 데이터 피커 공통 모듈
+            $("[data-mdate]").mDate();
+        }
+
+        //검색 결과 리스트로 생성하는 함수
+        function listMake(param){
+            param = [{
+                type: "창호",
+                companyName:"현대인테리어",
+                state:"주문접수",
+                date:"2018-08-31",
+                orderNum:"000000000",
+                num:"[TI20160523000000] 비거주(개보수)",
+                addr:"서울 중구 을지로5길 26 센터원 좋은아파트 11동 1004호",
+                company:"서울 창호 시스템",
+                charge:"김프로(01012344321)",
+            }];
+
+            //태그 생성 
+            //TODO : 미구현 목록 
+            /*
+            주문 접수 상태 일때 
+            1. start_txt 클래스 에 on 클래스 추가
+            2. progress_wrap 및에 진행 상태에 따라 적용 
+            신규 주문 상태 일때 
+            1. stu_txt 태그 삭제 
+            */
+            function makeTag(data){
+                return $('<li>\
+                    <div class="division type02">\
+                        <span class="left_txt"><span class="split_w">'+data.type+'</span><span>'+data.companyName+'</span></span>\
+                        <span class="rignt_txt">'+data.state+'</span>\
+                    </div>\
+                    <div class="top">\
+                        <span class="date">'+data.state+'</span>\
+                        <span class="order_num">'+data.orderNum+'</span>\
+                    </div>\
+                    <div class="mid">\
+                        <span class="num">'+data.num+'</span>\
+                        <span class="addr">'+data.addr+'</span>\
+                        <a href="#" class="go_list" data-event-page="I_04_03.html"></a>\
+                    </div>\
+                    <div class="bot">\
+                        <span class="company">'+data.company+'</span>\
+                        <span class="charge">'+data.charge+'</span>\
+                    </div>\
+                    <div class="bot">\
+                        <div class="progress">\
+                            <span class="start_txt on">도착</span>\
+                            <div class="progress_wrap">\
+                                <div class="inner" style="width:33%;">\
+                                    <span class="stu_txt">진행상황</span>\
+                                </div>\
+                            </div>\
+                            <span class="end_txt">현장완료</span>\
+                        </div>\
+                    </div>\
+                </li>');
+            };
+            
+            //태그 랜더링 
+            $(param).each(function(index,el){
+                console.log(el);
+                $("#list").append(makeTag(el));
+            })
+        }
+        // 더보기 버튼 클릭시 액션
+        $("#listAdd").off("click").on("click",function(){
+
+        })
+
+        searchBox();
+        listMake();
+        //재 랜더링 이후에 이벤트 다시 걸음
+        pageNav(pageData);
+    });
+
+    // 통신
+    M.onReady(function(e) {
+        //ready event handle code here
+        console.log("onReady");
+    }).onHide(function(e){
+        //hide event handle code here
+        console.log("onHide");
+    }).onRestore(function(e) {
+        //restore event handle code here
+        console.log("onRestore");
+    }).onResume(function(e) {
+        //resume event handle code here
+        console.log("onResume");
+    }).onDestroy(function(e) {
+        //destroy event handle code here
+        console.log("onDestroy");
+    }).onBack(function() {
+        //back event handle code here
+        console.log("onBack");
+        M.page.back();
+    }).onKey(function(e) {
+        //key event handle code here(android only)
+        console.log("onKey");
+    });
+</script>
+<script type="text/javascript" src="../js/common.js"></script>
+</body>
+</html>
