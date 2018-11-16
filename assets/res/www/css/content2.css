@@ -137,7 +137,7 @@
 /* 설정 */
 .clause{white-space: pre-line;padding: 10px;border: 1px solid #d7d7d7;font-size: 12px;background-color: #fff;}
 .clause h3{font-size: 16px;}
-.clause .black{margin-bottom:10px !important;display:inline-block}
+.clause .black{margin-bottom:10px !important;display:inline-block;font-size: 14px;font-weight: bold;}
 .content_area.setting{background-color:#f5f5f5}
 .content_area.setting .basic_list{background-color:#fff}
 .content_area.setting .setting_name{padding:20px;position:relative}
@@ -168,3 +168,4 @@
 .layer_wrap.full .layer_popup .cont{-webkit-box-flex:1;overflow-y:auto;padding:20px 0;background:#fff;-webkit-box-sizing:border-box;}
 .layer_wrap.full .layer_popup .cont.type02{padding:0;}
 .layer_wrap.full .layer_popup .cont.terms{padding:20px 15px;background:#eee !important;line-height:1.5;}
+.popup_furniture img{width:100%}

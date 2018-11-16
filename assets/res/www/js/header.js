@@ -63,10 +63,10 @@ $(document).ready(function(){
                     '<li class="yellow"><a href="#" data-event-page="B_02_41.html">기 상담관리</a></li>',
                     '<li class="blue"><a href="#" data-event-page="A_05_01.html">실측승인 관리</a></li>',
                     // '<li class="green"><a href="#" data-event-page="C_07_11.html">시공관리</a></li>',
-                    '<li class=""></li>',
+                    '<li class="green" style="display:none"></li>',
                     '<li class="yellow"><a href="#" data-event-page="B_02_51.html">B2C 진도관리</a></li>',
                     '<li class="blue"><a href="#" data-event-page="A_05_02.html">시공승인관리</a></li>',
-                    '<li class=""></li>',
+                    // '<li class=""></li>',
                 ].map(pathFilter)
                 .join(""),
             },
