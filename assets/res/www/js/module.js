@@ -367,6 +367,7 @@ $.fn.camAlbum = function(param){
 * @description M.net.http.send 공통화 함수
 */
 function httpSend(param){
+    console.log("httpSend CALL::",param);
     var defParam = $.extend({},{
         path:null,
         data:{},

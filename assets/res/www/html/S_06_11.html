@@ -57,13 +57,13 @@
                                 <strong class="tit">실측(예정)일</strong>
                                 <div class="webkit_box">
                                     <span class="box_flex1">
-                                        <input type="date" value=""><!-- 날짜 -->
+                                        <input type="date" value="" id="searTermFr"><!-- 날짜 -->
                                     </span>
                                     <span class="box_flex0 dash">
                                         ~
                                     </span>
                                     <span class="box_flex1">
-                                        <input type="date" value=""><!-- 날짜 -->
+                                        <input type="date" value="" id="searTermTo"><!-- 날짜 -->
                                     </span>
                                 </div>
                             </li>
@@ -71,17 +71,17 @@
                                 <strong class="tit">현재진행상태</strong>
                                 <div class="webkit_box">
                                     <span class="box_flex1">
-                                        <select>
-                                            <option>전체</option>
-                                            <option>실측예약</option>
-                                            <option>실측확정</option>
-                                            <option>실특완료</option>
+                                        <select id="searCnstwStCd">
+                                            <option value="0">전체</option>
+                                            <option value="1">실측예약</option>
+                                            <option value="2">실측확정</option>
+                                            <option value="3">실특완료</option>
                                         </select>
                                     </span>
                                 </div>
                             </li>
                         </ul>
-                        <span class="btn_srch"><a href="#n" class="btn middle gray">검색</a></span>
+                        <span class="btn_srch"><a href="#n" class="btn middle gray" id="search">검색</a></span>
                         <div class="srch_control">
                             <a href="#n" class="btn_reset">초기화</a>
                             <a href="#n" class="btn_cls"><span>닫기</span></a>
@@ -185,43 +185,94 @@
             $(".srch_area li input").val("");
             $(".srch_area li select").val("전체");
         });
+
+        // TODO: 실측 리스트 검색조건 조회 API 연동
+        httpSend({
+            path: 'svy/lst/inquireSvrStdList',
+            successCallback: function(recevedData) {
+                console.log("svy/lst/inquireSvrStdList",recevedData);
+                $("#searCnstwStCd").children().remove();
+                recevedData.retList.map(function(v){
+                    console.log("list:",v);
+                    $("#searCnstwStCd").append("<option value='"+v.commonLineCode+"'>"+v.commonLineName+"</option>");
+                })
+            }
+        });
+
+        //검색 API
+        $("#search").off("click").on("click",function(){
+            httpSend({
+                path: 'svy/lst/inquireSvrStdList',
+                data:{
+                    searTermFr : $("#searTermFr").val(),
+                    searTermTo : $("#searTermTo").val(),
+                    searCnstwStCd : $("#searCnstwStCd").val(),
+                },
+                successCallback: function(recevedData) {
+                    console.log("svy/lst/inquireSvrStdList :: search",recevedData);
+                    listMake(recevedData.retList);
+                }
+            });
+        });
+
+//랜더링
+        //검색 결과 리스트로 생성하는 함수
+        function listMake(param){
+            // param = [{
+            //     "cnstwStName": "예약",
+            //     "jobsTypeCd1": "10",
+            //     "jobsTypeCd2": "10",
+            //     "muCode": "2",
+            //     "muName": "창호",
+            //     "vndorName": "GB금보인테리어",
+            //     "vndorCode": 10602,
+            //     "cnstwOrdNo": "S01-20181018-R011",
+            //     "cnstwFirmCd": 24595,
+            //     "RNUM": 1,
+            //     "cnstwFirmNm": "(사)한국경제연구원",
+            //     "jobsTypeName1": "신축",
+            //     "cnstwRsrtTim": "18:00",
+            //     "jobsTypeName2": "거주",
+            //     "addrDetail": "센터원빌딩 7_8층",
+            //     "addr": "서울특별시 중구 을지로5길 26",
+            //     "cnstwRsrtDt": "20181120"
+            // }];
+
+            //태그 생성 
+            //TODO : 미구현 목록 
+            /*
+            */
+            function makeTag(data){
+                return $('<li>\
+                        <div class="division type02">\
+                            <span class="left_txt"><span class="split_w">'+data.muName+'</span><span>'+data.vndorName+'</span></span>\
+                            <span class="rignt_txt">'+data.cnstwStName+'</span>\
+                        </div>\
+                        <div class="mid">\
+                            <span class="date">'+data.cnstwRsrtDt+'('+data.cnstwRsrtTim+')</span>\
+                            <span class="num">['+data.cnstwOrdNo+'] '+data.jobsTypeName2+'('+data.jobsTypeName1+')</span>\
+                            <span class="addr">'+data.addr+''+data.addrDetail+'</span>\
+                            <a href="#" class="go_list" data-event-page="S_06_21.html"></a>\
+                        </div>\
+                        <div class="bot">\
+                            <span class="company">'+data.cnstwFirmNm+'</span>\
+                            <span class="charge">김프로(01012344321)</span>\
+                        </div>\
+                    </li>');
+            };
+            
+            //태그 랜더링 
+            $(".survey_list").children().remove();
+            $(param).each(function(index,el){
+                console.log(el);
+                $(".survey_list").append(makeTag(el));
+            });
+        }
     });
     
     M.onReady(function(e) {
         //ready event handle code here
         console.log("onReady");
-        
-        // TODO: API 연동
-        M.net.http.send({
-            server: 'HTTP_APPSTORE_API',  // Manifest.xml 에 설정된 타겟 서버
-            path: '/api/sample/path/to/path',
-            method: 'POST',
-            timeout: 15000,	// msec
-            data : {
-                // TODO : send data here
-                parent_cate_cd : '',
-                system_name : 'iOS',
-            }, // request data
-            // user data
-            userData : {
-                // 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
-                service_id : 'appinfo',
-                action     : 'list',
-            }, // request data
-            success: function(recevedData, setting) {
-                console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
-                // TODO : did success control here
-            },
-            error: function(errCode, errMsg, setting) {
-                console.log("** onError", errCode, errMsg, setting);
-                // TODO : error control here
-            },
-            indicator: {
-                show : true,
-                message : '통신중입니다.',
-                cancelable : false
-            }
-        });
     }).onHide(function(e){
         //hide event handle code here
         console.log("onHide");
