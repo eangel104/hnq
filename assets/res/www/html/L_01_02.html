@@ -28,7 +28,6 @@
         <a href="#n" class="btn_login" id='btn_login'>LOGIN</a>
     </div>
     <p class="app_msg" id="app_msg">앱 설치 및 사용문의(고객센터 전화번호 <span id="tel">1111-1111</span>)</p>
-    <!-- TODO: 디버그 단추. 배포 전 반드시 지우기 --><button id="btn_debug_popup" class="btn middle orange">Reset POPUP</button><!-- TODO: 디버그 단추. 배포 전 반드시 지우기 -->
     <!-- 약관동의 팝업 -->
     <div class="layer_wrap large" >
         <div class="layer_popup" id="agreepopup">
@@ -246,6 +245,20 @@
             $('#login_id').val(login_id);
             $('#chk_id_save').prop('checked', true);
         }
+
+        // 엔터키 입력 - 아이디
+        $('#login_id').off('keypress').on('keypress', function(e) {
+            if(e.which == 13) {
+                $('#login_pw').focus();
+            }
+        });
+
+        // 엔터키 입력 - 비밀번호
+        $('#login_pw').off('keypress').on('keypress', function(e) {
+            if(e.which == 13) {
+                $(this).blur();
+            }
+        });
 
         // 로그인
         $('#btn_login').off('click').on('click', function(e) {
