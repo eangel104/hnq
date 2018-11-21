@@ -26,14 +26,14 @@
 /* intro */
 .intro{height:100%;background:url(../img/main/bg_intro.jpg) no-repeat;background-size:cover;}
 .intro .inner{position:absolute;top:50%;left:50%;width:300px;margin:-80px 0 0 -150px;text-align:center;}
-.intro .logo{width:154px;height:35px;overflow:hidden;margin:0 auto 30px;background:url(../img/main/intro_logo.jpg) no-repeat;background-size:154px auto;text-indent:-9999px;}
+.intro .logo{width:193px;height:70px;overflow:hidden;margin:0 auto 30px;background:url(../img/main/intro_logo.png) no-repeat;background-size:193px auto;text-indent:-9999px;}
 .intro .desc{font-size:13px;font-family:'noto-medium';color:#333;}
 .intro_loading{width: 20%;padding-bottom: 30px;}
 
 /* login */
 .login{min-height:100%;padding:75px 0 30px;background:url(../img/main/bg_intro.jpg) no-repeat;background-size:cover;box-sizing:border-box;}
 .login .login_section{width:300px;margin:0 auto;padding:35px 20px 40px;background:#fff;border:1px solid #dedede;border-radius:10px;text-align:center;box-sizing:border-box;}
-.login .login_section .logo{display:inline-block;width:122px;height:28px;overflow:hidden;margin-bottom:10px;background:url(../img/main/login_logo.jpg) no-repeat;background-size:122px auto;text-indent:-9999px;}
+.login .login_section .logo{display:inline-block;width:122px;height:44px;overflow:hidden;background:url(../img/main/login_logo.png) no-repeat;background-size:122px auto;text-indent:-9999px;}
 .login .login_section .desc{margin-bottom:25px;font-size:13px;font-family:'noto-medium';color:#000;}
 .login .login_section .login_input{margin-bottom:15px;}
 .login .login_section .login_input li{padding-left:33px;border-bottom:1px solid #e2e2e2;}
