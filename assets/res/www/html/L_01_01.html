@@ -12,12 +12,12 @@
 <!-- intro -->
 <div class="intro">
 
-	<div class="inner">
-		<h1 class="logo">Home & Q</h1>
-		<img src="../img/main/loading_0.1s.gif" alt="" class="intro_loading" />
-		<p class="desc">Ver.1.0.0<br>최근 업데이트 : 2018.06.20. 16:45:52</p>
-		<p class="desc mt10">동기화중<span id="loadCount">0</span>/<span>3</span></p>
-	</div>
+    <div class="inner">
+        <h1 class="logo">Home & Q</h1>
+        <img src="../img/main/loading_0.1s.gif" alt="" class="intro_loading" />
+        <p class="desc">Ver.1.0.0<br>최근 업데이트 : 2018.06.20. 16:45:52</p>
+        <p class="desc mt10">동기화중<span id="loadCount">0</span>/<span>3</span></p>
+    </div>
 
 </div>
 <!-- //intro -->
@@ -40,32 +40,6 @@
                 }
             },1000);
         })(1);
-
-        //TODO:: http 통신 테스트
-		M.net.http.send({
-			server: "TEST_SERVER",
-			path: "svy/lst/inquireSvrList",
-			method: "POST",
-			timeout: 5000,
-			// userData : {
-			// 	// 스크립트에서 네이티브로만 전송, 서버로는 전송 안 함
-			// 	service_id : 'appinfo',
-			// 	action     : 'list',
-			// }, // request data
-			success: function(recevedData, setting) {
-				console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
-				// TODO : did success control here
-			},
-			error: function(errCode, errMsg, setting) {
-				console.log("** onError", errCode, errMsg, setting);
-				// TODO : error control here
-			},
-			indicator: {
-				show : true,
-				message : '통신중입니다.',
-				cancelable : false
-			}
-		});
     });
 </script>
 </body>
