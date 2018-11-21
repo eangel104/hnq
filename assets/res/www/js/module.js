@@ -359,3 +359,43 @@ $.fn.camAlbum = function(param){
         $(this).siblings().children("img").attr("src", "../img/content/test_img.gif");
     });
 }
+
+/**
+* @author dh.lee@ttb.co.kr
+* @version 0.1
+* @since 2018.11.21
+* @description M.net.http.send 공통화 함수
+*/
+function httpSend(param){
+    var defParam = $.extend({},{
+        path:null,
+        data:{},
+        successCallback:function(receivedData){console.log("** onSuccess", receivedData)},
+        errorCallback:function(errCode, errMsg){console.log("** onError", errCode, errMsg);}
+    },param);
+
+    //검증 
+    if(defParam.path == null){
+        console.error("설정된 패스가 없습니다. 패스를 설정해 주세요");
+        return;
+    }
+
+    M.net.http.send({
+        server: "TEST_SERVER",
+        path: defParam.path,
+        method: "POST",
+        timeout: 5000,
+        data: defParam.data,
+        success: function(receivedData) {
+            defParam.successCallback(receivedData);
+        },
+        error: function(errCode, errMsg) {
+            defParam.errorCallback(errCode, errMsg);
+        },
+        indicator: {
+            show : true,
+            message : '통신중입니다.',
+            cancelable : false
+        }
+    });
+}
