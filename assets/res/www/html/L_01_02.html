@@ -168,8 +168,10 @@
 </div>
 <!-- //login -->
 <script type="text/javascript" src="../js/mcore.min.js"></script>
-<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/header.js"></script>
+<script type="text/javascript" src="../js/moment.min.js"></script>
+<script type=“text/javascript” src="../js/locales.min.js"></script>
+<script type="text/javascript" src="../js/module.js"></script>
 <!-- //login -->
 <script type="text/javascript">
     //TODO: 개발 미비
@@ -177,6 +179,7 @@
 
     // 영속 및 전역 변수
     var GLOBAL_USER_TYPE = "GLOBAL_USER_TYPE";
+    var GLOBAL_USER_NAME = "GLOBAL_USER_NAME";
     var STORAGE_USER_ID = "STORAGE_USER_ID";
 
     function redirectToMain(){
@@ -215,22 +218,8 @@
         // 약관 동의
         $("#btn_confirm").off("click").on("click", function() {
             if ($(this).hasClass("orange")) {
-                M.net.http.send({
-                    server: 'TEST_SERVER',
-                    path: 'lgi/updTosInfo',
-                    method: 'POST',
-                    timeout: 5000,
-                    success: function(receivedData) {
-                        //
-                    },
-                    error: function(errCode, errMsg) {
-                        console.log("** onError", errCode, errMsg);
-                    },
-                    indicator: {
-                        show : true,
-                        message : '통신중입니다.',
-                        cancelable : false
-                    }
+                httpSend({
+                    path: 'lgi/updTosInfo'
                 });
                 popupClose("#agreepopup");
                 redirectToMain();
@@ -264,18 +253,13 @@
         $('#btn_login').off('click').on('click', function(e) {
             // API 통신
             // TODO: 로그인 API
-            M.net.http.send({
-                server: "TEST_SERVER",
-                path: "lgi/procLogin",
-                method: "POST",
-                timeout: 5000,
+            httpSend({
+                path: 'lgi/procLogin',
                 data: {
                     userId: $('#login_id').val(),
                     userPw: $('#login_pw').val(),
                 },
-                success: function(receivedData) {
-                    // console.log("** onSuccess", JSON.stringify(recevedData, null, 4), setting);
-                    console.log(receivedData);
+                successCallback: function(receivedData){
                     // 로그인 인증 실패
                     if (receivedData.retCode !== '0000') {
                         M.pop.alert({
@@ -287,6 +271,7 @@
                     }
 
                     // 아이디 저장
+                    M.data.global(GLOBAL_USER_NAME, receivedData.cnstwHpwNm);
                     if ($('#chk_id_save').prop('checked')) {
                         M.data.storage(STORAGE_USER_ID, $('#login_id').val());
                     } else {
@@ -299,14 +284,6 @@
                     } else {
                         redirectToMain();
                     }
-                },
-                error: function(errCode, errMsg) {
-                    console.log("** onError", errCode, errMsg);
-                },
-                indicator: {
-                    show : true,
-                    message : '통신중입니다.',
-                    cancelable : false
                 }
             });
         });
@@ -327,20 +304,10 @@
         //destroy event handle code here
     }).onBack(function() {
         //back event handle code here
-        // 종료하기
-        // TODO: 지우기(기획에 없음)
-        M.pop.alert("종료하시겠습니까?", {
-            title: "종료",
-            buttons: ["아니오", "예"],
-            callback: function(index) {
-                if(index === 1) {
-                    M.sys.exit();
-                }
-            }
-        });
     }).onKey(function(e) {
         //key event handle code here(android only)
     });
 </script>
+<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
