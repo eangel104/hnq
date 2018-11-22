@@ -174,7 +174,8 @@ function pageNav(pageData) {
 $.fn.mDate = function(param){
     var defParam = $.extend({},{ 
         type : 'YMD',
-        initDate : moment().day(0).format("YYYYMMDD"), //현재 날짜 +1 하면 오늘 기준 내일 -1 하면 오늘기준 어제 
+        // initDate : moment().day(0).format("YYYYMMDD"), //이번주 첫번째 날짜
+        initDate : moment().format("YYYYMMDD"), //현재 날짜
         startDate : '', 
         endDate : '',
         callback:null
@@ -209,17 +210,17 @@ $.fn.mDate = function(param){
                     // - MMYYYY : {"yyyy":"2010","MM":"01"} var year = result.yyyy;
         
                     if(result.status == "SUCCESS"){
-                        console.log(moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
+                        console.log(moment(result.yyyy+result.MM+result.dd).format("YYYYMMDD"));
         
                         // nodeName : 실행할 함수 이름
                         var type = {
                             "INPUT":"val"
                         }
                         //input 인경우 값을 넣어준다. 
-                        $(that)[type[that.nodeName]](moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
+                        $(that)[type[that.nodeName]](moment(result.yyyy+result.MM+result.dd).format("YYYYMMDD"));
         
                         //콜백 실행
-                        if(defParam.callback) defParam.callback(result,moment(result.yyyy+result.MM+result.dd).format("YYYY-MM-DD"));
+                        if(defParam.callback) defParam.callback(result,moment(result.yyyy+result.MM+result.dd).format("YYYYMMDD"));
                     }
                 }   
             });

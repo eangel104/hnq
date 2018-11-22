@@ -57,13 +57,13 @@
                                 <strong class="tit">실측(예정)일</strong>
                                 <div class="webkit_box">
                                     <span class="box_flex1">
-                                        <input type="date" value="" id="searTermFr"><!-- 날짜 -->
+                                        <input type="date" value="" id="searTermFr" data-mdate><!-- 날짜 -->
                                     </span>
                                     <span class="box_flex0 dash">
                                         ~
                                     </span>
                                     <span class="box_flex1">
-                                        <input type="date" value="" id="searTermTo"><!-- 날짜 -->
+                                        <input type="date" value="" id="searTermTo" data-mdate><!-- 날짜 -->
                                     </span>
                                 </div>
                             </li>
@@ -146,7 +146,7 @@
                 </ul>
                 <!--// TODO : 20181025 a영역 수정 -->
                 <div class="tac mt20">
-                    <a href="#n" class="btn large basic"><span class="add">더보기</span></a>
+                    <a href="#n" class="btn large basic" id="addList"><span class="add">더보기</span></a>
                 </div>
             </div>
 
@@ -167,16 +167,22 @@
 <script type="text/javascript">
     "use strict";
     //TODO: 개발 미비
+    
+    //페이지 이동시 전달할 데이터
+    var pageData = {};
+
     $(document).ready(function(){
         $(".header").header({
             type:"construction",
             title:"실측",
             headerType:"menu",
             callback:function(){
-                pageNav();
+                pageNav(pageData);
             }
         });
 
+        //날짜 데이터 피커 공통 모듈
+        $("[data-mdate]").mDate();
         // 상단 날짜 표시
         $(".accept_wrap .date").text(moment().format("YYYY-MM-DD"));
 
@@ -184,6 +190,11 @@
         $(".srch_control .btn_reset").off("click").on("click", function() {
             $(".srch_area li input").val("");
             $(".srch_area li select").val("전체");
+        });
+
+        //더보기 버튼 클릭시 이벤트 등록
+        $("#addList").off("click").on("click",function(){
+            $("#search").trigger("click");
         });
 
         // TODO: 실측 리스트 검색조건 조회 API 연동
@@ -202,20 +213,26 @@
         //검색 API
         $("#search").off("click").on("click",function(){
             httpSend({
-                path: 'svy/lst/inquireSvrStdList',
+                path: 'svy/lst/inquireSvrList',
                 data:{
-                    searTermFr : $("#searTermFr").val(),
-                    searTermTo : $("#searTermTo").val(),
+                    // searTermFr : $("#searTermFr").val(),
+                    // searTermTo : $("#searTermTo").val(),
                     searCnstwStCd : $("#searCnstwStCd").val(),
                 },
                 successCallback: function(recevedData) {
-                    console.log("svy/lst/inquireSvrStdList :: search",recevedData);
+                    console.log("svy/lst/inquireSvrList :: search",recevedData);
                     listMake(recevedData.retList);
+
+                    //페이지 이동 다시 이벤트 등록 
+                    pageNav();
+
+                    //더보기 버튼 현재 페이지와 최종 페이지가 같으면 더보기 버튼 사라짐 
+                    (recevedData.cnt == recevedData.totCnt)? $("#addList").hide() : $("#addList").show(); 
                 }
             });
         });
 
-//랜더링
+        //랜더링
         //검색 결과 리스트로 생성하는 함수
         function listMake(param){
             // param = [{
@@ -249,14 +266,14 @@
                             <span class="rignt_txt">'+data.cnstwStName+'</span>\
                         </div>\
                         <div class="mid">\
-                            <span class="date">'+data.cnstwRsrtDt+'('+data.cnstwRsrtTim+')</span>\
+                            <span class="date">'+moment(data.cnstwRsrtDt).format("YYYY-MM-DD")+'('+data.cnstwRsrtTim+')</span>\
                             <span class="num">['+data.cnstwOrdNo+'] '+data.jobsTypeName2+'('+data.jobsTypeName1+')</span>\
                             <span class="addr">'+data.addr+''+data.addrDetail+'</span>\
                             <a href="#" class="go_list" data-event-page="S_06_21.html"></a>\
                         </div>\
                         <div class="bot">\
                             <span class="company">'+data.cnstwFirmNm+'</span>\
-                            <span class="charge">김프로(01012344321)</span>\
+                            <span class="charge">'+data.cnstwHpwNm+'('+data.ccpc+')</span>\
                         </div>\
                     </li>');
             };
