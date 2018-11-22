@@ -91,7 +91,7 @@
                 <!-- //srch_wrap -->
 
                 <div class="list_num">
-                    <span><em>12</em>건 / 총 <em>12</em>건</span>
+                    <span><em id="cnt">0</em>건 / 총 <em id="totCnt">0</em>건</span>
                 </div>
                 <!-- TODO : 20181025 li a영역 수정 -->
                 <ul class="survey_list">
@@ -166,10 +166,77 @@
 <!-- // -->
 <script type="text/javascript">
     "use strict";
+    
     //TODO: 개발 미비
     
     //페이지 이동시 전달할 데이터
     var pageData = {};
+
+    //실측 검색 처리 함수
+    /**
+    * @author dh.lee@ttb.co.kr
+    * @version 0.1
+    * @since 2018.11.22
+    * @description 실측 검색 을 모듈화 하기 위한 함수
+    * 태그에 설정해 줘야 하는 id 목록 
+    * 1. searCnstwStCd : 셀렉트 박스 id
+    * 2. search : 검색 버튼 id 
+    * 
+    * 초기화 버튼은 css 를 그대로 사용해서 셀렉트 하므로 설정하지 않아도 된다. 
+    * 이 함수를 사용하는 페이지는 S_06_11, A_05_01 이다. 
+    */
+    function inquireSvr(searchCallback){
+        //초기화 함수 
+        function init(){
+            //셀렉트 박스 데이터 먼저 불러온다. 
+            selectData(function(recevedData) {
+                console.log("svy/lst/inquireSvrStdList",recevedData);
+                $("#searCnstwStCd").children().remove();
+                recevedData.retList.map(function(v){
+                    console.log("list:",v);
+                    $("#searCnstwStCd").append("<option value='"+v.commonLineCode+"'>"+v.commonLineName+"</option>");
+                });
+            });
+            // 이벤트 등록
+            event();
+        }
+        //이벤트 등록 함수 
+        function event(){
+            // 검색 초기화 버튼 이벤트
+            $(".srch_control .btn_reset").off("click").on("click", function() {
+                $(".srch_area li input").val("");
+                $(".srch_area li select").val("");
+            });
+
+            //검색 API
+            $("#search").off("click").on("click",function(){
+                searchData(searchCallback);
+            });
+        }
+
+        // 실측 리스트 검색조건 조회 API 연동
+        function selectData(successCallback){
+            httpSend({
+                path: 'svy/lst/inquireSvrStdList',
+                successCallback: successCallback
+            });
+        }
+
+        // 검색 API 연동
+        function searchData(successCallback){
+            httpSend({
+                path: 'svy/lst/inquireSvrList',
+                data:{
+                    searTermFr : ($("#searTermFr").val() == "")? "" : moment($("#searTermFr").val()).format("YYYYMMDD"),
+                    searTermTo : ($("#searTermTo").val() == "")? "" : moment($("#searTermTo").val()).format("YYYYMMDD"),
+                    searCnstwStCd : $("#searCnstwStCd").val(),
+                },
+                successCallback: successCallback
+            });
+        }
+        //초기화
+        init();
+    };
 
     $(document).ready(function(){
         $(".header").header({
@@ -181,76 +248,58 @@
             }
         });
 
+
+
         // 상단 날짜 표시
         $(".accept_wrap .date").text(moment().format("YYYY-MM-DD"));
-
-        // 검색 초기화
-        $(".srch_control .btn_reset").off("click").on("click", function() {
-            $(".srch_area li input").val("");
-            $(".srch_area li select").val("전체");
-        });
 
         //더보기 버튼 클릭시 이벤트 등록
         $("#addList").off("click").on("click",function(){
             $("#search").trigger("click");
         });
 
-        // TODO: 실측 리스트 검색조건 조회 API 연동
-        httpSend({
-            path: 'svy/lst/inquireSvrStdList',
-            successCallback: function(recevedData) {
-                console.log("svy/lst/inquireSvrStdList",recevedData);
-                $("#searCnstwStCd").children().remove();
-                recevedData.retList.map(function(v){
-                    console.log("list:",v);
-                    $("#searCnstwStCd").append("<option value='"+v.commonLineCode+"'>"+v.commonLineName+"</option>");
-                })
-            }
-        });
+        // 서치 후 리턴되는 데이터 를 가지고 화면 리스트를 만드는 함수
+        inquireSvr(function(recevedData) {
+            console.log("svy/lst/inquireSvrList :: search",recevedData);
 
-        //검색 API
-        $("#search").off("click").on("click",function(){
-            httpSend({
-                path: 'svy/lst/inquireSvrList',
-                data:{
-                    // searTermFr : $("#searTermFr").val(),
-                    // searTermTo : $("#searTermTo").val(),
-                    searCnstwStCd : $("#searCnstwStCd").val(),
-                },
-                successCallback: function(recevedData) {
-                    console.log("svy/lst/inquireSvrList :: search",recevedData);
-                    listMake(recevedData.retList);
+            //리스트 생성
+            listMake(recevedData.retList);
 
-                    //페이지 이동 다시 이벤트 등록 
-                    pageNav();
+            //페이지 이동 다시 이벤트 등록 
+            pageNav();
 
-                    //더보기 버튼 현재 페이지와 최종 페이지가 같으면 더보기 버튼 사라짐 
-                    (recevedData.cnt == recevedData.totCnt)? $("#addList").hide() : $("#addList").show(); 
-                }
-            });
+            //더보기 버튼 현재 페이지와 최종 페이지가 같으면 더보기 버튼 사라짐 
+            (recevedData.cnt == recevedData.totCnt)? $("#addList").hide() : $("#addList").show(); 
+            $("#cnt").text(recevedData.cnt);
+            $("#totCnt").text(recevedData.totCnt);
         });
 
         //랜더링
         //검색 결과 리스트로 생성하는 함수
         function listMake(param){
             // param = [{
-            //     "cnstwStName": "예약",
-            //     "jobsTypeCd1": "10",
+            //     "cnstwHpwCd": null,
+            //     "cnstwStName": "완료",
+            //     "jobsTypeCd1": "20",
             //     "jobsTypeCd2": "10",
             //     "muCode": "2",
             //     "muName": "창호",
-            //     "vndorName": "GB금보인테리어",
-            //     "vndorCode": 10602,
-            //     "cnstwOrdNo": "S01-20181018-R011",
+            //     "cnstwHpwNm": null,
+            //     "vndorName": "법원지물",
+            //     "vndorCode": 10601,
+            //     "cnstwOrdNo": "S01-20181018-R005",
             //     "cnstwFirmCd": 24595,
             //     "RNUM": 1,
             //     "cnstwFirmNm": "(사)한국경제연구원",
-            //     "jobsTypeName1": "신축",
-            //     "cnstwRsrtTim": "18:00",
+            //     "jobsTypeName1": "개보수",
+            //     "cnstwRsrtTim": "03",
             //     "jobsTypeName2": "거주",
-            //     "addrDetail": "센터원빌딩 7_8층",
-            //     "addr": "서울특별시 중구 을지로5길 26",
-            //     "cnstwRsrtDt": "20181120"
+            //     "cnstwRsrtTimName": "10:00",
+            //     "cnstwOlv": null,
+            //     "addrDetail": "경기빌딩",
+            //     "addr": "서울특별시 중구 남대문로10길 9",
+            //     "cnstwRsrtDt": "20181120",
+            //     "ccpc": null
             // }];
 
             //태그 생성 
@@ -271,7 +320,7 @@
                         </div>\
                         <div class="bot">\
                             <span class="company">'+data.cnstwFirmNm+'</span>\
-                            <span class="charge">'+data.cnstwHpwNm+'('+data.ccpc+')</span>\
+                            <span class="charge">'+((data.cnstwHpwNm)?data.cnstwHpwNm:"없음")+((data.ccpc)?"("+data.ccpc+")":"(없음)")+'</span>\
                         </div>\
                     </li>');
             };
