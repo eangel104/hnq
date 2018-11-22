@@ -373,7 +373,17 @@ function httpSend(param){
         path:null,
         data:{},
         successCallback:function(receivedData){console.log("** onSuccess", receivedData)},
-        errorCallback:function(errCode, errMsg){console.log("** onError", errCode, errMsg);}
+        errorCallback:function(errCode, errMsg){
+            console.error("** onError", errCode, errMsg);
+            M.pop.alert({
+                title: '알림',
+                message: "["+errCode+"]"+errMsg,
+                buttons: ['확인'],
+                callback: function(index) {
+                        // console.log( "index: ", index );
+                }
+            });
+        }
     },param);
 
     //검증 
