@@ -169,7 +169,7 @@ function pageNav(pageData) {
     * @author dh.lee@ttb.co.kr
     * @version 0.1
     * @since 2018.11.07
-    * @description 모피어스 데이터 피커 공통화 
+    * @description 모피어스 데이터 피커 공통화 현재 사용하지 않음 
     */
 $.fn.mDate = function(param){
     var defParam = $.extend({},{ 

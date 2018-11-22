@@ -57,13 +57,13 @@
                                 <strong class="tit">실측(예정)일</strong>
                                 <div class="webkit_box">
                                     <span class="box_flex1">
-                                        <input type="date" value="" id="searTermFr" data-mdate><!-- 날짜 -->
+                                        <input type="date" value="" id="searTermFr"><!-- 날짜 -->
                                     </span>
                                     <span class="box_flex0 dash">
                                         ~
                                     </span>
                                     <span class="box_flex1">
-                                        <input type="date" value="" id="searTermTo" data-mdate><!-- 날짜 -->
+                                        <input type="date" value="" id="searTermTo"><!-- 날짜 -->
                                     </span>
                                 </div>
                             </li>
@@ -181,8 +181,6 @@
             }
         });
 
-        //날짜 데이터 피커 공통 모듈
-        $("[data-mdate]").mDate();
         // 상단 날짜 표시
         $(".accept_wrap .date").text(moment().format("YYYY-MM-DD"));
 

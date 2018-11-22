@@ -50,13 +50,13 @@
 								<strong class="tit">기간</strong>
 								<div class="webkit_box mt10">
 									<span class="box_flex1">
-										<input type="text" data-mdate>
+										<input type="date" data-mdate>
 									</span>
 									<span class="box_flex0 dash">
 										~
 									</span>
 									<span class="box_flex1">
-										<input type="text" data-mdate>
+										<input type="date" data-mdate>
 									</span>
 								</div>
 							</li>
@@ -230,9 +230,6 @@
             $("#search").off("click").on("click", function(){});
             //초기화 이벤트
             $("#initSearch").off("click").on("click", init);
-
-            //날짜 데이터 피커 공통 모듈
-            $("[data-mdate]").mDate();
         }
 
         //검색 결과 리스트로 생성하는 함수
