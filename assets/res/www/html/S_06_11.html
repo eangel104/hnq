@@ -81,7 +81,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <span class="btn_srch"><a href="#n" class="btn middle gray" id="search">검색</a></span>
+                        <span class="btn_srch"><a href="#n" class="btn middle gray">검색</a></span>
                         <div class="srch_control">
                             <a href="#n" class="btn_reset">초기화</a>
                             <a href="#n" class="btn_cls"><span>닫기</span></a>
@@ -166,7 +166,7 @@
 <!-- // -->
 <script type="text/javascript">
     "use strict";
-    
+
     //TODO: 개발 미비
     
     //페이지 이동시 전달할 데이터
@@ -180,19 +180,28 @@
     * @description 실측 검색 을 모듈화 하기 위한 함수
     * 태그에 설정해 줘야 하는 id 목록 
     * 1. searCnstwStCd : 셀렉트 박스 id
-    * 2. search : 검색 버튼 id 
+    * 2. searTermFr : 시작시간 input 태그 id 
+    * 3. searTermTo : 종료시간 input 태그 id 
     * 
     * 초기화 버튼은 css 를 그대로 사용해서 셀렉트 하므로 설정하지 않아도 된다. 
     * 이 함수를 사용하는 페이지는 S_06_11, A_05_01 이다. 
+    * 
     */
-    function inquireSvr(searchCallback){
+    function inquireSvrList(searchCallback){
+        //셀렉트 변수 
+        var $startTime = $("#searTermFr");
+        var $endTime = $("#searTermTo");
+        var $selectBox = $("#searCnstwStCd");
+        var $btnSearch = $(".btn_srch > a.btn");
+        var $btnReset = $(".srch_control .btn_reset");
+        
         //초기화 함수 
         function init(){
             //셀렉트 박스 데이터 먼저 불러온다. 
             selectData(function(recevedData) {
                 console.log("svy/lst/inquireSvrStdList",recevedData);
                 $("#searCnstwStCd").children().remove();
-                recevedData.retList.map(function(v){
+                $.each(recevedData.retList,function(v){
                     console.log("list:",v);
                     $("#searCnstwStCd").append("<option value='"+v.commonLineCode+"'>"+v.commonLineName+"</option>");
                 });
@@ -203,13 +212,14 @@
         //이벤트 등록 함수 
         function event(){
             // 검색 초기화 버튼 이벤트
-            $(".srch_control .btn_reset").off("click").on("click", function() {
-                $(".srch_area li input").val("");
-                $(".srch_area li select").val("");
+            $btnReset.off("click").on("click", function() {
+                $startTime.val("");
+                $endTime.val("");
+                $selectBox.val("");
             });
 
             //검색 API
-            $("#search").off("click").on("click",function(){
+            $btnSearch.off("click").on("click",function(){
                 searchData(searchCallback);
             });
         }
@@ -227,9 +237,9 @@
             httpSend({
                 path: 'svy/lst/inquireSvrList',
                 data:{
-                    searTermFr : ($("#searTermFr").val() == "")? "" : moment($("#searTermFr").val()).format("YYYYMMDD"),
-                    searTermTo : ($("#searTermTo").val() == "")? "" : moment($("#searTermTo").val()).format("YYYYMMDD"),
-                    searCnstwStCd : $("#searCnstwStCd").val(),
+                    searTermFr : ($startTime.val() == "")? "" : moment($startTime.val()).format("YYYYMMDD"),
+                    searTermTo : ($endTime.val() == "")? "" : moment($endTime.val()).format("YYYYMMDD"),
+                    searCnstwStCd : $selectBox.val(),
                 },
                 successCallback: successCallback
             });
@@ -259,7 +269,7 @@
         });
 
         // 서치 후 리턴되는 데이터 를 가지고 화면 리스트를 만드는 함수
-        inquireSvr(function(recevedData) {
+        inquireSvrList(function(recevedData) {
             console.log("svy/lst/inquireSvrList :: search",recevedData);
 
             //리스트 생성
