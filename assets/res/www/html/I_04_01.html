@@ -189,7 +189,7 @@
             title:"이슈조회",
             headerType:"menu",
             callback:function(){
-                pageNav(pageData);
+                pageNav(pageData).init();
             }
         });
 
@@ -282,7 +282,7 @@
         searchBox();
         listMake();
         //재 랜더링 이후에 이벤트 다시 걸음
-        pageNav(pageData);
+        pageNav(pageData).init();
     });
 
     // 통신

@@ -101,13 +101,17 @@
             type:"construction",
             title:"승인관리",
             callback:function(){
-                pageNav(pageData);
+                pageNav(pageData).init();
             }
         });
 
 
-        $("#cancel").off("click").on("click",function(e){});
-        $("#save").off("click").on("click",function(e){});
+        $("#cancel").off("click").on("click",function(e){
+            pageNav(pageData).next("A_05_06.html");
+        });
+        $("#save").off("click").on("click",function(e){
+            pageNav(pageData).next("A_05_05.html");
+        });
 
 
         //숫자 컨트롤 모듈 나중에 모듈화 

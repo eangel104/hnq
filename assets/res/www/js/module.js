@@ -18,7 +18,7 @@
 *   주의사항 data-event-data='{"no":1}' 형식처럼 '' 안에 데이터를 넣고 키는 "" 으로 감싸야만 한다. 
 *   그래야 $(this).data("eventData") 호출시 객체로 자동 변환되어 넘어 온다. 
 */
-function pageNav(pageData) {
+function pageNav(pageData){
     // DEFALUT : 왼쪽으로 이동되는 슬라이드 효과(SLIDE_LEFT)
     // NONE : 애니메이션 효과 없음
     // SLIDE_LEFT : 왼쪽으로 이동되는 슬라이드 효과
@@ -162,7 +162,17 @@ function pageNav(pageData) {
     }
 
     //초기화 실행
-    init();
+    // init();
+    return {
+        init:init,
+        next:function(url,param){
+            var option = { 
+                param:$.extend({},param),
+                action : 'NEW_SCR',
+            }
+            M.page.html(url,option);
+        }
+    }
 }
 
   /**

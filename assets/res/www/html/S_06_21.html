@@ -114,7 +114,7 @@
             title:"실측상세",
             headerType:"menu",
             callback:function(){
-                pageNav();
+                pageNav().init();
             }
         });
     });
@@ -173,7 +173,7 @@
                                 } else if(item === '실측완료승인요청') {
                                     $(self).attr('data-event-page', 'S_06_27.html');
                                 }
-                                pageNav();
+                                pageNav().init();
                             },
                             error: function(errCode, errMsg, setting) {
                                 console.log("** onError", errCode, errMsg, setting);

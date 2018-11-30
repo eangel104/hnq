@@ -253,7 +253,7 @@
             title:"실측",
             headerType:"menu",
             callback:function(){
-                pageNav(pageData);
+                pageNav(pageData).init();
             }
         });
 
@@ -275,7 +275,7 @@
             listMake(recevedData.retList);
 
             //페이지 이동 다시 이벤트 등록 
-            pageNav();
+            pageNav().init();
 
             //더보기 버튼 현재 페이지와 최종 페이지가 같으면 더보기 버튼 사라짐 
             (recevedData.cnt == recevedData.totCnt)? $("#addList").hide() : $("#addList").show(); 
