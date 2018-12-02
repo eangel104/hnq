@@ -716,6 +716,9 @@
         test:1
     }
 
+    //이전페이지 에서 받은 데이터 
+    // var data = M.data.param();
+
     $(document).ready(function(){
         $(".header").header({
             type:"sales",
@@ -734,6 +737,21 @@
         });
         $('#tab1').fnTab();
         $('#tab2').fnTab();
+
+        function changeTab(parentId,hash){
+            hash = hash || "#tab1-1";
+            if(!parentId && !tagID){
+                console.error("parentId or tagID no",parentId,tagID); 
+                return;
+            };
+            // on 탭 삭제
+            $(parentId).find(".on").removeClass("on");
+            var $aTag = $(parentId).find("a[href='"+hash+"']");
+            $aTag.parents("li").addClass("on");
+            $aTag.trigger("click");
+            $(".content_area").scrollTop(0);
+        }
+        changeTab("#tab1",location.hash);
 
         //캘린터
         $(".calendar").weekCalendar({

@@ -1,3 +1,9 @@
+// 영속 및 전역 변수
+var GLOBAL_USER_TYPE = "GLOBAL_USER_TYPE";
+var GLOBAL_USER_NAME = "GLOBAL_USER_NAME";
+var STORAGE_USER_ID = "STORAGE_USER_ID";
+
+
 /**
 * @author dh.lee@ttb.co.kr
 * @since 2018.10.22
@@ -141,8 +147,13 @@ function pageNav(pageData){
                 console.log("Nav eventPage::",$(this).data("eventPage"),pageInfo[$(this).data("eventPage")]);
                 console.log("Nav eventAnimat::",animation[$(this).data("eventAnimat")]);
                 console.log("Nav eventData::",$(this).data("eventData"));
+                
+                if($(this).data("eventData")){
+                    pageData = $.extend(pageData,JSON.parse($(this).data("eventData").split("'").join("\"")));
+                }
+
                 var option = { 
-                    param:$.extend({},{ 'NAME' : $(this).data("eventPage")},pageData,$(this).data("eventData")),
+                    param:$.extend({},{ 'NAME' : $(this).data("eventPage")},pageData),
                     animation : (animation[$(this).data("eventAnimat")])?animation[$(this).data("eventAnimat")]:animation["def"], 
                     action : 'NEW_SCR',
                     // orient : 'PORT'
