@@ -25,6 +25,7 @@ $(document).ready(function(){
 
         // 현재 페이지 이름 가져오기
         var path = location.pathname.split("/").pop();
+        var hash = location.hash;
 
         // 동일한 페이지 인경우에 대한 처리를 수행한다. 
         function pathFilter(tagString){
@@ -33,13 +34,13 @@ $(document).ready(function(){
 
             // console.log($el);
             // console.log($($el)[0].outerHTML);
-            // console.log(path,$($el).find("a").data("eventPage"));
-
-            if(path === $($el).find("a").data("eventPage")){
+            console.log(path,hash,$($el).find("a").data("eventPage"));
+            if((path+hash) == $($el).find("a").data("eventPage")){
+                console.log("same path",(path+hash),$($el).find("a").data("eventPage"));
                 $($el).find("a").removeAttr("data-event-page").addClass("gnb_on");
-                // console.log($($el).find("a"),$($el)[0].outerHTML);
                 return $($el)[0].outerHTML;
             }else{
+                console.log("no same path",(path+hash),$($el).find("a").data("eventPage"));
                 return tagString;
             }
         }
@@ -50,21 +51,21 @@ $(document).ready(function(){
                 title:(param.title)? param.title : "영업활동",
                 home:'L_01_08.html',//메인 페이지 정보
                 nav:[
-                    '<li class="yellow"><a href="#" data-event-page="B_02_11.html">일정/업무</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_11.html#tab1-1">일정/업무</a></li>',
                     '<li class="blue"><a href="#" data-event-page="E_03_11.html">상재단가조회</a></li>',
                     '<li class="blue"><a href="#" data-event-page="E_03_41.html">가구PS 간단견적</a></li>',
-                    '<li class="yellow"><a href="#" data-event-page="B_02_21.html">거래처 정보</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_11.html#tab1-2">거래처 정보</a></li>',
                     '<li class="blue"><a href="#" data-event-page="E_03_21.html">재고조회</a></li>',
                     '<li class="pink"><a href="#" data-event-page="I_04_01.html">이슈조회</a></li>',
-                    '<li class="yellow"><a href="#" data-event-page="B_02_31.html">주문현황</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_11.html#tab1-3">주문현황</a></li>',
                     '<li class="blue"><a href="#" data-event-page="E_03_31.html">주문요청</a></li>',
                     // '<li class="green"><a href="#" data-event-page="S_06_11.html">실측관리</a></li>',
                     '<li class="setting"><a href="#" data-event-page="L_01_07.html"><span>설정</span></a></li>',
-                    '<li class="yellow"><a href="#" data-event-page="B_02_41.html">기 상담관리</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_11.html#tab1-4">기 상담관리</a></li>',
                     '<li class="blue"><a href="#" data-event-page="A_05_01.html">실측승인 관리</a></li>',
                     // '<li class="green"><a href="#" data-event-page="C_07_11.html">시공관리</a></li>',
                     '<li class="green" style="display:none"></li>',
-                    '<li class="yellow"><a href="#" data-event-page="B_02_51.html">B2C 진도관리</a></li>',
+                    '<li class="yellow"><a href="#" data-event-page="B_02_11.html#tab1-5">B2C 진도관리</a></li>',
                     '<li class="blue"><a href="#" data-event-page="A_05_02.html">시공승인관리</a></li>',
                     // '<li class=""></li>',
                 ].map(pathFilter)

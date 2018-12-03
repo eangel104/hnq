@@ -77,7 +77,7 @@
             title:"승인관리",
             // headerType:"menu",
             callback:function(){
-                pageNav(pageData);
+                pageNav(pageData).init();
             }
         });
 
@@ -89,6 +89,7 @@
             ratedFill: "red",
             onChange: function (rating, rateYoInstance) {
                 alert("onChange: " + rating);
+                // console.log("onChange: " + rating);
             }
         });
     });

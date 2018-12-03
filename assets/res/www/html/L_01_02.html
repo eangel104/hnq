@@ -268,16 +268,12 @@
     //TODO: 개발 미비
     "use strict";
 
-    // 영속 및 전역 변수
-    var GLOBAL_USER_TYPE = "GLOBAL_USER_TYPE";
-    var GLOBAL_USER_NAME = "GLOBAL_USER_NAME";
-    var STORAGE_USER_ID = "STORAGE_USER_ID";
-
     function redirectToMain(){
         // 사용자 타입 저장
         // TODO: 한화에서 유저 타입 받으면 수정 필
-        // 현재는 sales(영업사원), construction (시공사)
+        // 현재는 0: sales(영업사원), 1: construction (시공사)
         var userType = $('#login_id').val().startsWith('s') ?  "sales" : "construction";
+        userType = "sales";//TODO: 나중에 삭제
         M.data.storage(GLOBAL_USER_TYPE, userType);
         M.page.html("L_01_" + (userType === "sales" ? "08":"09") + ".html", {
             action: "CLEAR_TOP"

@@ -1,3 +1,9 @@
+// 영속 및 전역 변수
+var GLOBAL_USER_TYPE = "GLOBAL_USER_TYPE";
+var GLOBAL_USER_NAME = "GLOBAL_USER_NAME";
+var STORAGE_USER_ID = "STORAGE_USER_ID";
+
+
 /**
 * @author dh.lee@ttb.co.kr
 * @since 2018.10.22
@@ -18,7 +24,7 @@
 *   주의사항 data-event-data='{"no":1}' 형식처럼 '' 안에 데이터를 넣고 키는 "" 으로 감싸야만 한다. 
 *   그래야 $(this).data("eventData") 호출시 객체로 자동 변환되어 넘어 온다. 
 */
-function pageNav(pageData) {
+function pageNav(pageData){
     // DEFALUT : 왼쪽으로 이동되는 슬라이드 효과(SLIDE_LEFT)
     // NONE : 애니메이션 효과 없음
     // SLIDE_LEFT : 왼쪽으로 이동되는 슬라이드 효과
@@ -141,8 +147,13 @@ function pageNav(pageData) {
                 console.log("Nav eventPage::",$(this).data("eventPage"),pageInfo[$(this).data("eventPage")]);
                 console.log("Nav eventAnimat::",animation[$(this).data("eventAnimat")]);
                 console.log("Nav eventData::",$(this).data("eventData"));
+                
+                if($(this).data("eventData")){
+                    pageData = $.extend(pageData,JSON.parse($(this).data("eventData").split("'").join("\"")));
+                }
+
                 var option = { 
-                    param:$.extend({},{ 'NAME' : $(this).data("eventPage")},pageData,$(this).data("eventData")),
+                    param:$.extend({},{ 'NAME' : $(this).data("eventPage")},pageData),
                     animation : (animation[$(this).data("eventAnimat")])?animation[$(this).data("eventAnimat")]:animation["def"], 
                     action : 'NEW_SCR',
                     // orient : 'PORT'
@@ -162,7 +173,17 @@ function pageNav(pageData) {
     }
 
     //초기화 실행
-    init();
+    // init();
+    return {
+        init:init,
+        next:function(url,param){
+            var option = { 
+                param:$.extend({},param),
+                action : 'NEW_SCR',
+            }
+            M.page.html(url,option);
+        }
+    }
 }
 
   /**
